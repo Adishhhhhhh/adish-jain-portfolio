@@ -1,0 +1,225 @@
+@import "tailwindcss";
+
+/*
+  Meta Ad Library shell tokens.
+  Shell register is product-faithful: CLAUDE.md's anti-generic defaults are
+  explicitly overridden per PLAN.md §0.3. System font, Meta blue, white +
+  light-gray surfaces are correct here.
+*/
+
+@theme inline {
+  --color-meta-blue: #1877f2;
+  --color-meta-blue-hover: #166fe5;
+  --color-meta-link: #385898;
+
+  --color-surface: #ffffff;
+  --color-surface-alt: #f0f2f5;
+  --color-surface-hover: #e4e6eb;
+
+  --color-text-primary: #050505;
+  --color-text-secondary: #65676b;
+  --color-text-tertiary: #8a8d91;
+  --color-text-link: #1877f2;
+
+  --color-border: #ced0d4;
+  --color-border-light: #dadde1;
+  --color-divider: #e4e6eb;
+
+  --color-pill-bg: #e4e6eb;
+  --color-pill-text: #65676b;
+
+  --color-active-green-bg: #e3f1df;
+  --color-active-green-text: #1a7f37;
+
+  --font-sans: var(--font-inter), -apple-system, BlinkMacSystemFont, "Segoe UI",
+    Roboto, Helvetica, Arial, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.1);
+  --shadow-modal: 0 12px 28px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@layer base {
+  html,
+  body {
+    background: var(--color-surface);
+    color: var(--color-text-primary);
+    font-family: var(--font-sans);
+    font-size: 15px;
+    line-height: 1.3333;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Meta link styling, scoped to anchors that opt in via .meta-link
+     so utility colors like text-white still win on inline-styled links. */
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+  a.meta-link {
+    color: var(--color-text-link);
+  }
+  a.meta-link:hover {
+    text-decoration: underline;
+  }
+
+  /* Match Meta's focus ring style (subtle, system-default-ish) */
+  :focus-visible {
+    outline: 2px solid var(--color-meta-blue);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+}
+
+/* Staggered entrance for the hero. CSS-driven so the first paint is never blank,
+   degrades to fully visible if animations are off. */
+@keyframes heroEnter {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-item {
+  animation: heroEnter 0.5s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+.hero-item:nth-child(1) {
+  animation-delay: 0.04s;
+}
+.hero-item:nth-child(2) {
+  animation-delay: 0.13s;
+}
+/* the search section is the last block */
+section.hero-item {
+  animation-delay: 0.22s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-item {
+    animation: none;
+  }
+}
+
+/* Smooth content reveal when any <details> toggle opens. Animates the element
+   immediately after <summary>. Robust across browsers (no height interpolation). */
+@keyframes detailsReveal {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+details[open] > summary ~ * {
+  animation: detailsReveal 0.24s cubic-bezier(0.23, 1, 0.32, 1) both;
+}
+@media (prefers-reduced-motion: reduce) {
+  details[open] > summary ~ * {
+    animation: none;
+  }
+}
+
+/*
+  Verbatim Notion content rendered via react-markdown. Styled to read as an
+  editorial document inside the Ad Library chrome: comfortable measure, real
+  tables, clear hierarchy.
+*/
+.md-content {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--color-text-primary);
+}
+.md-content > *:first-child {
+  margin-top: 0;
+}
+.md-content h1,
+.md-content h2 {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 1.6em 0 0.5em;
+  color: var(--color-text-primary);
+}
+.md-content h3 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 1.4em 0 0.4em;
+}
+.md-content h4 {
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-text-secondary);
+  margin: 1.2em 0 0.3em;
+}
+.md-content p {
+  margin: 0.65em 0;
+}
+.md-content ul,
+.md-content ol {
+  margin: 0.6em 0;
+  padding-left: 1.4em;
+}
+.md-content ul {
+  list-style: disc;
+}
+.md-content ol {
+  list-style: decimal;
+}
+.md-content li {
+  margin: 0.3em 0;
+}
+.md-content li > ul,
+.md-content li > ol {
+  margin: 0.3em 0;
+}
+.md-content strong {
+  font-weight: 700;
+}
+.md-content a {
+  color: var(--color-text-link);
+  text-decoration: underline;
+}
+.md-content blockquote {
+  border-left: 3px solid var(--color-meta-blue);
+  background: var(--color-surface-alt);
+  padding: 0.6em 1em;
+  margin: 0.8em 0;
+  border-radius: 4px;
+}
+.md-content hr {
+  border: 0;
+  border-top: 1px solid var(--color-divider);
+  margin: 1.4em 0;
+}
+.md-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+  font-size: 13.5px;
+  display: block;
+  overflow-x: auto;
+}
+.md-content th,
+.md-content td {
+  border: 1px solid var(--color-border);
+  padding: 8px 12px;
+  text-align: left;
+  vertical-align: top;
+}
+.md-content th {
+  background: var(--color-surface-alt);
+  font-weight: 600;
+}
+.md-content code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--color-surface-alt);
+  padding: 0.1em 0.35em;
+  border-radius: 3px;
+}
