@@ -13,7 +13,7 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   // metadataBase resolves the auto-generated opengraph-image to an absolute URL.
-  metadataBase: new URL("https://adish-jain.vercel.app"),
+  metadataBase: new URL("https://adish-jain-portfolio.vercel.app"),
   title: {
     default: "Ad Library, Adish Jain, Creative Strategist",
     template: "%s · Adish Jain Ad Library",
