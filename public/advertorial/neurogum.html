@@ -32,8 +32,8 @@
     --teal:#1F9E8E;
     --lavender:#ECE8FB;
     --lav-line:#D7CFF6;
-    --maxread:40rem;
-    --maxwide:60rem;
+    --maxread:48rem;
+    --maxwide:68rem;
     --shadow-sm:0 1px 2px rgba(27,26,35,.06), 0 4px 12px rgba(44,10,163,.05);
     --shadow-md:0 2px 6px rgba(27,26,35,.07), 0 14px 34px rgba(44,10,163,.10);
     --shadow-amber:0 2px 6px rgba(224,138,0,.18), 0 14px 30px rgba(224,138,0,.28);
@@ -41,14 +41,14 @@
   }
 
   *,*::before,*::after{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
+  html{-webkit-text-size-adjust:100%;font-size:88%}
   body{
     margin:0;
     background:var(--paper);
     color:var(--ink);
     font-family:"Source Serif 4", Georgia, "Times New Roman", serif;
     font-size:clamp(1.0625rem,.95rem + .5vw,1.1875rem);
-    line-height:1.72;
+    line-height:1.6;
     font-optical-sizing:auto;
     -webkit-font-smoothing:antialiased;
     text-rendering:optimizeLegibility;
@@ -180,9 +180,9 @@
 
   /* fixes list */
   .fixes{list-style:none;padding:0;margin:1.4rem 0 0}
-  .fixes li{position:relative;padding:.85rem 0 .85rem 2.4rem;border-bottom:1px dashed var(--rule)}
+  .fixes li{position:relative;padding:.6rem 0 .6rem 2.3rem;border-bottom:1px dashed var(--rule)}
   .fixes li:last-child{border-bottom:0}
-  .fixes li::before{content:"";position:absolute;left:0;top:1.05rem;width:1.4rem;height:1.4rem;border-radius:50%;
+  .fixes li::before{content:"";position:absolute;left:0;top:.78rem;width:1.4rem;height:1.4rem;border-radius:50%;
     background:var(--teal);
     -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/64% no-repeat;
             mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/64% no-repeat;
@@ -201,6 +201,8 @@
   .q p{margin:0 0 .55rem;font-style:italic;font-size:1.02rem}
   .q cite{font-family:"Public Sans",sans-serif;font-style:normal;font-weight:600;font-size:.8rem;color:var(--ink-soft)}
   .q .verified{color:var(--teal);font-weight:700}
+  .q-verified{border-left-color:var(--teal);background:#F1FBF8}
+  .q-verified p{font-size:1.06rem}
 
   .repnote{font-family:"Public Sans",sans-serif;font-size:.74rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.08em;margin:0 0 .2rem}
 
@@ -304,9 +306,8 @@
 
 <!-- lede -->
 <section class="lede"><div class="measure">
-  <p class="drop reveal">It's 9:00 a.m. You had your coffee. Instead of clarity, you feel twitchy. Your heart is running a little too fast. Your eyes are on the spreadsheet, but your mind is somewhere back in tab 14.</p>
-  <p class="reveal">The instinct is always the same. Maybe one more cup.</p>
-  <p class="reveal">Most people believe coffee gives them focus. It doesn't. Here is what is actually happening in your body every morning, and the small swap that fixes it.</p>
+  <p class="drop reveal">It's 9:00 a.m., you've had your coffee, and instead of clarity you feel twitchy, your heart running a little too fast while your eyes sit on the spreadsheet and your mind drifts somewhere back in tab 14. The instinct is always the same: maybe one more cup.</p>
+  <p class="reveal">Most people believe coffee gives them focus. It doesn't, and here is what is actually happening inside your body every morning, along with the small swap that quietly fixes it.</p>
 </div></section>
 
 <!-- reasons -->
@@ -315,45 +316,40 @@
     <div class="num" aria-hidden="true">1</div>
     <div>
       <h2>Your brain gets chemically hijacked</h2>
-      <p>The moment caffeine hits, it triggers a surge of cortisol, your body's primary stress hormone. And cortisol tells your nervous system exactly one thing: you are under threat.</p>
-      <p>So your body does what it was built to do. Heart rate up. Muscles tense. Attention sprayed across the room looking for the danger.</p>
-      <p>That is the opposite of deep work. Real focus needs a calm, regulated nervous system, not a body braced for impact. <strong>You feel wired. You are not focused.</strong> Those are not the same thing, and your best hours are the ones paying for the confusion.</p>
+      <p>The moment caffeine hits, it triggers a surge of cortisol, your body's primary stress hormone, and cortisol tells your nervous system exactly one thing: you are under threat. So your body does precisely what it was built to do, pushing your heart rate up, tensing your muscles, and spraying your attention across the room in search of a danger that was never actually there.</p>
+      <p>That is the exact opposite of deep work, which needs a calm, regulated nervous system rather than a body braced for impact. <strong>You feel wired, but you are not focused, and those are not the same thing</strong>, your sharpest hours are simply the ones quietly paying for the difference.</p>
     </div>
   </div>
   <div class="reason reveal">
     <div class="num" aria-hidden="true">2</div>
     <div>
       <h2>What feels like productivity is often panic</h2>
-      <p>Here is the cruel part. That buzzy, racing state feels productive, because you are moving fast.</p>
-      <p>But speed is not output. You clear twelve emails and write nothing that matters. Creativity and recall need mental space, and high adrenaline crushes that space into pure reaction.</p>
-      <p>You know the feeling. A whole day of being "busy," and nothing real to show for it. That gap, between looking busy and doing the work, is the most expensive thing coffee sells you.</p>
+      <p>Here is the cruel part: that buzzy, racing state feels productive precisely because you are moving fast, but speed has never been the same thing as output. You clear twelve emails and write nothing that actually matters, because real creativity and recall need mental space, and high adrenaline crushes that space down into pure, twitchy reaction.</p>
+      <p>You already know the feeling, a whole day of being "busy" with nothing real to show for it by the time you log off. <strong>That gap between looking busy and doing the work is the single most expensive thing coffee quietly sells you.</strong></p>
     </div>
   </div>
   <div class="reason reveal">
     <div class="num" aria-hidden="true">3</div>
     <div>
       <h2>Your gut quietly pays the bill</h2>
-      <p>Coffee is acidic, and it speeds your whole digestive tract up. The result is familiar: acid reflux, the sour stomach, bloating, and the "where's the nearest bathroom" feeling forty-five minutes into a meeting.</p>
-      <p>It runs deeper than discomfort. Your gut produces most of your body's serotonin. When it's irritated, your mood and your thinking follow it down.</p>
-      <p>Brain fog and a bad stomach are not two separate problems. A lot of the time, they are the same one.</p>
+      <p>Coffee is acidic and it speeds your entire digestive tract up, with results that are all too familiar: acid reflux, that sour stomach, the bloating, and the "where's the nearest bathroom" feeling that arrives about forty-five minutes into a meeting. It runs much deeper than simple discomfort, though, because your gut produces most of your body's serotonin, so when it gets irritated your mood and your thinking quietly slide down right along with it.</p>
+      <p><strong>Brain fog and a bad stomach are not two separate problems, most of the time they are the very same one.</strong></p>
     </div>
   </div>
   <div class="reason reveal">
     <div class="num" aria-hidden="true">4</div>
     <div>
       <h2>The tolerance trap steals your baseline</h2>
-      <p>Caffeine works by blocking adenosine, the molecule that makes you feel sleepy. Your brain notices the blockade and fights back by building more adenosine receptors.</p>
-      <p>So week after week, your natural energy quietly drops. Soon you need coffee just to reach normal. Not sharp. Not "on." Normal.</p>
-      <p>That's the trap. Coffee stops being a boost and becomes the cover charge for your own brain: worse sleep, lower baseline energy, and a dependence loop nobody signed up for.</p>
+      <p>Caffeine works by blocking adenosine, the molecule that makes you feel sleepy, but your brain notices the blockade and fights back by building even more adenosine receptors. So week after week your natural energy quietly drops, until eventually you need coffee just to reach normal, not sharp, not switched "on," but simply normal.</p>
+      <p><strong>That is the real trap: coffee stops being a boost and becomes the cover charge for your own brain</strong>, buying you worse sleep, a lower baseline, and a slow dependence loop that nobody ever knowingly signed up for.</p>
     </div>
   </div>
   <div class="reason reveal">
     <div class="num" aria-hidden="true">5</div>
     <div>
       <h2>Then comes the guilt</h2>
-      <p>When the coffee fades, you turn on yourself. <em>Why can't I focus? What is wrong with me?</em></p>
-      <p>Nothing is wrong with you. But the guilt itself spikes cortisol all over again, which makes focus harder, which sends you back to the pot. Round and round.</p>
-      <p>Over enough mornings, you stop calling it a coffee problem and start calling it a you problem. <strong>It isn't.</strong></p>
+      <p>When the coffee finally fades, you turn on yourself and start wondering why you can't focus and what exactly is wrong with you. The honest answer is nothing, but the guilt itself spikes your cortisol all over again, which makes focusing even harder, which sends you straight back to the pot, round and round it goes.</p>
+      <p>Over enough mornings you stop calling it a coffee problem and start calling it a you problem. <strong>It isn't.</strong></p>
     </div>
   </div>
 
@@ -366,9 +362,7 @@
 <!-- the turn -->
 <section class="turn pad"><div class="measure">
   <h2 class="reveal">The good news nobody tells you</h2>
-  <p class="reveal">Caffeine is not the villain. Caffeine <em>alone</em> is.</p>
-  <p class="reveal">For centuries, monks drank caffeinated tea and stayed calm, clear, and locked in through hours of meditation. Their secret wasn't superhuman discipline. It was a pairing.</p>
-  <p class="reveal">Tea contains L-theanine, an amino acid that smooths the stress response and turns jittery stimulation into steady, usable attention.</p>
+  <p class="reveal">Caffeine is not the villain, caffeine <em>alone</em> is. For centuries, monks drank caffeinated tea and stayed calm, clear, and locked in through long hours of meditation, and their secret was never superhuman discipline, it was a pairing: tea also contains L-theanine, an amino acid that smooths the stress response and turns jittery stimulation into the kind of steady, usable attention you actually want.</p>
   <blockquote class="pull reveal">Caffeine provides the light. L-theanine provides the lens.</blockquote>
 
   <figure class="reveal">
@@ -376,9 +370,8 @@
     <figcaption>Historical anchor: the caffeine + L-theanine pairing, centuries before it had a name.</figcaption>
   </figure>
 
-  <p class="reveal">Modern research landed on the sweet spot. Roughly 40 mg of caffeine to 60 mg of L-theanine. At that ratio you get the alertness without the spike, and the focus without the crash.</p>
-  <p class="reveal">But two things kept that ratio out of reach. Most teas are slow and wildly inconsistent. And anything you swallow, coffee, pills, capsules, has to crawl through your digestive system first, which is exactly where the forty-five-minute delay and the gut damage come from.</p>
-  <p class="reveal">So the real question became: <strong>what if you could skip the gut entirely?</strong></p>
+  <p class="reveal">Modern research eventually landed on the sweet spot, roughly 40 mg of caffeine to 60 mg of L-theanine, the exact ratio that gives you alertness without the spike and focus without the crash. Two things kept that ratio frustratingly out of reach, though: most teas are slow and wildly inconsistent, and anything you swallow (coffee, pills, capsules) has to crawl through your digestive system first, which is precisely where the forty-five-minute delay and the gut damage both come from.</p>
+  <p class="reveal">So the real question became a simple one: <strong>what if you could skip the gut entirely?</strong></p>
 </div></section>
 
 <!-- product reveal -->
@@ -427,10 +420,10 @@
     </div>
   </div>
 
-  <figure class="reveal">
-    <div class="fig"><img src="/advertorial/assets/real-proof.webp" width="1040" height="1040" loading="lazy" decoding="async" alt="Real Neuro customer review from Suki: a verified buyer calls the Energy & Focus gum a game changer with no uncomfortable jitteriness." /></div>
-    <figcaption>An actual verified Neuro review.</figcaption>
-  </figure>
+  <div class="q q-verified reveal">
+    <p>"Game changer. I use them to get out of bed when I don't have time to make coffee. They help me wake up and don't give me any uncomfortable jitteriness."</p>
+    <cite>Suki, Energy &amp; Focus customer · <span class="verified">✓ verified buyer</span></cite>
+  </div>
 
   <p class="repnote reveal">What people sound like once they switch (representative of common reviews)</p>
   <div class="quotes reveal">
