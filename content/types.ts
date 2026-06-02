@@ -67,6 +67,15 @@ export type Concept = {
   asset?: string;
   /** poster frame for videos */
   poster?: string;
+  /**
+   * Destination this ad clicks through to, mirroring a real Ad Library card's
+   * link. Used by the advertorial-driver static to open the live advertorial.
+   */
+  landingUrl?: string;
+  /** headline shown on the click-through link card */
+  landingTitle?: string;
+  /** the publication/source shown above the link headline */
+  landingSource?: string;
   rationale: Rationale;
 };
 

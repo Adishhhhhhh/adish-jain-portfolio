@@ -138,6 +138,11 @@ export const NEUROGUM_CONCEPTS: Concept[] = [
       },
     ],
     asset: "/assets/Advertorial-driven.png",
+    // The whole job of this static is to drive the click. This is where it lands:
+    // the long-form advertorial, built live.
+    landingUrl: "/advertorial/neurogum.html",
+    landingSource: "The Focus Files",
+    landingTitle: "5 Reasons Traditional Coffee Is Destroying Your Focus",
     rationale: {
       angle:
         "Pattern-interrupt headline driving clicks to the long-form advertorial. The static is a traffic driver, not a converter.",
