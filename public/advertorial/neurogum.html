@@ -519,7 +519,7 @@
   window.addEventListener('resize', onScroll, {passive:true});
   onScroll();
 
-  // scroll reveal — content must NEVER stay hidden if observers don't fire
+  // scroll reveal: content must NEVER stay hidden if observers don't fire
   var reveals = [].slice.call(document.querySelectorAll('.reveal'));
   function revealEl(el){ el.classList.add('in'); }
   function revealAll(){ reveals.forEach(revealEl); }
