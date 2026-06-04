@@ -224,4 +224,45 @@ export const ANCIENT_NUTRITION_CONCEPTS: Concept[] = [
         "Campaign 4, Ad Set 4.2 (The Dream Day). Direct switch-from-cheap-collagen retargeting layer.",
     },
   },
+
+  // ─── Advertorial driver static → the news-flash investigation page ─────
+  {
+    id: "an-collagen-investigation",
+    brand: "ancient-nutrition",
+    format: "static",
+    awareness: "problem-aware",
+    status: "spec",
+    state: "produced",
+    conceptName: "Static: The Industry Investigation",
+    builtDate: "Built June 2026",
+    caption:
+      "A health journalist spent four months on one question: why do women taking collagen every single day still get only partial results?\n\nHer colleague Donna hasn't missed a dose in eight months. Harder nails. Slightly better skin. Knees that still crack on every stair.\n\nWhat she found about the $3.5 billion collagen industry explains everything. Full investigation at the link.",
+    hooks: [
+      {
+        line: "Eight months of daily collagen. Her knees still crack on the stairs.",
+        rationale:
+          "Half-result hook. Names the exact pattern the buyer is living (one symptom improved, the rest did not) and frames it as an unsolved mystery worth clicking to solve.",
+      },
+    ],
+    asset: "/advertorial/assets/an-static.webp",
+    landingUrl: "/advertorial/ancient-nutrition-collagen.html",
+    landingSource: "The Wellness Ledger",
+    landingTitle: "The $3.5 Billion Collagen Industry's Best-Kept Secret",
+    rationale: {
+      angle:
+        "News-flash expose framing. The static borrows the credibility of investigative journalism, a register a branded ad cannot occupy, so the curiosity gap reads as a public-interest story rather than a pitch.",
+      icp:
+        "The Partial Results Prisoner: the 40-plus woman already taking single-source collagen daily, quietly disappointed that only some symptoms improved.",
+      hookStrategy:
+        "Curiosity gap, not resolution. The headline names the secret without revealing it, and the cracked egg with a glowing core implies the hidden answer sits inside an everyday food. The click is the only way to close the loop.",
+      whyItWorks:
+        "It weaponises the reader's own half-result. She has lived the 'nails improved, joints did not' pattern, so 'why only partial results' reads as her exact question. The journalist frame and the $3.5B number raise the stakes and lower the sense of being sold to.",
+      strategicIntent:
+        "Top-of-funnel traffic driver. Its only job is the click-through to the long-form advertorial, where the Collagen Type Deficiency mechanism does the converting. Success is measured by click-through rate to the article, not direct purchase.",
+      diversePotential:
+        "The 'partial results' hook and the egg-with-a-secret visual extend into a carousel (one symptom per card), a six-second video hook, and a VSL thumbnail.",
+      campaignRole:
+        "Campaign 1 (The Partial Results Diagnosis), cold-traffic acquisition layer. The editorial, long-form entry point that warms cold audiences before the VSLs retarget them.",
+    },
+  },
 ];
