@@ -14,10 +14,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@3/dist/tabler-icons.min.css" />
 <script>document.documentElement.classList.add('js');</script>
 <style>
   :root{
-    --bg:#FAF8F3;            /* page */
+    --bg:#FFFFFF;            /* page (white, matches Ancient Nutrition) */
     --surface:#F5F0E8;       /* warm cream surface */
     --ink:#2B2B2B;           /* text */
     --ink-soft:#574F45;
@@ -27,7 +28,7 @@
     --green:#2A6B3C;         /* CTA / action */
     --green-deep:#1E5230;
     --green-soft:#4E8A5E;
-    --amber:#B5762A;         /* accent */
+    --amber:#C4830A;         /* accent */
     --amber-deep:#925D1C;
     --gold:#C6912E;          /* stars */
     --read:39rem;
@@ -82,6 +83,7 @@
   .drop::first-letter{font-family:"Lora",serif;font-weight:600;font-size:3.3em;line-height:.78;float:left;padding:.05em .1em 0 0;color:var(--ink)}
 
   h2{font-family:"Lora",serif;font-weight:600;font-size:clamp(1.5rem,1.2rem + 1.3vw,2rem);line-height:1.22;margin:0 0 1rem;letter-spacing:-.005em;text-wrap:pretty}
+  article h2{border-left:3px solid var(--amber);padding-left:12px;margin-left:-15px}
 
   /* section separators (rotating styles) */
   .sep{border:0;height:1px;background:var(--rule);margin:clamp(2.6rem,6vw,3.8rem) 0}
@@ -97,8 +99,7 @@
   .figrow .t{font-size:.97rem;color:var(--ink-soft)}
 
   /* pull quote */
-  .pull{font-family:"Lora",serif;font-style:italic;font-weight:500;font-size:clamp(1.4rem,1.15rem + 1vw,1.85rem);line-height:1.34;color:var(--ink);text-align:center;margin:2rem 0;padding:0 .5rem}
-  .pull::before{content:"";display:block;width:42px;height:3px;background:var(--amber);margin:0 auto 1.1rem;border-radius:2px}
+  .pull{font-family:"Lora",serif;font-style:italic;font-weight:500;font-size:18px;line-height:1.5;color:var(--ink);border-left:4px solid var(--amber);border-right:0;border-top:0;border-bottom:0;background:var(--surface);padding:14px 18px;border-radius:0 6px 6px 0;margin:32px 0;text-align:left}
 
   /* named mechanism box */
   .mech{background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--green);padding:1.3rem 1.5rem;margin:1.8rem 0;border-radius:4px}
@@ -141,12 +142,10 @@
   .ing p{margin:0}
 
   /* checkmark grid */
-  .checks{list-style:none;padding:0;margin:1.4rem 0;display:grid;grid-template-columns:1fr;gap:.6rem}
-  @media(min-width:520px){.checks{grid-template-columns:1fr 1fr}}
-  .checks li{display:flex;align-items:center;gap:.6rem;font-weight:600;font-size:.95rem}
-  .checks li::before{content:"";width:1.3rem;height:1.3rem;border-radius:50%;flex:none;background:var(--green);
-    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/62% no-repeat;
-            mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/62% no-repeat}
+  .checks{list-style:none;padding:0;margin:1.4rem 0;display:grid;grid-template-columns:1fr 1fr;gap:8px 20px}
+  @media(max-width:640px){.checks{grid-template-columns:1fr}}
+  .checks li{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--ink)}
+  .checks li::before{content:"";width:18px;height:18px;border-radius:4px;flex:none;background:#2A6B3C url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='3.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/12px no-repeat}
   .callout{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:1.1rem 1.3rem;margin:1.4rem 0;font-size:.98rem}
   .callout b{color:var(--amber-deep)}
 
@@ -205,8 +204,10 @@
   .price .save{display:inline-block;margin-left:.5rem;font-size:.78rem;font-weight:800;color:#fff;background:var(--amber);border-radius:999px;padding:.2rem .65rem;vertical-align:middle}
 
   /* trust badges row */
-  .trust{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin:1.3rem 0;list-style:none;padding:0}
-  .trust li{font-size:.74rem;font-weight:700;color:var(--ink-soft);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem;background:#FFFDF9}
+  .trust{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:1.3rem 0;list-style:none;padding:0}
+  .trust li{display:inline-flex;align-items:center;gap:7px;border:0.5px solid var(--rule);border-radius:6px;padding:7px 12px;background:var(--surface)}
+  .trust li i{font-size:15px;color:#2A6B3C;line-height:1}
+  .trust li span{font-size:11px;font-weight:600;color:var(--ink-soft)}
 
   /* offer block */
   .offer{background:var(--surface);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:clamp(2.6rem,6vw,3.8rem) 0 0}
@@ -460,7 +461,13 @@
     <a class="cta" href="https://ancientnutrition.com/" target="_blank" rel="noopener">Claim the promotional price</a>
     <a class="cta-2" href="https://ancientnutrition.com/" target="_blank" rel="noopener">Get the 100-serving bag</a>
   </div>
-  <ul class="trust reveal"><li>Third-party tested</li><li>GMP certified</li><li>Made in USA</li><li>B Corporation</li><li>Regenerative Organic</li></ul>
+  <ul class="trust reveal">
+    <li><i class="ti ti-flask"></i><span>Third-party tested</span></li>
+    <li><i class="ti ti-certificate"></i><span>GMP certified</span></li>
+    <li><i class="ti ti-map-pin"></i><span>Made in USA</span></li>
+    <li><i class="ti ti-leaf"></i><span>B Corporation</span></li>
+    <li><i class="ti ti-plant"></i><span>Regenerative Organic</span></li>
+  </ul>
 </div></section>
 
 <div class="wrap">
