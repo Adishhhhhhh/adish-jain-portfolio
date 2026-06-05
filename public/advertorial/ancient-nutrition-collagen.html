@@ -13,521 +13,489 @@
 <link rel="icon" href="data:image/svg+xml,&lt;svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'&gt;&lt;text y='.9em' font-size='84'&gt;🌿&lt;/text&gt;&lt;/svg&gt;" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500;1,600&family=Mulish:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Mulish:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet" />
 <script>document.documentElement.classList.add('js');</script>
 <style>
   :root{
-    --paper:#FAF6EE;          /* warm cream */
-    --paper-2:#F3EBDB;        /* deeper cream band */
-    --card:#FFFFFF;
-    --card-warm:#FDFBF5;
-    --ink:#2C2722;            /* warm espresso */
-    --ink-soft:#6A6256;
-    --ink-faint:#9C9384;
-    --rule:#E6DCC8;
-    --green:#3C5A40;          /* deep forest, primary */
-    --green-deep:#2C4530;
-    --green-soft:#5B7A5E;
-    --amber:#BE863A;          /* honey amber, secondary */
-    --amber-deep:#9A6B25;
-    --sage:#EAF0E3;           /* callout bg */
-    --sage-line:#CDDAC1;
-    --gold:#D4A23E;           /* stars */
-    --teal:#2B4B55;           /* AN brand, sparing */
-    --read:41rem;
-    --shadow-sm:0 1px 2px rgba(44,39,34,.05), 0 6px 16px rgba(60,90,64,.06);
-    --shadow-md:0 2px 8px rgba(44,39,34,.07), 0 18px 40px rgba(60,90,64,.12);
-    --shadow-green:0 2px 8px rgba(44,69,48,.20), 0 16px 34px rgba(44,69,48,.26);
+    --bg:#FAF8F3;            /* page */
+    --surface:#F5F0E8;       /* warm cream surface */
+    --ink:#2B2B2B;           /* text */
+    --ink-soft:#574F45;
+    --ink-faint:#8C857A;
+    --rule:#E4DCCB;
+    --rule-soft:#EBE4D6;
+    --green:#2A6B3C;         /* CTA / action */
+    --green-deep:#1E5230;
+    --green-soft:#4E8A5E;
+    --amber:#B5762A;         /* accent */
+    --amber-deep:#925D1C;
+    --gold:#C6912E;          /* stars */
+    --read:39rem;
+    --wide:44rem;
   }
   *,*::before,*::after{box-sizing:border-box}
   html{-webkit-text-size-adjust:100%}
   body{
-    margin:0;background:var(--paper);color:var(--ink);
+    margin:0;background:var(--bg);color:var(--ink);
     font-family:"Mulish",-apple-system,system-ui,sans-serif;
-    font-size:clamp(1.0625rem,1rem + .3vw,1.125rem);line-height:1.66;font-weight:400;
-    -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;overflow-x:hidden;
+    font-size:1.0625rem;line-height:1.72;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden;
   }
-  .serif{font-family:"Playfair Display",Georgia,serif}
+  @media(min-width:680px){body{font-size:1.125rem}}
+  .serif{font-family:"Lora",Georgia,"Times New Roman",serif}
 
-  /* layout shells */
-  .container{max-width:72rem;margin-inline:auto;padding-inline:clamp(1.25rem,5vw,2rem)}
-  .read{max-width:var(--read)}
-  p{margin:0 0 1.25em}
-  a{color:var(--green);text-underline-offset:3px;text-decoration-thickness:1.5px}
-  a:hover{color:var(--amber-deep)}
+  .wrap{max-width:var(--read);margin-inline:auto;padding-inline:1.4rem}
+  .wrap-wide{max-width:var(--wide);margin-inline:auto;padding-inline:1.4rem}
+  p{margin:0 0 1.3em}
+  a{color:var(--green)}
   strong{font-weight:700;color:var(--ink)}
   em{font-style:italic}
 
-  /* progress */
-  .progress{position:fixed;top:0;left:0;height:3px;width:0;z-index:60;background:var(--amber);transition:width .12s linear}
-  @media (prefers-reduced-motion:reduce){.progress{transition:none}}
-
-  /* top strips */
-  .report{background:var(--green);color:#EEF3E9}
-  .report .in{max-width:72rem;margin-inline:auto;padding:.5rem 2rem;font-size:.72rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;text-align:center}
-  .spec{background:var(--paper-2);border-bottom:1px solid var(--rule)}
-  .spec .in{max-width:72rem;margin-inline:auto;padding:.5rem 2rem;font-size:.72rem;color:var(--ink-soft);text-align:center;line-height:1.45}
-  .spec b{color:var(--amber-deep);font-weight:800;letter-spacing:.04em}
+  /* announcement bar (sticky) */
+  .promo{position:sticky;top:0;z-index:40;background:var(--green);color:#F2F7F0;text-align:center;font-size:.8rem;font-weight:600;letter-spacing:.01em;padding:.5rem 1rem}
+  .promo b{color:#FBE3B0}
+  /* spec strip */
+  .spec{background:var(--surface);border-bottom:1px solid var(--rule);text-align:center;font-size:.72rem;color:var(--ink-soft);padding:.5rem 1.2rem;line-height:1.45}
+  .spec b{color:var(--amber-deep);font-weight:800}
 
   /* masthead */
-  .masthead{border-bottom:2px solid var(--ink);background:var(--paper)}
-  .masthead .in{max-width:72rem;margin-inline:auto;padding:1.1rem 2rem;display:flex;align-items:center;justify-content:space-between;gap:1rem}
-  .logo{font-family:"Playfair Display",serif;font-weight:800;font-size:clamp(1.6rem,1.2rem + 1.2vw,2.1rem);letter-spacing:-.01em;line-height:1}
-  .logo span{font-style:italic;font-weight:500;color:var(--green)}
-  .masthead .meta{font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--ink-faint);font-weight:700;text-align:right}
-  @media(max-width:560px){.masthead .meta{display:none}}
+  .masthead{text-align:center;padding:1.6rem 1rem 1.3rem;border-bottom:1px solid var(--ink)}
+  .masthead .logo{font-family:"Lora",serif;font-weight:700;font-size:1.7rem;letter-spacing:.01em}
+  .masthead .logo span{font-style:italic;color:var(--green)}
+  .masthead .sub{font-size:.66rem;letter-spacing:.28em;text-transform:uppercase;color:var(--ink-faint);margin-top:.35rem;font-weight:700}
 
-  /* hero / header */
-  .hero{padding-block:clamp(2.5rem,6vw,4.5rem)}
-  .kicker{font-weight:800;font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;color:var(--amber-deep);margin-bottom:1.2rem}
-  h1.title{font-family:"Playfair Display",serif;font-weight:800;font-size:clamp(2.2rem,1.3rem + 4.2vw,3.9rem);line-height:1.07;letter-spacing:-.012em;margin:0 0 1.3rem;text-wrap:pretty;max-width:18ch}
-  .deck{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;font-size:clamp(1.25rem,1.05rem + .9vw,1.6rem);line-height:1.4;color:var(--ink-soft);margin:0 0 2rem;max-width:34rem;text-wrap:pretty}
-  .byline{display:flex;align-items:center;gap:.85rem;flex-wrap:wrap;font-size:.86rem;color:var(--ink-soft);padding-top:1.4rem;border-top:1px solid var(--rule);max-width:38rem}
-  .byline .pic{width:50px;height:50px;border-radius:50%;overflow:hidden;flex:none;box-shadow:var(--shadow-sm)}
+  /* article header */
+  .head{padding-top:clamp(2rem,5vw,3.2rem)}
+  .kicker{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;color:var(--amber-deep);font-weight:800;margin-bottom:1rem}
+  h1{font-family:"Lora",serif;font-weight:600;font-size:clamp(1.95rem,1.3rem + 3vw,3rem);line-height:1.16;margin:0 0 1.1rem;letter-spacing:-.005em;text-wrap:pretty}
+  .deck{font-family:"Lora",serif;font-style:italic;font-weight:400;font-size:clamp(1.18rem,1.05rem + .6vw,1.4rem);line-height:1.5;color:var(--ink-soft);margin:0 0 1.7rem;text-wrap:pretty}
+  .byline{display:flex;align-items:center;gap:.75rem;font-size:.84rem;color:var(--ink-soft);padding:1.1rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .byline .pic{width:44px;height:44px;border-radius:50%;overflow:hidden;flex:none}
   .byline .pic img{width:100%;height:100%;object-fit:cover;display:block}
-  .byline b{color:var(--ink);font-weight:800;font-size:.95rem}
-  .byline .role{display:block;font-size:.8rem;color:var(--ink-faint);margin-top:.05rem}
-  .share{margin-left:auto;display:flex;gap:.45rem}
-  .share a{width:34px;height:34px;border:1px solid var(--rule);border-radius:50%;display:grid;place-items:center;color:var(--ink-soft);background:var(--card);transition:transform .15s ease,color .15s ease,border-color .15s ease}
-  .share a:hover{transform:translateY(-2px);color:var(--green);border-color:var(--green-soft)}
-  .share svg{width:16px;height:16px}
-  @media(max-width:520px){.share{margin-left:0;width:100%;margin-top:.8rem}}
+  .byline b{color:var(--ink);font-weight:700}
+  .byline .role{display:block;font-size:.78rem;color:var(--ink-faint)}
 
-  .hero-fig{margin:clamp(2rem,4vw,3rem) 0 0}
-  .hero-fig .frame{border-radius:14px;overflow:hidden;box-shadow:var(--shadow-md);border:1px solid var(--rule)}
-  .hero-fig img{display:block;width:100%;height:auto}
-  figcaption{font-size:.82rem;color:var(--ink-faint);margin-top:.8rem;font-style:italic;max-width:40rem}
+  /* images: flat, full-width within column */
+  figure{margin:1.9rem 0}
+  figure img{display:block;width:100%;height:auto;border-radius:4px;border:1px solid var(--rule)}
+  figcaption{font-size:.8rem;color:var(--ink-faint);margin-top:.6rem;font-style:italic}
 
-  /* two-column layout */
-  .layout{padding-bottom:clamp(2.5rem,6vw,4rem)}
-  @media(min-width:1000px){
-    .layout{display:grid;grid-template-columns:minmax(0,1fr) 20rem;gap:clamp(2.5rem,4vw,4rem);align-items:start}
-  }
-  .article{min-width:0}
-  .article > *{max-width:var(--read)}
-  .article .full{max-width:none}
+  .drop::first-letter{font-family:"Lora",serif;font-weight:600;font-size:3.3em;line-height:.78;float:left;padding:.05em .1em 0 0;color:var(--ink)}
 
-  /* article rhythm, airy */
-  .block{margin-block:clamp(2.4rem,5vw,3.6rem)}
-  h2.sec{font-family:"Playfair Display",serif;font-weight:700;font-size:clamp(1.65rem,1.25rem + 1.6vw,2.35rem);line-height:1.14;letter-spacing:-.01em;margin:0 0 1.1rem;text-wrap:pretty}
-  .lede .drop::first-letter{font-family:"Playfair Display",serif;font-weight:800;font-size:3.6em;line-height:.74;float:left;padding:.05em .12em 0 0;color:var(--green)}
-  .pull{font-family:"Playfair Display",serif;font-style:italic;font-weight:500;font-size:clamp(1.4rem,1.1rem + 1.1vw,1.95rem);line-height:1.32;color:var(--green-deep);margin:2rem 0;padding-left:1.3rem;border-left:3px solid var(--amber)}
+  h2{font-family:"Lora",serif;font-weight:600;font-size:clamp(1.5rem,1.2rem + 1.3vw,2rem);line-height:1.22;margin:0 0 1rem;letter-spacing:-.005em;text-wrap:pretty}
 
-  /* stat callouts (VDNA 4.3) */
-  .stats{display:grid;grid-template-columns:1fr;gap:.8rem;margin:1.6rem 0;list-style:none;padding:0}
-  @media(min-width:560px){.stats{grid-template-columns:repeat(3,1fr)}}
-  .stats li{background:var(--sage);border:1px solid var(--sage-line);border-radius:12px;padding:1.1rem 1.15rem}
-  .stats .n{font-family:"Playfair Display",serif;font-weight:800;font-size:2.1rem;color:var(--green);line-height:1}
-  .stats .t{font-size:.86rem;color:var(--ink-soft);margin-top:.4rem;line-height:1.45}
+  /* section separators (rotating styles) */
+  .sep{border:0;height:1px;background:var(--rule);margin:clamp(2.6rem,6vw,3.8rem) 0}
+  .sep-dots{border:0;text-align:center;margin:clamp(2.6rem,6vw,3.8rem) 0;color:var(--amber);letter-spacing:.6em;font-size:.7rem}
+  .sep-dots::before{content:"• • •"}
+  .sep-rule{border:0;width:64px;height:3px;background:var(--amber);margin:clamp(2.6rem,6vw,3.8rem) auto;border-radius:2px}
 
-  /* four foods */
-  .foods{display:grid;grid-template-columns:1fr;gap:1.1rem;margin:1.8rem 0}
-  @media(min-width:640px){.foods{grid-template-columns:1fr 1fr}}
-  .food{background:var(--card-warm);border:1px solid var(--rule);border-radius:14px;padding:1.3rem 1.4rem;box-shadow:var(--shadow-sm)}
-  .food .fn{font-weight:800;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-deep)}
-  .food h3{font-family:"Playfair Display",serif;font-weight:700;font-size:1.32rem;margin:.35rem 0 .55rem}
-  .food p{font-size:.96rem;margin:0;color:var(--ink-soft)}
-  .food .pill{display:inline-block;margin-top:.85rem;font-size:.74rem;font-weight:700;color:var(--green);background:var(--sage);border:1px solid var(--sage-line);border-radius:999px;padding:.28rem .7rem}
+  /* flat figure numbers (convenience / decline) */
+  .figs{margin:1.5rem 0}
+  .figrow{display:flex;align-items:baseline;gap:.9rem;padding:.7rem 0;border-bottom:1px solid var(--rule-soft)}
+  .figrow:last-child{border-bottom:0}
+  .figrow .n{font-family:"Lora",serif;font-weight:700;font-size:1.9rem;color:var(--amber-deep);line-height:1;min-width:3.2rem}
+  .figrow .t{font-size:.97rem;color:var(--ink-soft)}
 
-  figure.media{margin:2rem 0}
-  figure.media .frame{border-radius:14px;overflow:hidden;box-shadow:var(--shadow-md);border:1px solid var(--rule)}
-  figure.media img{display:block;width:100%;height:auto}
+  /* pull quote */
+  .pull{font-family:"Lora",serif;font-style:italic;font-weight:500;font-size:clamp(1.4rem,1.15rem + 1vw,1.85rem);line-height:1.34;color:var(--ink);text-align:center;margin:2rem 0;padding:0 .5rem}
+  .pull::before{content:"";display:block;width:42px;height:3px;background:var(--amber);margin:0 auto 1.1rem;border-radius:2px}
 
-  /* type grid */
-  .types{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.6rem;margin:1.5rem 0;list-style:none;padding:0}
-  .types li{background:var(--card);border:1px solid var(--rule);border-left:3px solid var(--green-soft);border-radius:10px;padding:.7rem .85rem;font-size:.85rem;color:var(--ink-soft)}
-  .types b{display:block;font-family:"Playfair Display",serif;color:var(--amber-deep);font-size:1.05rem;font-weight:700;margin-bottom:.1rem}
+  /* named mechanism box */
+  .mech{background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--green);padding:1.3rem 1.5rem;margin:1.8rem 0;border-radius:4px}
+  .mech .lab{font-size:.7rem;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:var(--amber-deep);margin-bottom:.4rem}
+  .mech .term{font-family:"Lora",serif;font-weight:600;font-size:1.45rem;margin:0 0 .5rem;color:var(--green-deep)}
+  .mech p{margin:0;font-size:.99rem;color:var(--ink-soft)}
 
-  /* authority card (real founders, no fabricated photos) */
-  .authority{background:var(--card-warm);border:1px solid var(--rule);border-radius:16px;padding:clamp(1.3rem,3vw,1.8rem);margin:1.8rem 0;box-shadow:var(--shadow-sm)}
-  .founders{display:flex;gap:1.4rem;flex-wrap:wrap;margin-bottom:1.1rem}
-  .founder{display:flex;align-items:center;gap:.8rem}
-  .mono{width:54px;height:54px;border-radius:50%;display:grid;place-items:center;background:var(--green);color:#fff;font-family:"Playfair Display",serif;font-weight:700;font-size:1.15rem;flex:none}
-  .founder b{display:block;font-weight:800;font-size:.98rem}
-  .founder span{font-size:.82rem;color:var(--ink-faint)}
-  .srclist{list-style:none;padding:0;margin:1.3rem 0 0}
-  .srclist li{padding:.7rem 0;border-bottom:1px solid var(--rule);font-size:.97rem}
+  /* collagen type bullets */
+  .typel{list-style:none;padding:0;margin:1.4rem 0}
+  .typel li{padding:.55rem 0 .55rem 0;border-bottom:1px solid var(--rule-soft);display:flex;gap:.85rem;font-size:.99rem}
+  .typel li:last-child{border-bottom:0}
+  .typel .ty{font-family:"Lora",serif;font-weight:700;color:var(--green);min-width:4.4rem;flex:none}
+  .typel .ti{color:var(--ink-soft)}
+
+  /* numbered food sub-sections */
+  .food{margin:1.8rem 0;padding-top:1.6rem;border-top:1px solid var(--rule)}
+  .food:first-of-type{border-top:0;padding-top:0}
+  .food .fhead{display:flex;align-items:baseline;gap:.7rem;margin-bottom:.5rem}
+  .food .fn{font-family:"Lora",serif;font-weight:700;font-size:2rem;color:var(--amber);line-height:1}
+  .food h3{font-family:"Lora",serif;font-weight:600;font-size:1.3rem;margin:0}
+  .food p{margin:0 0 .6rem}
+  .food .pill{display:inline-block;font-size:.74rem;font-weight:700;color:var(--green-deep);background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:.25rem .7rem}
+
+  /* founders inline */
+  .founders{margin:1.4rem 0;padding:1.2rem 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+  .founder{display:flex;gap:.7rem;align-items:baseline;margin-bottom:.5rem}
+  .founder:last-child{margin-bottom:0}
+  .founder b{font-weight:800}
+  .founder span{color:var(--ink-faint);font-size:.86rem}
+  .srclist{list-style:none;padding:0;margin:1.4rem 0}
+  .srclist li{padding:.6rem 0;border-bottom:1px solid var(--rule-soft);font-size:.98rem}
   .srclist li:last-child{border-bottom:0}
   .srclist b{color:var(--green-deep)}
 
-  /* ingredient cards */
-  .ingr{display:grid;gap:1.1rem;margin:1.6rem 0}
-  .ing{background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:1.2rem 1.3rem;box-shadow:var(--shadow-sm)}
-  .ing .role{font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-deep);margin-bottom:.45rem}
-  .ing h3{font-family:"Playfair Display",serif;font-weight:700;font-size:1.28rem;margin:0 0 .4rem}
-  .ing p{margin:0;font-size:.97rem;color:var(--ink-soft)}
+  /* ingredient sub-sections */
+  .ing{margin:1.5rem 0;padding-top:1.4rem;border-top:1px solid var(--rule)}
+  .ing:first-of-type{border-top:0;padding-top:.4rem}
+  .ing .role{font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-deep);margin-bottom:.3rem}
+  .ing h3{font-family:"Lora",serif;font-weight:600;font-size:1.28rem;margin:0 0 .45rem}
+  .ing p{margin:0}
 
-  .chips{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.2rem 0;padding:0;list-style:none}
-  .chips li{font-size:.8rem;font-weight:600;color:var(--green-deep);background:var(--sage);border:1px solid var(--sage-line);border-radius:999px;padding:.34rem .8rem}
-  .callout{background:var(--sage);border:1px solid var(--sage-line);border-left:3px solid var(--amber);border-radius:12px;padding:1.1rem 1.3rem;margin:1.5rem 0;font-size:.98rem}
+  /* checkmark grid */
+  .checks{list-style:none;padding:0;margin:1.4rem 0;display:grid;grid-template-columns:1fr;gap:.6rem}
+  @media(min-width:520px){.checks{grid-template-columns:1fr 1fr}}
+  .checks li{display:flex;align-items:center;gap:.6rem;font-weight:600;font-size:.95rem}
+  .checks li::before{content:"";width:1.3rem;height:1.3rem;border-radius:50%;flex:none;background:var(--green);
+    -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/62% no-repeat;
+            mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6 9 17l-5-5'/%3E%3C/svg%3E") center/62% no-repeat}
+  .callout{background:var(--surface);border:1px solid var(--rule);border-radius:4px;padding:1.1rem 1.3rem;margin:1.4rem 0;font-size:.98rem}
   .callout b{color:var(--amber-deep)}
 
-  /* testimonials */
-  .quotes{display:grid;gap:1rem;margin:1.6rem 0}
-  .q{background:var(--card-warm);border:1px solid var(--rule);border-radius:14px;padding:1.1rem 1.3rem;box-shadow:var(--shadow-sm)}
-  .q .stars{color:var(--gold);font-size:.9rem;letter-spacing:.08em}
-  .q p{margin:.5rem 0 0;font-style:italic;font-size:1.02rem;color:var(--ink)}
-  .repnote{font-size:.74rem;color:var(--ink-faint);text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin:0 0 .3rem}
+  /* review badge */
+  .review{display:flex;align-items:center;gap:1.1rem;background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1rem 1.3rem;margin:1.5rem 0}
+  .review .score{font-family:"Lora",serif;font-weight:700;font-size:2.5rem;line-height:1;color:var(--green-deep)}
+  .review .stars{color:var(--gold);font-size:1rem;letter-spacing:.05em}
+  .review .meta{font-size:.85rem;color:var(--ink-soft);margin-top:.15rem}
+
+  /* testimonial cards */
+  .tcard{border:1px solid var(--rule);border-radius:6px;padding:1rem 1.2rem;margin:1rem 0;background:#FFFDF9}
+  .tcard .stars{color:var(--gold);font-size:.85rem;letter-spacing:.06em}
+  .tcard p{margin:.4rem 0 0;font-style:italic;font-size:1rem}
 
   /* price compare */
-  .compare{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin:1.6rem 0}
-  .compare .c{border:1px solid var(--rule);border-radius:14px;padding:1.2rem;background:var(--card)}
-  .compare .c.win{border:2px solid var(--green);background:var(--sage)}
-  .compare .lab{font-size:.72rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint)}
-  .compare .big{font-family:"Playfair Display",serif;font-weight:800;font-size:1.9rem;line-height:1.1;margin:.25rem 0;color:var(--ink)}
+  .compare{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1.5rem 0}
+  .compare .c{border:1px solid var(--rule);border-radius:6px;padding:1.1rem;background:#FFFDF9}
+  .compare .c.win{border:2px solid var(--green);background:var(--surface)}
+  .compare .lab{font-size:.7rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-faint)}
+  .compare .big{font-family:"Lora",serif;font-weight:700;font-size:1.85rem;margin:.2rem 0;line-height:1.1}
   .compare .win .big{color:var(--green)}
-  .compare .s{font-size:.86rem;color:var(--ink-soft)}
+  .compare .s{font-size:.84rem;color:var(--ink-soft)}
 
-  /* milestone timeline (VDNA 5.5) */
-  .timeline{list-style:none;padding:0;margin:1.6rem 0;position:relative}
-  .timeline::before{content:"";position:absolute;left:9px;top:.6rem;bottom:.6rem;width:2px;background:linear-gradient(180deg,var(--ink-faint),var(--green))}
-  .timeline li{position:relative;padding:0 0 1.3rem 2rem}
+  /* milestone timeline */
+  .timeline{list-style:none;padding:0;margin:1.5rem 0;position:relative}
+  .timeline::before{content:"";position:absolute;left:7px;top:.5rem;bottom:.5rem;width:2px;background:var(--rule)}
+  .timeline li{position:relative;padding:0 0 1.2rem 1.7rem}
   .timeline li:last-child{padding-bottom:0}
-  .timeline li::before{content:"";position:absolute;left:0;top:.25rem;width:20px;height:20px;border-radius:50%;background:var(--card);border:3px solid var(--green-soft)}
-  .timeline li:nth-child(4)::before{border-color:var(--green);background:var(--green)}
-  .timeline .w{font-weight:800;font-size:.82rem;letter-spacing:.04em;text-transform:uppercase;color:var(--amber-deep)}
-  .timeline .d{display:block;margin-top:.15rem;color:var(--ink-soft);font-size:.98rem}
+  .timeline li::before{content:"";position:absolute;left:0;top:.3rem;width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid var(--green-soft)}
+  .timeline li:last-child::before{background:var(--green);border-color:var(--green)}
+  .timeline .w{font-weight:800;font-size:.8rem;letter-spacing:.03em;text-transform:uppercase;color:var(--amber-deep)}
+  .timeline .d{display:block;margin-top:.1rem;color:var(--ink-soft);font-size:.97rem}
 
-  /* CTA + guarantee seal */
-  .cta{display:inline-flex;align-items:center;gap:.6rem;font-family:"Mulish",sans-serif;font-weight:800;font-size:1rem;letter-spacing:.01em;color:#fff;background:var(--green);border:1px solid var(--green-deep);border-radius:10px;padding:1rem 1.7rem;text-decoration:none;box-shadow:var(--shadow-green);transition:transform .16s cubic-bezier(.23,1,.32,1),background .16s ease,box-shadow .16s ease}
-  .cta:hover{transform:translateY(-2px);background:var(--green-deep);color:#fff;box-shadow:0 4px 10px rgba(44,69,48,.22),0 22px 44px rgba(44,69,48,.3)}
+  /* CTA variants */
+  .cta{display:inline-block;font-family:"Mulish",sans-serif;font-weight:800;font-size:1.02rem;color:#fff;background:var(--green);border:2px solid var(--green);border-radius:7px;padding:.95rem 1.8rem;text-decoration:none;text-align:center;transition:background .15s ease,transform .15s ease}
+  .cta:hover{background:var(--green-deep);border-color:var(--green-deep);color:#fff;transform:translateY(-1px)}
   .cta:active{transform:translateY(0)}
-  .cta:focus-visible{outline:3px solid var(--amber);outline-offset:3px}
-  .cta .arrow{transition:transform .16s ease}
-  .cta:hover .arrow{transform:translateX(4px)}
-  .seal{width:96px;height:96px;border-radius:50%;flex:none;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 50% 35%,#4a6c4f,var(--green));color:#fff;box-shadow:var(--shadow-green);border:3px solid #fff;position:relative}
-  .seal::after{content:"";position:absolute;inset:5px;border:1px dashed rgba(255,255,255,.5);border-radius:50%}
-  .seal .num{font-family:"Playfair Display",serif;font-weight:800;font-size:1.7rem;line-height:.9}
-  .seal .lab{font-size:.56rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase;line-height:1.2;margin-top:.1rem}
+  .cta:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+  .cta-2{display:inline-block;font-family:"Mulish",sans-serif;font-weight:800;font-size:1rem;color:var(--green-deep);background:transparent;border:2px solid var(--green);border-radius:7px;padding:.9rem 1.7rem;text-decoration:none;text-align:center;transition:background .15s ease}
+  .cta-2:hover{background:var(--surface);color:var(--green-deep)}
+  .cta-soft{display:inline-flex;align-items:center;gap:.4rem;font-weight:800;color:var(--green);text-decoration:underline;text-underline-offset:3px}
+  .cta-soft:hover{color:var(--amber-deep)}
 
-  /* sticky offer sidebar (VDNA 1.1) */
-  .aside{display:none}
-  @media(min-width:1000px){
-    .aside{display:block;position:sticky;top:1.4rem}
-  }
-  .offercard{background:var(--card);border:1px solid var(--rule);border-radius:18px;overflow:hidden;box-shadow:var(--shadow-md)}
-  .offercard .shot{background:var(--card-warm);padding:1.1rem;border-bottom:1px solid var(--rule)}
-  .offercard .shot img{display:block;width:100%;height:auto;border-radius:10px}
-  .offercard .body{padding:1.2rem 1.25rem 1.4rem;text-align:center}
-  .offercard .rate{color:var(--gold);font-size:.95rem;letter-spacing:.06em}
-  .offercard .rate span{display:block;color:var(--ink-soft);font-size:.78rem;letter-spacing:0;margin-top:.15rem}
-  .offercard .price{margin:.9rem 0 .2rem}
-  .offercard .now{font-family:"Playfair Display",serif;font-weight:800;font-size:2rem;color:var(--green)}
-  .offercard .was{color:var(--ink-faint);text-decoration:line-through;font-size:1.05rem;margin-left:.35rem}
-  .offercard .save{display:inline-block;margin-top:.3rem;font-size:.72rem;font-weight:800;color:#fff;background:var(--amber);border-radius:999px;padding:.2rem .7rem;letter-spacing:.03em}
-  .offercard .cta{display:flex;justify-content:center;width:100%;margin:1rem 0 .5rem}
-  .offercard .sealrow{display:flex;align-items:center;gap:.7rem;justify-content:center;margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--rule);text-align:left}
-  .offercard .sealrow .t{font-size:.78rem;color:var(--ink-soft)}
-  .offercard .mini{transform:scale(.62);transform-origin:center;width:96px;height:96px;margin:-18px 0}
-  .offercard .rev{font-size:.82rem;font-style:italic;color:var(--ink-soft);margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--rule)}
+  /* guarantee badge */
+  .guarantee{display:flex;align-items:center;gap:1rem;border:1px solid var(--rule);border-radius:6px;padding:1.1rem 1.3rem;margin:1.5rem 0;background:#FFFDF9}
+  .gseal{width:62px;height:62px;border-radius:50%;flex:none;display:grid;place-items:center;text-align:center;background:var(--green);color:#fff;line-height:1}
+  .gseal .n{font-family:"Lora",serif;font-weight:700;font-size:1.25rem}
+  .gseal .u{font-size:.46rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;margin-top:.05rem}
+  .guarantee .gt b{font-weight:800}
+  .guarantee .gt span{font-size:.9rem;color:var(--ink-soft)}
 
-  /* full offer section */
-  .offer{background:var(--paper-2);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
-  .offer .in{max-width:46rem;margin-inline:auto;padding:clamp(2.5rem,6vw,4rem) clamp(1.25rem,5vw,2rem);text-align:center}
-  .offer h2{font-family:"Playfair Display",serif;font-weight:800;font-size:clamp(1.7rem,1.3rem + 1.7vw,2.5rem);line-height:1.12;margin:0 0 1rem;text-wrap:pretty}
-  .offer .pr{margin:1.4rem 0 .3rem}
-  .offer .pr .now{font-family:"Playfair Display",serif;font-weight:800;font-size:2.6rem;color:var(--green)}
-  .offer .pr .was{color:var(--ink-faint);text-decoration:line-through;font-size:1.4rem;margin-left:.4rem}
-  .offer .pr .save{display:inline-block;margin-left:.5rem;font-size:.82rem;font-weight:800;color:#fff;background:var(--amber);border-radius:999px;padding:.25rem .75rem;vertical-align:middle}
-  .offer .sealwrap{display:flex;justify-content:center;margin:1.4rem 0}
-  .offer .badges{display:flex;flex-wrap:wrap;gap:.5rem .9rem;justify-content:center;margin-top:1.1rem;font-size:.8rem;color:var(--green-deep);font-weight:600}
+  /* price display */
+  .price{margin:.6rem 0}
+  .price .now{font-family:"Lora",serif;font-weight:700;font-size:2.4rem;color:var(--green)}
+  .price .was{color:var(--ink-faint);text-decoration:line-through;font-size:1.3rem;margin-left:.4rem}
+  .price .save{display:inline-block;margin-left:.5rem;font-size:.78rem;font-weight:800;color:#fff;background:var(--amber);border-radius:999px;padding:.2rem .65rem;vertical-align:middle}
 
-  .close .pull{border:0;padding:0;margin:1.6rem 0}
-  .ps{font-size:1rem;border-top:1px solid var(--rule);padding-top:1.3rem;margin-top:1.6rem;color:var(--ink-soft)}
-  .ps b{color:var(--ink);font-weight:800}
+  /* trust badges row */
+  .trust{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin:1.3rem 0;list-style:none;padding:0}
+  .trust li{font-size:.74rem;font-weight:700;color:var(--ink-soft);border:1px solid var(--rule);border-radius:4px;padding:.35rem .7rem;background:#FFFDF9}
+
+  /* offer block */
+  .offer{background:var(--surface);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin:clamp(2.6rem,6vw,3.8rem) 0 0}
+  .offer .in{max-width:var(--read);margin-inline:auto;padding:clamp(2.2rem,5vw,3.2rem) 1.4rem;text-align:center}
+  .offer h2{margin-bottom:.6rem}
+  .offer .ctas{display:flex;flex-direction:column;gap:.7rem;align-items:center;margin:1.4rem 0 .4rem}
+  .offer .ctas .cta,.offer .ctas .cta-2{width:100%;max-width:23rem}
+
+  /* P.S. */
+  .ps{font-size:1rem;color:var(--ink-soft);background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:1.3rem 1.4rem;margin:1.6rem 0}
+  .ps b{color:var(--ink);font-weight:800;font-size:.85rem;letter-spacing:.04em}
   .center{text-align:center}
 
-  footer{background:var(--ink);color:#A39A8B}
-  footer .in{max-width:46rem;margin-inline:auto;padding:2.4rem clamp(1.25rem,5vw,2rem);font-size:.78rem;line-height:1.6}
-  footer p{margin:0 0 .9rem}
-  footer .disc{color:#857c6e;font-size:.72rem}
-  footer a{color:#CDBF9F}
-  footer .back{display:inline-flex;align-items:center;gap:.4rem;color:#fff;font-weight:700;text-decoration:none;border:1px solid #423c33;border-radius:999px;padding:.5rem 1.05rem;margin-top:.4rem}
-  footer .back:hover{background:#2e2a24}
+  footer{border-top:1px solid var(--rule);margin-top:2.5rem}
+  footer .in{max-width:var(--read);margin-inline:auto;padding:2rem 1.4rem;font-size:.78rem;line-height:1.6;color:var(--ink-faint)}
+  footer p{margin:0 0 .85rem}
+  footer .disc{font-size:.72rem}
+  footer a{color:var(--green)}
 
-  /* mobile sticky bar */
-  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:50;transform:translateY(120%);transition:transform .3s cubic-bezier(.23,1,.32,1);background:var(--card);border-top:1px solid var(--rule);box-shadow:0 -8px 28px rgba(44,39,34,.14)}
+  /* sticky bottom bar */
+  .sticky{position:fixed;left:0;right:0;bottom:0;z-index:45;transform:translateY(120%);transition:transform .3s ease;background:#fff;border-top:1px solid var(--rule);box-shadow:0 -6px 22px rgba(43,43,43,.1)}
   .sticky.show{transform:translateY(0)}
-  .sticky .in{display:flex;align-items:center;gap:.8rem;padding:.6rem clamp(1rem,5vw,1.5rem);max-width:72rem;margin-inline:auto}
-  .sticky .tn{width:42px;height:42px;border-radius:8px;flex:none;object-fit:contain;background:var(--card-warm);border:1px solid var(--rule)}
-  .sticky .tx{font-size:.8rem;line-height:1.25;color:var(--ink)}
+  .sticky .in{display:flex;align-items:center;gap:.8rem;max-width:46rem;margin-inline:auto;padding:.6rem 1.1rem}
+  .sticky .tx{font-size:.82rem;line-height:1.25;color:var(--ink)}
   .sticky .tx b{color:var(--green);font-weight:800}
   .sticky .tx span{color:var(--ink-faint)}
-  .sticky .cta{margin-left:auto;padding:.7rem 1.1rem;font-size:.82rem}
-  @media(min-width:1000px){.sticky{display:none}}
+  .sticky .cta{margin-left:auto;padding:.65rem 1.1rem;font-size:.84rem;border-width:2px}
+  @media(max-width:540px){.sticky .tx span{display:none}}
   @media (prefers-reduced-motion:reduce){.sticky{transition:none}}
 
-  .js .reveal{opacity:0;transform:translateY(16px)}
-  .js .reveal.in{opacity:1;transform:none;transition:opacity .7s ease,transform .7s cubic-bezier(.23,1,.32,1)}
+  .js .reveal{opacity:0;transform:translateY(12px)}
+  .js .reveal.in{opacity:1;transform:none;transition:opacity .6s ease,transform .6s ease}
   @media (prefers-reduced-motion:reduce){.js .reveal{opacity:1 !important;transform:none !important}}
 </style>
 </head>
 <body>
-<div class="progress" id="progress" aria-hidden="true"></div>
 
-<div class="report"><div class="in">Special Report · Investigations in Women's Health</div></div>
-<div class="spec"><div class="in"><b>SPEC ADVERTORIAL</b> · a portfolio concept by Adish Jain. Product facts, ingredients, founders &amp; review counts are real (Ancient Nutrition); the journalist, publication &amp; individual customer stories are illustrative of the format.</div></div>
+<div class="promo">Limited time: save <b>$35.48</b> on the 100-serving bag. Offer ends when inventory runs out.</div>
+<div class="spec"><b>SPEC ADVERTORIAL</b> · a portfolio concept by Adish Jain. Product facts, ingredients, founders &amp; review counts are real (Ancient Nutrition); the journalist, publication &amp; individual customer stories are illustrative of the format.</div>
 
-<header class="masthead"><div class="in">
+<header class="masthead">
   <div class="logo">The Wellness <span>Ledger</span></div>
-  <div class="meta">Est. for the curious<br>Consumer health, investigated</div>
-</div></header>
+  <div class="sub">Consumer health, investigated</div>
+</header>
 
-<!-- hero -->
-<section class="hero"><div class="container">
-  <p class="kicker reveal">Investigation · Women's Health</p>
-  <h1 class="title serif reveal">The 4 Real Foods the $3.5 Billion Collagen Industry Doesn't Want You to Know About</h1>
-  <p class="deck reveal">A health journalist spent four months investigating why women taking collagen every single day still see only partial results. What she found explains everything.</p>
-  <div class="byline reveal">
-    <span class="pic"><img src="/advertorial/assets/an-journalist.webp" alt="Portrait of investigative health journalist Rachel Sorenson." width="50" height="50" /></span>
-    <span><b>Rachel Sorenson</b><span class="role">Investigative Health Correspondent · 11 min read · June 2026</span></span>
-    <span class="share" aria-label="Share">
-      <a href="#" aria-label="Share on Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14 9h3l.5-3H14V4.5c0-.8.3-1.5 1.6-1.5H18V.3C17.5.2 16.4 0 15.3 0 12.8 0 11 1.5 11 4.3V6H8v3h3v9h3z"/></svg></a>
-      <a href="#" aria-label="Share on X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.2 2H21l-6.4 7.3L22 22h-5.9l-4.3-5.6L6.7 22H4l6.8-7.8L2.4 2h6l3.9 5.1zm-1 18h1.4L7.7 3.5H6.2z"/></svg></a>
-      <a href="#" aria-label="Share on Pinterest"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.5 2 4 5.6 4 8.7c0 1.9.7 3.5 2.3 4.1.3.1.5 0 .5-.3l.2-.8c.1-.3 0-.4-.1-.6-.4-.5-.7-1.1-.7-2 0-2.6 1.9-4.9 5-4.9 2.7 0 4.2 1.7 4.2 3.9 0 2.9-1.3 5.4-3.2 5.4-1 0-1.8-.9-1.6-1.9.3-1.3.9-2.6.9-3.5 0-.8-.4-1.5-1.3-1.5-1.1 0-1.9 1.1-1.9 2.6 0 .9.3 1.6.3 1.6L11.6 18c-.4 1.5-.1 3.4 0 3.6 0 .1.2.1.2 0 .1-.1 1.6-2 2.1-3.8l.7-2.8c.4.7 1.4 1.3 2.5 1.3 3.3 0 5.6-3 5.6-7.1C22.8 5.6 19.7 2 12 2z"/></svg></a>
-      <a href="#" aria-label="Share by Email"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7L22 6"/></svg></a>
-    </span>
+<article>
+  <div class="wrap head">
+    <p class="kicker reveal">Investigation · Women's Health</p>
+    <h1 class="reveal">The 4 Real Foods the $3.5 Billion Collagen Industry Doesn't Want You to Know About</h1>
+    <p class="deck reveal">A health journalist spent four months investigating why women taking collagen every single day still see only partial results. What she found explains everything.</p>
+    <div class="byline reveal">
+      <span class="pic"><img src="/advertorial/assets/an-journalist.webp" alt="Portrait of investigative health journalist Rachel Sorenson." width="44" height="44" /></span>
+      <span><b>Rachel Sorenson</b><span class="role">Investigative Health Correspondent · 11 min read · June 2026</span></span>
+    </div>
   </div>
 
-  <figure class="hero-fig reveal">
-    <div class="frame"><img src="/advertorial/assets/an-hero.webp" width="1200" height="710" loading="eager" fetchpriority="high" decoding="async" alt="An investigative journalist's desk: unbranded collagen tubs labeled as lab samples, a notebook of handwritten leads, a magnifying glass, laptop and coffee by a window." /></div>
-    <figcaption>Four months, dozens of products, one pattern nobody in the industry would say out loud.</figcaption>
-  </figure>
-</div></section>
+  <div class="wrap-wide">
+    <figure class="reveal"><img src="/advertorial/assets/an-hero.webp" width="1200" height="710" loading="eager" fetchpriority="high" decoding="async" alt="An investigative journalist's desk: unbranded collagen tubs labeled as lab samples, a notebook of handwritten leads, a magnifying glass, laptop and coffee by a window." /><figcaption>Four months, dozens of products, one pattern nobody in the industry would say out loud.</figcaption></figure>
+  </div>
 
-<!-- two-column body -->
-<div class="container"><div class="layout">
-  <main class="article">
+  <div class="wrap">
+    <p class="drop reveal">Publishing this is going to risk me professional relationships that took eleven years to build. PR contacts at wellness companies. Access to researchers. Founders who return my calls because they trust me. Writing what follows will make some of those people unhappy.</p>
+    <p class="reveal">I'm writing it anyway, because of what I found.</p>
+    <p class="reveal">My colleague Donna has been taking collagen every single day for eight months. Her nails are harder. Her skin has better texture in certain lighting. But her knees still crack every morning going down the stairs, her joints take 20 minutes to loosen up, and her hair keeps thinning at the part line.</p>
+    <p class="reveal">She blames herself for not being consistent enough. She hasn't missed a single dose.</p>
+    <p class="reveal">If you've been where Donna is, stay with me. But first, something that'll make everything I'm about to say land differently.</p>
 
-    <div class="block lede">
-      <p class="drop reveal">Publishing this is going to risk me professional relationships that took eleven years to build. PR contacts at wellness companies. Access to researchers. Founders who return my calls because they trust me. Writing what follows will make some of those people unhappy.</p>
-      <p class="reveal">I'm writing it anyway, because of what I found.</p>
-      <p class="reveal">My colleague Donna has been taking collagen every single day for eight months. Her nails are harder. Her skin has better texture in certain lighting. But her knees still crack every morning going down the stairs, her joints take 20 minutes to loosen up, and her hair keeps thinning at the part line.</p>
-      <p class="reveal">She blames herself for not being consistent enough. She hasn't missed a single dose.</p>
-      <p class="reveal">If you've been where Donna is, stay with me. But first, something that'll make everything I'm about to say land differently.</p>
+    <p class="reveal"><strong>Every supplement exists for exactly one reason: convenience.</strong></p>
+    <div class="figs reveal">
+      <div class="figrow"><span class="n serif">90</span><span class="t">almonds a day to hit your magnesium target from food. Two capsules take four seconds.</span></div>
+      <div class="figrow"><span class="n serif">14</span><span class="t">oranges a day for a therapeutic dose of vitamin C.</span></div>
+      <div class="figrow"><span class="n serif">365</span><span class="t">days of wild salmon, forever, for your omega-3 target from food alone.</span></div>
+    </div>
+    <p class="reveal">The supplement industry solved practical impossibilities. The collagen industry followed the same logic. Collagen declines with age. Whole-food sources are too demanding to eat consistently. Put it in a powder. Logical. Practical.</p>
+    <p class="reveal">But they followed a second logic too, one that's been the quiet profit engine of the pharmaceutical industry for decades.</p>
+    <blockquote class="pull serif reveal">A cured patient is a customer lost. Give people enough results to keep coming back. Not enough to actually close the gap.</blockquote>
+
+    <hr class="sep-rule" />
+
+    <h2 class="reveal">Why Everything Starts Breaking Down Around the Same Time</h2>
+    <p class="reveal">Collagen is the structural protein responsible for holding your body together. Not metaphorically. Literally. It makes up roughly <strong>30% of all the protein in your entire body</strong>. Your skin, joints, bones, tendons, gut wall, blood vessels, hair follicles: collagen is the underlying architecture of all of it.</p>
+    <p class="reveal">So when collagen production starts declining, it's not one system failing. It's the scaffolding of your entire body weakening, across every tissue it was responsible for holding together, at the same time. Which is exactly why the decline doesn't show up in just one place.</p>
+    <div class="figs reveal">
+      <div class="figrow"><span class="n serif">1%</span><span class="t">less collagen produced every year after age 30.</span></div>
+      <div class="figrow"><span class="n serif">10%</span><span class="t">of your structural collagen already gone by 40.</span></div>
+      <div class="figrow"><span class="n serif">30%</span><span class="t">lost in the first five years after menopause onset.</span></div>
+    </div>
+    <p class="reveal">This is when things that used to be manageable stop being manageable. Hair shedding. Nails that peel. Joints that ache before you've had your first coffee. Skin that looks deflated despite the SPF, the retinol, the moisturizer. Gut bloating that shows up every afternoon like clockwork.</p>
+    <p class="reveal">It all ties back to one thing: 30% of your body's protein infrastructure declining, across every tissue simultaneously. The industry told you that much. They weren't wrong. What they didn't tell you is the part that explains why their products keep leaving you partially disappointed.</p>
+
+    <hr class="sep-dots" />
+
+    <h2 class="reveal">The Part Nobody in the Industry Bothered to Explain</h2>
+    <p class="reveal">Technically, there are 28 types of collagen in the human body. But only <strong>10 are meaningfully affected by aging</strong>, and these 10 cover every tissue that starts breaking down after 30: skin, joints, hair, nails, gut lining, cartilage, tendons, blood vessels, and tissue junctions.</p>
+    <p class="reveal">Here's what nobody in collagen marketing actually explains. Each type governs a different tissue. Each tissue needs its own specific type to function properly. The collagen type holding your skin firm is completely different from the type cushioning your joints. The type structuring your hair shaft is different from the type lining your gut wall. <strong>They are not interchangeable.</strong></p>
+    <blockquote class="pull serif reveal">Taking vitamin D doesn't do the job of vitamin C. Collagen works the same way. It doesn't matter how much collagen you take. It matters which types.</blockquote>
+    <p class="reveal">Almost every supplement on the market gives you one or two types. Mainly Type I and III, which cover skin and gut lining, while joints, hair, cartilage, blood vessels, and tendons are left for decline.</p>
+    <div class="mech reveal">
+      <div class="lab">The mechanism nobody named</div>
+      <p class="term serif">Collagen Type Deficiency</p>
+      <p>Not a deficiency in how much collagen you're taking. A deficiency in which types are covered. This is why Donna's nails improved and her knees didn't: eight months of Types I and III, while Type II kept declining, uninterrupted, the entire time.</p>
     </div>
 
-    <div class="block">
-      <p class="reveal"><strong>Every supplement exists for exactly one reason: convenience.</strong></p>
-      <ul class="stats reveal">
-        <li><div class="n">90</div><div class="t">almonds a day to hit your magnesium target from food. Two capsules take four seconds.</div></li>
-        <li><div class="n">14</div><div class="t">oranges a day for a therapeutic dose of vitamin C.</div></li>
-        <li><div class="n">365</div><div class="t">days of wild salmon, forever, for your omega-3 target from food alone.</div></li>
-      </ul>
-      <p class="reveal">The supplement industry solved practical impossibilities. The collagen industry followed the same logic. Collagen declines with age. Whole-food sources are too demanding to eat consistently. Put it in a powder. Logical. Practical.</p>
-      <p class="reveal">But they followed a second logic too, one that's been the quiet profit engine of the pharmaceutical industry for decades.</p>
-      <blockquote class="pull reveal">A cured patient is a customer lost. Give people enough results to keep coming back. Not enough to actually close the gap.</blockquote>
+    <hr class="sep-rule" />
+
+    <h2 class="reveal">The Four Real Foods That Cover All 10 Types</h2>
+    <p class="reveal">Full-spectrum coverage already existed. It wasn't invented. It existed in four whole-food categories that modern food systems quietly eliminated from the plate.</p>
+  </div>
+
+  <div class="wrap-wide">
+    <figure class="reveal"><img src="/advertorial/assets/an-four-foods.webp" width="1200" height="708" loading="lazy" decoding="async" alt="Four real foods on a dark slate surface: grass-fed beef, golden chicken bone broth, a whole wild-caught fish, and cracked eggshells showing the membrane." /><figcaption>Bovine hide, chicken bone broth, wild marine fish, eggshell membrane. Ten collagen types between them.</figcaption></figure>
+  </div>
+
+  <div class="wrap">
+    <div class="food reveal"><div class="fhead"><span class="fn serif">1</span><h3 class="serif">Grass-Fed Bovine Hide</h3></div><p>The foundation. One of the richest concentrated sources of Types I and III on the planet: the structural scaffolding of your skin, the reinforcement of your gut wall, the strength in your tendons.</p><span class="pill">Types I &amp; III</span></div>
+    <div class="food reveal"><div class="fhead"><span class="fn serif">2</span><h3 class="serif">Chicken Bone Broth</h3></div><p>This one is for your joints. The most concentrated whole-food source of Type II, the collagen that lines the cushioning cartilage inside every joint. When it thins, joints grind, ache in the morning, protest on stairs.</p><span class="pill">Type II</span></div>
+    <div class="food reveal"><div class="fhead"><span class="fn serif">3</span><h3 class="serif">Wild-Caught Marine Fish</h3></div><p>Also Type I, like bovine, but at a far smaller molecular weight. Bovine collagen is a delivery truck. Marine collagen is a motorcycle courier: same destination, but it reaches skin layers the truck can't access.</p><span class="pill">Type I, small molecular weight</span></div>
+    <div class="food reveal"><div class="fhead"><span class="fn serif">4</span><h3 class="serif">Eggshell Membrane</h3></div><p>The one nobody talks about. The thin translucent film inside the shell is the single most collagen-diverse natural food ever identified, and it carries glucosamine, chondroitin and hyaluronic acid in the same matrix.</p><span class="pill">10 types in one source</span></div>
+  </div>
+
+  <div class="wrap-wide">
+    <figure class="reveal"><img src="/advertorial/assets/an-eggshell.webp" width="1200" height="712" loading="lazy" decoding="async" alt="Extreme macro of the translucent eggshell membrane being lifted from inside a cracked eggshell, backlit so the delicate film glows." /><figcaption>Eggshell membrane: the most collagen-diverse food source ever identified, and the one the industry leaves raw.</figcaption></figure>
+  </div>
+
+  <div class="wrap">
+    <p class="reveal"><strong>Ten types from one source.</strong> Here is everything the eggshell membrane carries, each type doing a job no other type can:</p>
+    <ul class="typel reveal">
+      <li><span class="ty">I · II · III</span><span class="ti">skin, joints, gut foundation</span></li>
+      <li><span class="ty">IV</span><span class="ti">gut lining integrity, skin anchoring</span></li>
+      <li><span class="ty">V</span><span class="ti">hair follicle shaft thickness</span></li>
+      <li><span class="ty">VII</span><span class="ti">stops skin sagging from the dermis</span></li>
+      <li><span class="ty">VIII</span><span class="ti">blood vessel wall integrity</span></li>
+      <li><span class="ty">X</span><span class="ti">cartilage mineralization, joint hardness</span></li>
+      <li><span class="ty">XII</span><span class="ti">tendon integrity at knees, elbows, ankles</span></li>
+      <li><span class="ty">XXII</span><span class="ti">tissue junction support, body-wide</span></li>
+    </ul>
+
+    <hr class="sep" />
+
+    <h2 class="reveal">The Problem With Actually Eating These Foods</h2>
+    <p class="reveal">These are four real foods. But. You're not simmering bone broth at 6am before the school run. You're not sourcing grass-fed bovine hide from a specialty butcher. You're not peeling the membrane from a dozen eggshells every morning to hit a therapeutic dose. Even if you had the time, achieving consistent therapeutic amounts from all four sources every single day is functionally impossible in a modern life.</p>
+    <p class="reveal">And there's a second problem I didn't find until just before ending my research. Even if you could eat all four foods every day, most of them don't absorb the way you need them to. Collagen is a large, tightly wound protein. For the gut to absorb and route it to target tissue, it needs to be broken down into smaller peptide chains first. <strong>Fermentation does this.</strong></p>
+    <p class="reveal">The eggshell membrane problem is the clearest example. Some supplement companies do source eggshell membrane. But they're using raw, unfermented membrane, which doesn't break the collagen matrix into peptide chains small enough for efficient gut absorption. I spent three weeks looking for clinical data that contradicted this. I found none.</p>
+    <p class="reveal">I almost filed the story there. But I kept thinking: we live in a world where a drone can deliver groceries in 20 minutes. Someone has to have worked on all these problems at once. The sourcing problem. The convenience problem. The fermentation gap. I started making calls.</p>
+
+    <hr class="sep-dots" />
+
+    <h2 class="reveal">What They Actually Built</h2>
+    <p class="reveal">The trail led to two people.</p>
+    <div class="founders reveal">
+      <div class="founder"><b>Dr. Josh Axe</b><span>Doctor of Natural Medicine, Clinical Nutritionist</span></div>
+      <div class="founder"><b>Jordan Rubin</b><span>Founder, ancestral-health author</span></div>
     </div>
+    <p class="reveal">Dr. Axe had recommended whole-food collagen to patients for years, then watched them fall off because broth takes hours and the membrane process is tedious. Jordan Rubin beat Crohn's disease through ancestral food protocols after 70 doctors across 7 countries couldn't help, then built the company because he'd already found the answer and needed to make it accessible. Their question: what if you could get all four real-food sources, covering all 10 collagen types, into a single daily serving that disappears into your morning coffee?</p>
+    <p class="reveal">The answer is <strong>Ancient Nutrition's Multi Collagen Protein</strong>.</p>
+  </div>
 
-    <div class="block">
-      <h2 class="sec serif reveal">Why Everything Starts Breaking Down Around the Same Time</h2>
-      <p class="reveal">Collagen is the structural protein responsible for holding your body together. Not metaphorically. Literally. It makes up roughly <strong>30% of all the protein in your entire body</strong>. Your skin, joints, bones, tendons, gut wall, blood vessels, hair follicles: collagen is the underlying architecture of all of it.</p>
-      <p class="reveal">So when collagen production starts declining, it's not one system failing. It's the scaffolding of your entire body weakening, across every tissue it was responsible for holding together, at the same time. Which is exactly why the decline doesn't show up in just one place.</p>
-      <ul class="stats reveal">
-        <li><div class="n">1%</div><div class="t">less collagen produced every year after age 30.</div></li>
-        <li><div class="n">10%</div><div class="t">of your structural collagen already gone by 40.</div></li>
-        <li><div class="n">30%</div><div class="t">lost in the first five years after menopause onset.</div></li>
-      </ul>
-      <p class="reveal">This is when things that used to be manageable stop being manageable. Hair shedding. Nails that peel. Joints that ache before you've had your first coffee. Skin that looks deflated despite the SPF, the retinol, the moisturizer. Gut bloating that shows up every afternoon like clockwork.</p>
-      <p class="reveal">It all ties back to one thing: 30% of your body's protein infrastructure declining, across every tissue simultaneously. The industry told you that much. They weren't wrong. What they didn't tell you is the part that explains why their products keep leaving you partially disappointed.</p>
+  <div class="wrap-wide">
+    <figure class="reveal"><img src="/advertorial/assets/an-product.webp" width="900" height="900" loading="lazy" decoding="async" alt="Ancient Nutrition Multi Collagen Protein tub." style="max-width:21rem;margin-inline:auto" /></figure>
+  </div>
+
+  <div class="wrap">
+    <ul class="srclist reveal">
+      <li><b>Hydrolyzed bovine collagen:</b> Types I &amp; III, the skin and gut foundation</li>
+      <li><b>Chicken bone broth concentrate:</b> Type II, the cartilage collagen your joints run on</li>
+      <li><b>Hydrolyzed marine collagen:</b> Type I at smaller molecular weight, reaches what bovine can't</li>
+      <li><b>Fermented eggshell membrane:</b> Types I, II, III, IV, V, VII, VIII, X, XII, XXII. The rarest types. Fermented.</li>
+    </ul>
+    <p class="center reveal" style="margin:1.4rem 0"><a class="cta-soft" href="https://ancientnutrition.com/" target="_blank" rel="noopener">Yes, I want complete coverage →</a></p>
+
+    <hr class="sep-rule" />
+
+    <h2 class="reveal">The Three Supporting Ingredients That Make the Whole Thing Work</h2>
+    <p class="reveal">Getting collagen into your body from four sources is one problem. Getting your body to actually use it is a completely different one. I'd been one layer short the entire time.</p>
+    <div class="ing reveal"><div class="role">Absorption</div><h3 class="serif">Fermented Eggshell Membrane</h3><p>In its raw form, the collagen matrix is too dense for the gut to break down. Fermentation pre-breaks it into smaller peptide chains before it ever reaches your gut. Human clinical studies on this specific ingredient, not borrowed category data, show results for joint discomfort measurable as early as day one.</p></div>
+    <div class="ing reveal"><div class="role">The gateway</div><h3 class="serif">Bacillus Coagulans · 2 Billion CFU SBO Probiotics</h3><p>Your gut is the gateway for every nutrient. If it's compromised, which is extremely common in women over 40, absorption is impaired before collagen even has a chance to work. This soil-based organism survives stomach acid intact, clears the gut environment, and opens the absorption pathway. It's why many women notice gut changes in weeks two to three, before skin changes show.</p></div>
+    <div class="ing reveal"><div class="role">The best part · activation</div><h3 class="serif">Vitamin C at 200% Daily Value</h3><p>Without vitamin C, your body cannot synthesize collagen. Full stop. It's the required co-factor that activates fibroblasts, the cells that produce your body's own collagen. So you're not just replacing what's declining, you're triggering production. Month one replaces what's lost; months two and three, your body is making more of its own. This is why users past the 8-week mark report results that keep improving rather than plateau.</p></div>
+
+    <hr class="sep" />
+
+    <h2 class="reveal">What's Not in the Formula</h2>
+    <p class="reveal">When a product contains this many active ingredients, it's reasonable to ask what else came with them.</p>
+    <ul class="checks reveal">
+      <li>No gluten</li><li>No grains</li><li>No dairy</li><li>No soy</li><li>No nuts</li><li>No hormones</li><li>No antibiotics</li><li>No GMOs</li>
+    </ul>
+    <p class="reveal">Grass-fed and pasture-raised bovine. Wild-caught marine. Cage-free chicken. Clean at the sourcing level, not just on the label. Third-party lab tested. GMP certified. Made in the USA. Ancient Nutrition is a certified B Corporation and Regenerative Organic verified brand.</p>
+    <div class="callout reveal">This matters because <b>64% of tested collagen products on the market contain detectable levels of lead.</b> Third-party testing removes the trust-on-faith requirement: the verification exists independently of the brand's own claims.</div>
+
+    <hr class="sep-dots" />
+
+    <h2 class="reveal">What Women Who Switched Are Actually Saying</h2>
+    <div class="review reveal">
+      <div class="score serif">4.8</div>
+      <div><div class="stars">★★★★★</div><div class="meta">from <strong>13,000+</strong> verified reviews</div></div>
     </div>
+    <div class="tcard reveal"><div class="stars">★★★★★</div><p>"Not only did my joint pain fully go within about 40 days... my nails are visibly harder and I'm actually able to grow them long again."</p></div>
+    <div class="tcard reveal"><div class="stars">★★★★★</div><p>"Without it for 1.5 months... within a month, my hair shedding increased drastically and my nails went back to being the thin, splitting mess they were before."</p></div>
+    <div class="tcard reveal"><div class="stars">★★★★★</div><p>"If I stop drinking it, my joints start making noises again. It also practically resolved my chronic constipation."</p></div>
+    <div class="tcard reveal"><div class="stars">★★★★★</div><p>"Visible results in my skin starting at about week 3... tighter, smoother. My back pain went to almost nothing within a month."</p></div>
+    <p class="reveal">They stayed because the partial-result pattern broke for the first time. When all 10 types are covered, the improvements stop being selective.</p>
 
-    <div class="block">
-      <h2 class="sec serif reveal">The Part Nobody in the Industry Bothered to Explain</h2>
-      <p class="reveal">Technically, there are 28 types of collagen in the human body. But only <strong>10 are meaningfully affected by aging</strong>, and these 10 cover every tissue that starts breaking down after 30: skin, joints, hair, nails, gut lining, cartilage, tendons, blood vessels, and tissue junctions.</p>
-      <p class="reveal">Here's what nobody in collagen marketing actually explains. Each type governs a different tissue. Each tissue needs its own specific type to function properly. The collagen type holding your skin firm is completely different from the type cushioning your joints. The type structuring your hair shaft is different from the type lining your gut wall. <strong>They are not interchangeable.</strong></p>
-      <blockquote class="pull reveal">Taking vitamin D doesn't do the job of vitamin C. Collagen works the same way. It doesn't matter how much collagen you take. It matters which types.</blockquote>
-      <p class="reveal">Almost every supplement on the market gives you one or two types. Mainly Type I and III, which cover skin and gut lining, while joints, hair, cartilage, blood vessels, and tendons are left for decline. I named this pattern during my investigation: <strong>Collagen Type Deficiency.</strong> Not a deficiency in how much collagen you're taking. A deficiency in which types are covered.</p>
-      <p class="reveal">This is why Donna's nails improved and her knees didn't. Eight months of Types I and III. Type II kept declining, uninterrupted, the entire time.</p>
+    <hr class="sep-rule" />
+
+    <h2 class="reveal">The Math Nobody Runs</h2>
+    <div class="compare reveal">
+      <div class="c"><div class="lab">Single-source</div><div class="big serif">$0.73</div><div class="s">per serving, roughly 2 of your 10 types</div></div>
+      <div class="c win"><div class="lab">Ancient Nutrition</div><div class="big serif">$0.58</div><div class="s">per serving, all 10 types plus activation</div></div>
     </div>
+    <p class="reveal">The price difference between the incomplete option and the complete one: <strong>$0.12 per day.</strong> The coverage difference: everything. Already less than a single functional-medicine appointment. $58.47 for 100 servings.</p>
 
-    <div class="block">
-      <h2 class="sec serif reveal">The Four Real Foods That Cover All 10 Types</h2>
-      <p class="reveal">Full-spectrum coverage already existed. It wasn't invented. It existed in four whole-food categories that modern food systems quietly eliminated from the plate.</p>
-      <figure class="media full reveal">
-        <div class="frame"><img src="/advertorial/assets/an-four-foods.webp" width="1200" height="708" loading="lazy" decoding="async" alt="Four real foods on a dark slate surface: grass-fed beef, golden chicken bone broth, a whole wild-caught fish, and cracked eggshells showing the membrane." /></div>
-        <figcaption>Bovine hide, chicken bone broth, wild marine fish, eggshell membrane. Ten collagen types between them.</figcaption>
-      </figure>
-      <div class="foods full reveal">
-        <div class="food"><div class="fn">Real Food #1</div><h3 class="serif">Grass-Fed Bovine Hide</h3><p>The foundation. One of the richest concentrated sources of Types I and III on the planet: the structural scaffolding of your skin, the reinforcement of your gut wall, the strength in your tendons.</p><span class="pill">Types I &amp; III</span></div>
-        <div class="food"><div class="fn">Real Food #2</div><h3 class="serif">Chicken Bone Broth</h3><p>This one is for your joints. The most concentrated whole-food source of Type II, the collagen that lines the cushioning cartilage inside every joint. When it thins, joints grind, ache in the morning, protest on stairs.</p><span class="pill">Type II</span></div>
-        <div class="food"><div class="fn">Real Food #3</div><h3 class="serif">Wild-Caught Marine Fish</h3><p>Also Type I, like bovine, but at a far smaller molecular weight. Bovine collagen is a delivery truck. Marine collagen is a motorcycle courier: same destination, but it reaches skin layers the truck can't access.</p><span class="pill">Type I, small molecular weight</span></div>
-        <div class="food"><div class="fn">Real Food #4</div><h3 class="serif">Eggshell Membrane</h3><p>The one nobody talks about. The thin translucent film inside the shell is the single most collagen-diverse natural food ever identified, and it carries glucosamine, chondroitin and hyaluronic acid in the same matrix.</p><span class="pill">10 types in one source</span></div>
-      </div>
-      <figure class="media full reveal">
-        <div class="frame"><img src="/advertorial/assets/an-eggshell.webp" width="1200" height="712" loading="lazy" decoding="async" alt="Extreme macro of the translucent eggshell membrane being lifted from inside a cracked eggshell, backlit so the delicate film glows." /></div>
-        <figcaption>Eggshell membrane: the most collagen-diverse food source ever identified, and the one the industry leaves raw.</figcaption>
-      </figure>
-      <p class="reveal"><strong>Ten types from one source.</strong> Here is everything the eggshell membrane carries, each type doing a job no other type can:</p>
-      <ul class="types full reveal">
-        <li><b>I · II · III</b>skin, joints, gut foundation</li>
-        <li><b>IV</b>gut lining integrity, skin anchoring</li>
-        <li><b>V</b>hair follicle shaft thickness</li>
-        <li><b>VII</b>stops skin sagging from the dermis</li>
-        <li><b>VIII</b>blood vessel wall integrity</li>
-        <li><b>X</b>cartilage mineralization, joint hardness</li>
-        <li><b>XII</b>tendon integrity at knees, elbows, ankles</li>
-        <li><b>XXII</b>tissue junction support, body-wide</li>
-      </ul>
+    <hr class="sep" />
+
+    <h2 class="reveal">What to Expect, Week by Week</h2>
+    <ul class="timeline reveal">
+      <li><span class="w">Days 1 to 7 · Joints</span><span class="d">Joint comfort. Clinical data shows results measurable as early as day one.</span></li>
+      <li><span class="w">Weeks 2 to 3 · Nails</span><span class="d">Nails stop breaking. The first visible signal for most women.</span></li>
+      <li><span class="w">Weeks 4 to 6 · Skin</span><span class="d">Skin texture and hydration. Crow's feet measurable in clinical data at week four.</span></li>
+      <li><span class="w">Weeks 8 to 12 · Hair</span><span class="d">Slowest turnover, last to change, most noticeable when it does.</span></li>
+    </ul>
+    <p class="reveal">Collagen loss doesn't pause while you finish researching. After 30, it's 1% per year. Quiet. Cumulative. Invisible until it isn't. That clock starts on day one. Not the day you finish deciding. Day one.</p>
+
+    <hr class="sep-dots" />
+
+    <h2 class="reveal">Their Bet, Not Yours</h2>
+    <p class="reveal">The 30-day money-back guarantee exists because they know what the first 30 days produce. Take it daily for 30 days. If you don't see measurable improvement in at least one area, contact them. Complete refund. No questions. No shipping charges.</p>
+    <div class="guarantee reveal">
+      <span class="gseal"><span class="n serif">30</span><span class="u">Day</span></span>
+      <span class="gt"><b>Money-back guarantee</b><br><span>Joint data shows results inside the first week. The risk is almost entirely on their side.</span></span>
     </div>
+    <p class="reveal">One supply note: fermented eggshell membrane batching has real production constraints, and the 100-serving bag is consistently the first format to sell through. The current $35.48 discount is tied to an active inventory window.</p>
+  </div>
 
-    <div class="block">
-      <h2 class="sec serif reveal">The Problem With Actually Eating These Foods</h2>
-      <p class="reveal">These are four real foods. But. You're not simmering bone broth at 6am before the school run. You're not sourcing grass-fed bovine hide from a specialty butcher. You're not peeling the membrane from a dozen eggshells every morning to hit a therapeutic dose. Even if you had the time, achieving consistent therapeutic amounts from all four sources every single day is functionally impossible in a modern life.</p>
-      <p class="reveal">And there's a second problem I didn't find until just before ending my research. Even if you could eat all four foods every day, most of them don't absorb the way you need them to. Collagen is a large, tightly wound protein. For the gut to absorb and route it to target tissue, it needs to be broken down into smaller peptide chains first. <strong>Fermentation does this.</strong></p>
-      <p class="reveal">The eggshell membrane problem is the clearest example. Some supplement companies do source eggshell membrane. But they're using raw, unfermented membrane, which doesn't break the collagen matrix into peptide chains small enough for efficient gut absorption. I spent three weeks looking for clinical data that contradicted this. I found none.</p>
-      <p class="reveal">I almost filed the story there. But I kept thinking: we live in a world where a drone can deliver groceries in 20 minutes. Someone has to have worked on all these problems at once. The sourcing problem. The convenience problem. The fermentation gap. I started making calls.</p>
-    </div>
+  <div class="wrap-wide">
+    <figure class="reveal"><img src="/advertorial/assets/an-payoff.webp" width="1200" height="718" loading="lazy" decoding="async" alt="A woman in her early 50s walking down a home staircase with relaxed, easy confidence in soft morning light." /><figcaption>"Went down the stairs this morning and didn't think about it once."</figcaption></figure>
+  </div>
 
-    <div class="block">
-      <h2 class="sec serif reveal">What They Actually Built</h2>
-      <p class="reveal">The trail led to two people.</p>
-      <div class="authority reveal">
-        <div class="founders">
-          <div class="founder"><span class="mono serif">JA</span><span><b>Dr. Josh Axe</b><span>Doctor of Natural Medicine, Clinical Nutritionist</span></span></div>
-          <div class="founder"><span class="mono serif">JR</span><span><b>Jordan Rubin</b><span>Founder · Ancestral-health author</span></span></div>
-        </div>
-        <p style="margin:0;color:var(--ink-soft);font-size:.98rem">Dr. Axe had recommended whole-food collagen to patients for years, then watched them fall off because broth takes hours and the membrane process is tedious. Jordan Rubin beat Crohn's disease through ancestral food protocols after 70 doctors across 7 countries couldn't help, then built the company because he'd already found the answer and needed to make it accessible. Their question: what if you could get all four real-food sources, covering all 10 collagen types, into a single daily serving that disappears into your morning coffee?</p>
-        <ul class="srclist">
-          <li><b>Hydrolyzed bovine collagen:</b> Types I &amp; III, the skin and gut foundation</li>
-          <li><b>Chicken bone broth concentrate:</b> Type II, the cartilage collagen your joints run on</li>
-          <li><b>Hydrolyzed marine collagen:</b> Type I at smaller molecular weight, reaches what bovine can't</li>
-          <li><b>Fermented eggshell membrane:</b> Types I, II, III, IV, V, VII, VIII, X, XII, XXII. The rarest types. Fermented.</li>
-        </ul>
-      </div>
-      <p class="reveal">The answer is <strong>Ancient Nutrition's Multi Collagen Protein</strong>: ten types from four real food sources, in one scoop that disappears into a morning coffee or smoothie.</p>
-    </div>
+  <div class="wrap">
+    <h2 class="reveal">Two Paths From Here</h2>
+    <p class="reveal">You've been given partial solutions long enough. You know what partial feels like. You know which tissues didn't respond. You know which symptoms stayed.</p>
+    <p class="reveal"><strong>Continue with what's in the cabinet.</strong> One or two types. Same partial results. Same conversation next year. An active daily choice to keep the deficit running.</p>
+    <p class="reveal"><strong>Or:</strong> give your body the complete coverage it was built to receive, with the activation stack that makes it actually work, backed by a 30-day guarantee, for $0.12 more per serving than what wasn't covering the problem.</p>
+    <blockquote class="pull serif reveal">The question is simply how long you want to keep waiting to find out what complete actually feels like.</blockquote>
+  </div>
+</article>
 
-    <div class="block">
-      <h2 class="sec serif reveal">The Three Supporting Ingredients That Make the Whole Thing Work</h2>
-      <p class="reveal">Getting collagen into your body from four sources is one problem. Getting your body to actually use it is a completely different one. I'd been one layer short the entire time.</p>
-      <div class="ingr">
-        <div class="ing reveal"><div class="role">Absorption</div><h3 class="serif">Fermented Eggshell Membrane</h3><p>In its raw form, the collagen matrix is too dense for the gut to break down. Fermentation pre-breaks it into smaller peptide chains before it ever reaches your gut. Human clinical studies on this specific ingredient, not borrowed category data, show results for joint discomfort measurable as early as day one.</p></div>
-        <div class="ing reveal"><div class="role">The Gateway</div><h3 class="serif">Bacillus Coagulans · 2 Billion CFU SBO Probiotics</h3><p>Your gut is the gateway for every nutrient. If it's compromised, which is extremely common in women over 40, absorption is impaired before collagen even has a chance to work. This soil-based organism survives stomach acid intact, clears the gut environment, and opens the absorption pathway. It's why many women notice gut changes in weeks two to three, before skin changes show.</p></div>
-        <div class="ing reveal"><div class="role">The best part · Activation</div><h3 class="serif">Vitamin C at 200% Daily Value</h3><p>Without vitamin C, your body cannot synthesize collagen. Full stop. It's the required co-factor that activates fibroblasts, the cells that produce your body's own collagen. So you're not just replacing what's declining, you're triggering production. Month one replaces what's lost; months two and three, your body is making more of its own. This is why users past the 8-week mark report results that keep improving rather than plateau.</p></div>
-      </div>
-    </div>
-
-    <div class="block">
-      <h2 class="sec serif reveal">What's Not in the Formula</h2>
-      <p class="reveal">When a product contains this many active ingredients, it's reasonable to ask what else came with them.</p>
-      <ul class="chips reveal"><li>No gluten</li><li>No grains</li><li>No dairy</li><li>No soy</li><li>No nuts</li><li>No hormones</li><li>No antibiotics</li><li>No GMOs</li></ul>
-      <p class="reveal">Grass-fed and pasture-raised bovine. Wild-caught marine. Cage-free chicken. Clean at the sourcing level, not just on the label. Third-party lab tested. GMP certified. Made in the USA. Ancient Nutrition is a certified B Corporation and Regenerative Organic verified brand.</p>
-      <div class="callout reveal">This matters because <b>64% of tested collagen products on the market contain detectable levels of lead.</b> Third-party testing removes the trust-on-faith requirement: the verification exists independently of the brand's own claims.</div>
-    </div>
-
-    <div class="block">
-      <h2 class="sec serif reveal">What Women Who Switched Are Actually Saying</h2>
-      <p class="repnote reveal">From the brand's reviews · 13,000+ women have run this experiment</p>
-      <div class="quotes reveal">
-        <div class="q"><div class="stars">★★★★★</div><p>"Not only did my joint pain fully go within about 40 days... my nails are visibly harder and I'm actually able to grow them long again."</p></div>
-        <div class="q"><div class="stars">★★★★★</div><p>"Without it for 1.5 months... within a month, my hair shedding increased drastically and my nails went back to being the thin, splitting mess they were before."</p></div>
-        <div class="q"><div class="stars">★★★★★</div><p>"If I stop drinking it, my joints start making noises again. For that reason I'll continue. It also practically resolved my chronic constipation."</p></div>
-        <div class="q"><div class="stars">★★★★★</div><p>"Visible results in my skin starting at about week 3... tighter, smoother. My back pain went to almost nothing within a month."</p></div>
-      </div>
-      <p class="reveal">They stayed because the partial-result pattern broke for the first time. When all 10 types are covered, the improvements stop being selective.</p>
-    </div>
-
-    <div class="block">
-      <h2 class="sec serif reveal">The Math Nobody Runs</h2>
-      <div class="compare reveal">
-        <div class="c"><div class="lab">Single-source collagen</div><div class="big serif">$0.73</div><div class="s">per serving, covering roughly 2 of your 10 types</div></div>
-        <div class="c win"><div class="lab">Ancient Nutrition</div><div class="big serif">$0.58</div><div class="s">per serving, all 10 types plus the activation stack</div></div>
-      </div>
-      <p class="reveal">The price difference between the incomplete option and the complete one: <strong>$0.12 per day.</strong> The coverage difference: everything. Already less than a single functional-medicine appointment. $58.47 for 100 servings.</p>
-    </div>
-
-    <div class="block">
-      <h2 class="sec serif reveal">What to Expect, Week by Week</h2>
-      <ul class="timeline reveal">
-        <li><span class="w">Days 1–7 · Joints</span><span class="d">Joint comfort. Clinical data shows results measurable as early as day one.</span></li>
-        <li><span class="w">Weeks 2–3 · Nails</span><span class="d">Nails stop breaking. The first visible signal for most women.</span></li>
-        <li><span class="w">Weeks 4–6 · Skin</span><span class="d">Skin texture and hydration. Crow's feet measurable in clinical data at week four.</span></li>
-        <li><span class="w">Weeks 8–12 · Hair</span><span class="d">Slowest turnover, last to change, most noticeable when it does.</span></li>
-      </ul>
-      <p class="reveal">Collagen loss doesn't pause while you finish researching. After 30, it's 1% per year. Quiet. Cumulative. Invisible until it isn't. That clock starts on day one. Not the day you finish deciding. Day one.</p>
-    </div>
-
-    <div class="block">
-      <h2 class="sec serif reveal">Their Bet, Not Yours</h2>
-      <p class="reveal">The 30-day money-back guarantee exists because they know what the first 30 days produce. Take it daily for 30 days. If you don't see measurable improvement in at least one area, contact them. Complete refund. No questions. No shipping charges.</p>
-      <p class="reveal">Joint data shows results inside the first week. Nail changes within two to three weeks. The risk is almost entirely on their side. One supply note: fermented eggshell membrane batching has real production constraints, and the 100-serving bag is consistently the first format to sell through. The current $35.48 discount is tied to an active inventory window.</p>
-    </div>
-
-    <figure class="media full reveal">
-      <div class="frame"><img src="/advertorial/assets/an-payoff.webp" width="1200" height="718" loading="lazy" decoding="async" alt="A woman in her early 50s walking down a home staircase with relaxed, easy confidence in soft morning light." /></div>
-      <figcaption>"Went down the stairs this morning and didn't think about it once."</figcaption>
-    </figure>
-
-    <div class="block close">
-      <h2 class="sec serif reveal">Two Paths From Here</h2>
-      <p class="reveal">You've been given partial solutions long enough. You know what partial feels like. You know which tissues didn't respond. You know which symptoms stayed.</p>
-      <p class="reveal"><strong>Continue with what's in the cabinet.</strong> One or two types. Same partial results. Same conversation next year. An active daily choice to keep the deficit running.</p>
-      <p class="reveal"><strong>Or:</strong> give your body the complete coverage it was built to receive, with the activation stack that makes it actually work, backed by a 30-day guarantee, for $0.12 more per serving than what wasn't covering the problem.</p>
-      <blockquote class="pull reveal">The question is simply how long you want to keep waiting to find out what complete actually feels like.</blockquote>
-      <p class="ps reveal"><b>P.S.</b> Donna started Ancient Nutrition six weeks ago. She messaged me last Tuesday: "My knees are quiet. Went down the stairs this morning and didn't think about it once." Her stylist asked if she'd done something different at her last appointment. She hadn't changed a thing. That was week four. Eight months of partial results, all of them real, none of them the whole story. You have 30 days, a complete guarantee, and the answer to what the first eight months didn't cover.</p>
-    </div>
-  </main>
-
-  <!-- sticky offer sidebar -->
-  <aside class="aside">
-    <div class="offercard">
-      <div class="shot"><img src="/advertorial/assets/an-product.webp" width="900" height="900" loading="lazy" decoding="async" alt="Ancient Nutrition Multi Collagen Protein tub." /></div>
-      <div class="body">
-        <div class="rate">★★★★★ <span>4.8 from 13,000+ reviews</span></div>
-        <div class="price"><span class="now serif">$58.47</span><span class="was">$93.95</span></div>
-        <span class="save">You save $35.48</span>
-        <a class="cta" href="https://ancientnutrition.com/" target="_blank" rel="noopener">Claim the price <span class="arrow">→</span></a>
-        <div class="sealrow"><span class="seal mini"><span class="num serif">30</span><span class="lab">Day<br>Guarantee</span></span><span class="t">100 servings · ten types · four real foods. Money-back, no questions.</span></div>
-        <p class="rev">"My knees are quiet for the first time in years." Verified buyer</p>
-      </div>
-    </div>
-  </aside>
-</div></div>
-
-<!-- full offer section -->
 <section class="offer"><div class="in">
   <h2 class="serif reveal">Ancient Nutrition Multi Collagen Protein</h2>
   <p class="reveal" style="color:var(--ink-soft)">100 servings · ten collagen types · four real foods · the activation stack. Virtually flavorless in coffee or a smoothie.</p>
-  <p class="pr reveal"><span class="now serif">$58.47</span><span class="was">$93.95</span><span class="save">Save $35.48</span></p>
-  <div class="sealwrap reveal"><span class="seal"><span class="num serif">30</span><span class="lab">Day<br>Guarantee</span></span></div>
-  <p class="reveal"><a class="cta" href="https://ancientnutrition.com/" target="_blank" rel="noopener">Claim the promotional price <span class="arrow">→</span></a></p>
-  <div class="badges reveal">
-    <span>Third-party lab tested</span><span>Non-GMO · grass-fed</span><span>GMP certified · USA-made</span><span>30-day money-back</span>
+  <p class="price reveal"><span class="now serif">$58.47</span><span class="was">$93.95</span><span class="save">Save $35.48</span></p>
+  <div class="ctas reveal">
+    <a class="cta" href="https://ancientnutrition.com/" target="_blank" rel="noopener">Claim the promotional price</a>
+    <a class="cta-2" href="https://ancientnutrition.com/" target="_blank" rel="noopener">Get the 100-serving bag</a>
   </div>
+  <ul class="trust reveal"><li>Third-party tested</li><li>GMP certified</li><li>Made in USA</li><li>B Corporation</li><li>Regenerative Organic</li></ul>
 </div></section>
+
+<div class="wrap">
+  <p class="ps reveal"><b>P.S.</b> Donna started Ancient Nutrition six weeks ago. She messaged me last Tuesday: "My knees are quiet. Went down the stairs this morning and didn't think about it once." Her stylist asked if she'd done something different at her last appointment. She hadn't changed a thing. That was week four. Eight months of partial results, all of them real, none of them the whole story. You have 30 days, a complete guarantee, and the answer to what the first eight months didn't cover.</p>
+</div>
 
 <footer><div class="in">
   <p class="disc">*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Individual results vary.</p>
   <p class="disc">Spec advertorial created by Adish Jain as a portfolio concept. Not affiliated with or endorsed by Ancient Nutrition. Product facts, ingredients, founders, and review counts are drawn from publicly available Ancient Nutrition materials; "The Wellness Ledger," the bylined journalist, and individual customer stories are illustrative of the advertorial format.</p>
-  <p><a class="back" href="/adish-jain">← Back to Adish Jain's portfolio</a></p>
+  <p><a href="/adish-jain">← Back to Adish Jain's portfolio</a></p>
 </div></footer>
 
 <div class="sticky" id="sticky"><div class="in">
-  <img class="tn" src="/advertorial/assets/an-product.webp" alt="" width="42" height="42" />
   <div class="tx"><b>All 10 collagen types, 4 real foods.</b> <span>$58.47 · 30-day guarantee.</span></div>
-  <a class="cta" href="https://ancientnutrition.com/" target="_blank" rel="noopener">Claim it <span class="arrow">→</span></a>
+  <a class="cta" href="https://ancientnutrition.com/" target="_blank" rel="noopener">Claim it</a>
 </div></div>
 
 <script>
 (function(){
-  var rm = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var progress=document.getElementById('progress'), sticky=document.getElementById('sticky'), offer=document.querySelector('.offer');
+  var rm=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var sticky=document.getElementById('sticky'), offer=document.querySelector('.offer');
   function onScroll(){
-    var h=document.documentElement, max=h.scrollHeight-h.clientHeight, p=max>0?(h.scrollTop||document.body.scrollTop)/max:0;
-    progress.style.width=(p*100).toFixed(2)+'%';
-    var oTop=offer.getBoundingClientRect().top, oVis=oTop<window.innerHeight && oTop>-offer.offsetHeight;
-    if(p>0.12 && !oVis){sticky.classList.add('show');} else {sticky.classList.remove('show');}
+    var y=window.scrollY||document.documentElement.scrollTop;
+    var oTop=offer.getBoundingClientRect().top, oVis=oTop<window.innerHeight&&oTop>-offer.offsetHeight;
+    if(y>700 && !oVis){sticky.classList.add('show');} else {sticky.classList.remove('show');}
   }
   window.addEventListener('scroll',onScroll,{passive:true});
   window.addEventListener('resize',onScroll,{passive:true});
   onScroll();
   var reveals=[].slice.call(document.querySelectorAll('.reveal'));
   function show(el){el.classList.add('in');}
-  if(rm || !('IntersectionObserver' in window)){reveals.forEach(show);}
+  if(rm||!('IntersectionObserver' in window)){reveals.forEach(show);}
   else{
-    reveals.forEach(function(el){if(el.getBoundingClientRect().top<window.innerHeight*0.95)show(el);});
-    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{rootMargin:'0px 0px -10% 0px',threshold:0.05});
+    reveals.forEach(function(el){if(el.getBoundingClientRect().top<window.innerHeight*0.96)show(el);});
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){show(e.target);io.unobserve(e.target);}});},{rootMargin:'0px 0px -8% 0px',threshold:0.04});
     reveals.forEach(function(el){if(!el.classList.contains('in'))io.observe(el);});
     window.addEventListener('load',function(){setTimeout(function(){reveals.forEach(show);},1200);});
   }
