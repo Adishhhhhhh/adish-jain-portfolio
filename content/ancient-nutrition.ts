@@ -265,4 +265,46 @@ export const ANCIENT_NUTRITION_CONCEPTS: Concept[] = [
         "Campaign 1 (The Partial Results Diagnosis), cold-traffic acquisition layer. The editorial, long-form entry point that warms cold audiences before the VSLs retarget them.",
     },
   },
+
+  // ─── Advertorial driver static → the personal-essay editorial page ─────
+  {
+    id: "an-midlife-report",
+    brand: "ancient-nutrition",
+    format: "static",
+    awareness: "problem-aware",
+    status: "spec",
+    state: "produced",
+    conceptName: "Static: The Throw-It-Away Fix",
+    builtDate: "Built June 2026",
+    caption:
+      "At 47, I'd quietly given up on my skin, hair, joints, nails and gut.\n\nThen my oldest friend told me the fix was something I throw in the trash almost every morning.\n\nTwo years of half-results from the collagen with the celebrity face on it. One dinner, one rabbit hole, and a name for why none of it ever fully worked. The full story is at the link.",
+    hooks: [
+      {
+        line: "The fix was something I throw in the trash almost every morning.",
+        rationale:
+          "Curiosity-gap confession hook. Names an everyday, almost embarrassing object (the eggshell membrane) without revealing it, so the only way to close the loop is the click. Reads as a friend's overshare, not a brand claim.",
+      },
+    ],
+    asset: "/advertorial/assets/mr-static.webp",
+    landingUrl: "/advertorial/ancient-nutrition-midlife-report.html",
+    landingSource: "The Midlife Wellness Report",
+    landingTitle:
+      "At 47, the Fix Was Something I Throw in the Trash Every Morning",
+    rationale: {
+      angle:
+        "First-person discovery essay, not an exposé. Where the investigation static borrows a journalist's authority, this one borrows a peer's vulnerability. The advertorial it opens reads as a personal essay in a wellness publication, so the static has to feel like the confession that essay starts from.",
+      icp:
+        "The 40-plus woman living the all-at-once decline (skin, hair, joints, nails, gut) who is already taking a single-source collagen and quietly disappointed it only moved one needle. Problem-aware, partial-results prisoner, high word-of-mouth trust.",
+      hookStrategy:
+        "Two-layer curiosity gap. Line one is the full-body surrender every reader recognises; line two is the trash-can fix she cannot place. The withheld object (fermented eggshell membrane) is the bait, and the editorial masthead lowers her sense of being sold to before she clicks.",
+      whyItWorks:
+        "It weaponises her own half-result. She has lived 'better nails, everything else nothing,' so the essay's Collagen Type Deficiency mechanism reads as the answer to a question she has actually asked. Vulnerability outperforms authority for this peer-trust buyer, and the everyday-object reveal makes the science feel discovered rather than pitched.",
+      strategicIntent:
+        "Top-of-funnel cold-traffic driver. Its only job is the click into the long-form advertorial, where the mechanism, proof and offer do the converting. Measured on click-through to the article, not direct purchase.",
+      diversePotential:
+        "The 'gave up on five things / the fix is in your trash' structure extends into a carousel (one symptom per card, the reveal on the last), a six-second hook video, and an email subject line.",
+      campaignRole:
+        "Campaign 1 (The Partial Results Diagnosis), cold acquisition layer. The empathy-led editorial entry point that runs alongside the investigation static and warms cold audiences before the VSLs retarget them.",
+    },
+  },
 ];
