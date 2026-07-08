@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { ALL_CONCEPTS } from "@/content";
@@ -55,9 +56,35 @@ export function WorkGrid() {
               ))}
             </motion.div>
           )}
+
+          {visible.length > 0 && <DeepLibraryCta />}
         </section>
       </div>
     </>
+  );
+}
+
+// End-of-grid door into the concept libraries. The grid shows the produced
+// work; the 90+ unproduced angles, scripts, and advertorial concepts live
+// inside the four case studies.
+function DeepLibraryCta() {
+  return (
+    <div className="mx-auto mt-10 max-w-[640px] rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-8 text-center shadow-[var(--shadow-card)]">
+      <p className="text-[17px] font-bold text-[var(--color-text-primary)]">
+        This is the produced work. It is not the whole library.
+      </p>
+      <p className="mx-auto mt-2 max-w-[480px] text-[14px] leading-relaxed text-[var(--color-text-secondary)]">
+        90+ more creative angles, VSL scripts, and advertorial concepts sit
+        inside the four case studies, each mapped to its ICP, awareness stage,
+        and campaign role.
+      </p>
+      <Link
+        href="/case-studies"
+        className="mt-5 inline-flex h-10 items-center justify-center rounded-md bg-[var(--color-meta-blue)] px-5 text-[14px] font-semibold text-white transition-colors hover:bg-[var(--color-meta-blue-hover)] active:scale-[0.99]"
+      >
+        See all 90+ angles and scripts
+      </Link>
+    </div>
   );
 }
 

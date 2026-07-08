@@ -9,9 +9,10 @@ export const SITE = {
 };
 
 export const SCREEN_1 = {
-  h1Top: "You don't lose the auction.",
-  h1Bottom: "You lose the audition before it.",
-  sub: "In the 200 milliseconds it takes a feed to load, Meta's AI has already judged your ad against millions of others and cast one winner, on the strength of the creative alone. I build the creative that gets cast.",
+  h1: "200 milliseconds.",
+  lead: "That's how long the feed takes to load every time someone opens Instagram or Facebook. Inside that window, Meta's AI auditions every ad it could show and casts one, on the strength of the creative alone. You don't lose the auction. You lose the audition before it.",
+  valueBeat:
+    "Targeting can't rescue a creative that never gets cast. Creative is the new targeting, and creative diversity is the scale lever: the brands that keep growing are the ones feeding the auction more angles, more awareness stages, more formats than their category can match. That volume, with the strategy attached, is what I build for DTC brands, performance agencies, and the teams that hire creative strategists.",
   bullets: [
     "every angle I considered, in order",
     "every mechanism the creative is built on",
@@ -24,7 +25,8 @@ export const SCREEN_1 = {
 };
 
 export const SCREEN_2 = {
-  positioningOne: "Creative is 49% of your sales lift. Targeting is 11%. Most brands tune the 11. I am the 49.",
+  positioningOne:
+    "Nielsen Catalina Solutions measured what actually moves sales lift in advertising: creative drives 49% of it. Targeting drives 11%. Their finding, my job description. Most brands tune the 11. I am the 49.",
   positioningTwo:
     "Your prospect didn't open the app to be sold. I build the creative that earns the sale anyway.",
   schwartzLabel:

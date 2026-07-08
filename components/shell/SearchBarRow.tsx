@@ -14,11 +14,13 @@ export function SearchBarRow({
   return (
     <div className="sticky top-[60px] z-40 w-full border-b border-[var(--color-border-light)] bg-[var(--color-surface)]">
       <div className="mx-auto flex max-w-[1400px] items-center gap-3 px-6 py-3">
-        <Dropdown label={country} className="min-w-[140px]" />
+        {/* Secondary controls collapse below md so the query field never
+            forces a horizontal page scroll, matching Meta's mobile web. */}
+        <Dropdown label={country} className="hidden min-w-[140px] md:flex" />
         <button
           type="button"
           aria-label="Location info"
-          className="flex h-9 w-9 items-center justify-center rounded-full text-[var(--color-text-secondary)] hover:bg-[var(--color-surface-hover)]"
+          className="hidden h-9 w-9 items-center justify-center rounded-full text-[var(--color-text-secondary)] hover:bg-[var(--color-surface-hover)] md:flex"
         >
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <circle cx="12" cy="12" r="10" />
@@ -26,7 +28,7 @@ export function SearchBarRow({
             <line x1="12" y1="8" x2="12.01" y2="8" />
           </svg>
         </button>
-        <Dropdown label={category} icon={<MonitorIcon />} className="min-w-[150px]" />
+        <Dropdown label={category} icon={<MonitorIcon />} className="hidden min-w-[150px] md:flex" />
 
         <div className="relative flex-1">
           <span className="pointer-events-none absolute left-3 top-1/2 z-10 -translate-y-1/2 text-[var(--color-text-secondary)]">
@@ -58,7 +60,7 @@ export function SearchBarRow({
 
         <button
           type="button"
-          className="flex h-10 items-center gap-2 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-4 text-[15px] font-semibold text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-surface-hover)]"
+          className="hidden h-10 items-center gap-2 rounded-md border border-[var(--color-border)] bg-[var(--color-surface)] px-4 text-[15px] font-semibold text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-surface-hover)] md:flex"
         >
           <BookmarkIcon />
           Saved searches

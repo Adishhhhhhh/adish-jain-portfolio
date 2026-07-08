@@ -55,11 +55,16 @@ export function Hero() {
     >
       <section className="grid grid-cols-1 gap-10 md:grid-cols-[1.05fr_0.95fr] md:items-start">
         <div className="hero-item">
-          <h1 className="text-[40px] font-bold leading-[1.12] tracking-tight text-[var(--color-text-primary)]">
-            {SCREEN_1.h1Top}
-            <br />
-            {SCREEN_1.h1Bottom}
+          <h1 className="text-[52px] font-bold leading-none tracking-tight text-[var(--color-text-primary)]">
+            {SCREEN_1.h1}
           </h1>
+          <p className="mt-4 text-[15px] leading-[1.5] text-[var(--color-text-primary)]">
+            {SCREEN_1.lead}
+          </p>
+          <p className="mt-3 text-[15px] leading-[1.5] text-[var(--color-text-primary)]">
+            {SCREEN_1.valueBeat}
+          </p>
+
           <p className="mt-4 text-[15px] leading-[1.46] text-[var(--color-text-primary)]">
             What you can see, openly, before any of his work runs:
           </p>
@@ -68,10 +73,6 @@ export function Hero() {
               <li key={b}>{b}</li>
             ))}
           </ul>
-
-          <p className="mt-4 text-[15px] leading-[1.46] text-[var(--color-text-primary)]">
-            {SCREEN_1.sub}
-          </p>
 
           <p className="mt-4 text-[15px] text-[var(--color-text-primary)]">
             To find his work, search for the strategist.
@@ -83,16 +84,7 @@ export function Hero() {
           </div>
         </div>
 
-        <div className="hero-item relative h-[300px] overflow-hidden rounded-md bg-[var(--color-surface-alt)] md:h-[360px]">
-          <Image
-            src="/brand/Upwork Dp.jpeg"
-            alt="Adish Jain"
-            fill
-            sizes="(max-width: 768px) 100vw, 460px"
-            className="object-cover object-center"
-            priority
-          />
-        </div>
+        <HeroCollage />
       </section>
 
       <section className="hero-item rounded-md border border-[var(--color-border-light)] bg-[var(--color-surface)] p-5 shadow-[var(--shadow-card)]">
@@ -140,6 +132,89 @@ export function Hero() {
         </p>
       </section>
     </motion.main>
+  );
+}
+
+// The warmth slot, recast. Instead of repeating the advertiser photo (it
+// already lives in the header, cards, and modal), the hero shows the work:
+// six produced creatives from the library in a staggered collage. For the
+// DTC hirer, the ads themselves are the most persuasive image on the page.
+const COLLAGE: { src: string; alt: string; top?: boolean }[][] = [
+  [
+    {
+      src: "/assets/posters/Coffee-and-Meth-Hit-the-Same-Brain-Pathway.jpg",
+      alt: "NeuroGum VSL: Coffee and Meth Hit the Same Brain Pathway",
+    },
+    {
+      src: "/assets/energy-curve-comparison.png",
+      alt: "NeuroGum static: energy curve comparison",
+      top: true,
+    },
+  ],
+  [
+    {
+      src: "/assets/The-Autocorrect.png",
+      alt: "Ancient Nutrition static: The Autocorrect",
+      top: true,
+    },
+    {
+      src: "/assets/posters/The-Walk-That-Keeps-Getting-Shorter.jpg",
+      alt: "PetHonesty VSL: The Walk That Keeps Getting Shorter",
+    },
+  ],
+  [
+    {
+      src: "/assets/dear-coffee-break-up-letter-angle.png",
+      alt: "NeuroGum static: Dear Coffee, a breakup letter",
+      top: true,
+    },
+    {
+      src: "/assets/Belief-Disruption.png",
+      alt: "MitoQ static: Aging is not slowing down",
+      top: true,
+    },
+  ],
+];
+
+function HeroCollage() {
+  return (
+    <div
+      className="hero-item relative h-[300px] overflow-hidden rounded-md md:h-[360px]"
+      role="img"
+      aria-label="Six produced creatives from the library"
+    >
+      <div className="grid h-full grid-cols-3 gap-2">
+        {COLLAGE.map((column, i) => (
+          <div
+            key={i}
+            className={
+              "flex flex-col gap-2 " +
+              (i === 1
+                ? "-mt-6 h-[calc(100%+1.5rem)]"
+                : i === 2
+                  ? "h-[calc(100%+1.5rem)]"
+                  : "h-full")
+            }
+          >
+            {column.map((item) => (
+              <div
+                key={item.src}
+                className="relative flex-1 overflow-hidden rounded-md bg-[var(--color-surface-alt)] ring-1 ring-[var(--color-border-light)]"
+              >
+                <Image
+                  src={item.src}
+                  alt={item.alt}
+                  fill
+                  sizes="(max-width: 768px) 33vw, 160px"
+                  className={"object-cover " + (item.top ? "object-top" : "object-center")}
+                  priority={i === 0}
+                />
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 

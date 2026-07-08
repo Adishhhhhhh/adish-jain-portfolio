@@ -8,6 +8,7 @@ import { BRAND_META } from "@/content/types";
 import { SITE } from "@/content/copy";
 import { SpecPill } from "./SpecPill";
 import { FormatIcons } from "./FormatIcons";
+import { LandingLink } from "./LandingLink";
 
 /**
  * The Ad Library result card, re-tagged.
@@ -59,14 +60,9 @@ export function AdCard({ concept }: { concept: Concept }) {
           <FormatIcons formats={[concept.format]} />
         </div>
 
-        {hookCount > 1 ? (
+        {hookCount > 1 && (
           <p className="flex items-center gap-1.5 text-[13px] text-[var(--color-text-primary)]">
             This concept has {hookCount} hooks
-            <InfoSvg />
-          </p>
-        ) : (
-          <p className="flex items-center gap-1.5 text-[13px] text-[var(--color-text-primary)]">
-            Single hook
             <InfoSvg />
           </p>
         )}
@@ -118,17 +114,34 @@ export function AdCard({ concept }: { concept: Concept }) {
           {expanded ? "See less" : "See more"}
         </button>
 
-        {/* Creative slot */}
-        <CreativeSlot concept={concept} />
+        {/* Creative slot. Advertorial drivers get the click-through link bar
+            attached flush below the creative, matching a real feed ad unit. */}
+        {concept.landingUrl ? (
+          <div className="overflow-hidden rounded-md border border-[var(--color-border-light)]">
+            <CreativeSlot concept={concept} flush />
+            <LandingLink concept={concept} />
+          </div>
+        ) : (
+          <CreativeSlot concept={concept} />
+        )}
       </div>
     </article>
   );
 }
 
-function CreativeSlot({ concept }: { concept: Concept }) {
+function CreativeSlot({
+  concept,
+  flush = false,
+}: {
+  concept: Concept;
+  // flush = rendered inside a combined creative+link container, so the slot
+  // drops its own corner rounding and lets the wrapper clip it.
+  flush?: boolean;
+}) {
+  const rounding = flush ? "" : "rounded-md ";
   if (!concept.asset) {
     return (
-      <div className="flex aspect-square w-full items-center justify-center rounded-md bg-[var(--color-surface-alt)] text-[13px] text-[var(--color-text-secondary)]">
+      <div className={`flex aspect-square w-full items-center justify-center ${rounding}bg-[var(--color-surface-alt)] text-[13px] text-[var(--color-text-secondary)]`}>
         TODO: asset
       </div>
     );
@@ -142,14 +155,14 @@ function CreativeSlot({ concept }: { concept: Concept }) {
         muted
         playsInline
         preload="none"
-        className="h-auto max-h-[440px] w-full rounded-md bg-black object-contain"
+        className={`h-auto max-h-[440px] w-full ${rounding}bg-black object-contain`}
       />
     );
   }
   // Statics render at their true dimensions, centered, never top-cropped.
   // width/height 0 + w-full h-auto is the Next.js pattern for intrinsic-ratio images.
   return (
-    <div className="flex w-full items-center justify-center overflow-hidden rounded-md bg-[var(--color-surface-alt)]">
+    <div className={`flex w-full items-center justify-center overflow-hidden ${rounding}bg-[var(--color-surface-alt)]`}>
       <Image
         src={concept.asset}
         alt={concept.conceptName}
