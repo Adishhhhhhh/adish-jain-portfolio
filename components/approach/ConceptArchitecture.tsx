@@ -1,15 +1,35 @@
 // Concept architecture as a decision tree: persona × awareness × angle ×
-// offer, format last. One lit path = one concept; the ghosted branches are
-// the rest of the combinatorial space. Mirrors how campaigns and ad sets are
-// actually planned in the case studies.
+// offer, format last. Research surfaced five personas for one brand; three
+// carried the wave, two sit mapped and waiting (dashed, Wave 2, from the
+// NeuroGum Creative Expansion Map). One lit path = one concept; the ghosted
+// branches are the rest of the combinatorial space.
 
 const BLUE = "#1877F2";
 const BLUE_FILL = "#e7f3ff";
 const GRAY_STROKE = "#ced0d4";
 const GRAY_TEXT = "#65676b";
 const GHOST = "#e4e6eb";
+const DASH_STROKE = "#8a8d91";
 
-type Node = { label: string; cx: number; cy: number; w: number; active?: boolean };
+type Node = {
+  label: string;
+  cx: number;
+  cy: number;
+  w: number;
+  h?: number;
+  active?: boolean;
+  /** dashed = mapped in research, unproduced on purpose (Wave 2) */
+  wave2?: boolean;
+  fontSize?: number;
+};
+
+const PERSONAS: Node[] = [
+  { label: "The Burned-Out Professional", cx: 95, cy: 70, w: 168, h: 32, fontSize: 11.5 },
+  { label: "The Lifestyle & Identity User", cx: 95, cy: 135, w: 168, h: 32, fontSize: 11.5 },
+  { label: "The Skeptical Optimizer", cx: 95, cy: 200, w: 168, h: 32, fontSize: 11.5, active: true },
+  { label: "The Pouch Switcher", cx: 95, cy: 265, w: 168, h: 32, fontSize: 11.5, wave2: true },
+  { label: "The Precision Doser", cx: 95, cy: 330, w: 168, h: 32, fontSize: 11.5, wave2: true },
+];
 
 const STAGES: Node[] = [
   { label: "Unaware", cx: 267, cy: 70, w: 125 },
@@ -38,8 +58,6 @@ const FORMATS: Node[] = [
   { label: "Advertorial", cx: 730, cy: 155, w: 80 },
 ];
 
-const PERSONA: Node = { label: "The Skeptical Optimizer", cx: 95, cy: 200, w: 160, active: true };
-
 const H = 28;
 
 function link(x1: number, y1: number, x2: number, y2: number) {
@@ -48,7 +66,8 @@ function link(x1: number, y1: number, x2: number, y2: number) {
 }
 
 function Pill({ node }: { node: Node }) {
-  const h = node.label === PERSONA.label ? 30 : H;
+  const h = node.h ?? H;
+  const stroke = node.active ? BLUE : node.wave2 ? DASH_STROKE : GRAY_STROKE;
   return (
     <g>
       <rect
@@ -58,25 +77,39 @@ function Pill({ node }: { node: Node }) {
         height={h}
         rx={h / 2}
         fill={node.active ? BLUE_FILL : "#ffffff"}
-        stroke={node.active ? BLUE : GRAY_STROKE}
+        stroke={stroke}
         strokeWidth={node.active ? 1.5 : 1}
+        strokeDasharray={node.wave2 ? "4 3" : undefined}
       />
       <text
         x={node.cx}
-        y={node.cy + 4}
+        y={node.cy + (node.wave2 ? -1 : 4)}
         textAnchor="middle"
-        fontSize="12"
+        fontSize={node.fontSize ?? 12}
         fontWeight={node.active ? 600 : 400}
         fill={node.active ? "#050505" : GRAY_TEXT}
       >
         {node.label}
       </text>
+      {node.wave2 && (
+        <text
+          x={node.cx}
+          y={node.cy + 11}
+          textAnchor="middle"
+          fontSize="7.5"
+          fontWeight="600"
+          letterSpacing="0.08em"
+          fill={DASH_STROKE}
+        >
+          WAVE 2
+        </text>
+      )}
     </g>
   );
 }
 
 export function ConceptArchitecture() {
-  const personaRight = PERSONA.cx + PERSONA.w / 2;
+  const personaActive = PERSONAS.find((p) => p.active)!;
   const stageActive = STAGES.find((s) => s.active)!;
   const angleActive = ANGLES.find((a) => a.active)!;
   const offerActive = OFFERS.find((o) => o.active)!;
@@ -87,7 +120,7 @@ export function ConceptArchitecture() {
         <svg
           viewBox="0 0 780 360"
           role="img"
-          aria-label="Concept architecture tree: a persona branches into five awareness stages, an awareness stage into five angles, an angle into offers, an offer into formats. One highlighted path shows a single concept."
+          aria-label="Concept architecture tree: five personas branch from research; one persona's tree is expanded through awareness stage, angle, offer, and format. Two dashed personas are mapped and waiting as Wave 2. One highlighted path shows a single concept."
           className="h-auto w-full min-w-[680px]"
         >
           {/* Column headers */}
@@ -99,15 +132,23 @@ export function ConceptArchitecture() {
             <text x={730} y={22}>FORMAT</text>
           </g>
 
-          {/* Links: persona → stages */}
+          {/* Links: active persona → stages */}
           {STAGES.map((s) => (
             <path
               key={`ps-${s.label}`}
-              d={link(personaRight, PERSONA.cy, s.cx - s.w / 2, s.cy)}
+              d={link(personaActive.cx + personaActive.w / 2, personaActive.cy, s.cx - s.w / 2, s.cy)}
               fill="none"
               stroke={s.active ? BLUE : GRAY_STROKE}
               strokeWidth={s.active ? 1.8 : 1.1}
             />
+          ))}
+
+          {/* Ghost stubs: inactive solid personas hold unexpanded trees */}
+          {PERSONAS.filter((p) => !p.active && !p.wave2).map((p) => (
+            <g key={`ghostp-${p.label}`} stroke={GHOST} strokeWidth="1.1" fill="none">
+              <path d={link(p.cx + p.w / 2, p.cy, p.cx + p.w / 2 + 30, p.cy - 9)} />
+              <path d={link(p.cx + p.w / 2, p.cy, p.cx + p.w / 2 + 30, p.cy + 9)} />
+            </g>
           ))}
 
           {/* Ghost stubs: the unexpanded branches of inactive stages */}
@@ -152,7 +193,7 @@ export function ConceptArchitecture() {
           ))}
 
           {/* Nodes on top of links */}
-          <Pill node={PERSONA} />
+          {PERSONAS.map((p) => <Pill key={p.label} node={p} />)}
           {STAGES.map((s) => <Pill key={s.label} node={s} />)}
           {ANGLES.map((a) => <Pill key={a.label} node={a} />)}
           {OFFERS.map((o) => <Pill key={o.label} node={o} />)}
@@ -160,10 +201,10 @@ export function ConceptArchitecture() {
         </svg>
       </div>
       <figcaption className="mt-2 text-center text-[12px] leading-snug text-[var(--color-text-secondary)]">
-        One lit path is one concept: persona × awareness × angle × offer, format
-        last because it is the cheapest variable to swap. Behind a single brand
-        the full tree runs to hundreds of paths; production is reserved for the
-        ones that survive the ideation equation.
+        Research surfaced five personas for one brand. Three carried the wave;
+        two sit mapped and waiting. One lit path shown; the full tree behind a
+        single brand runs to hundreds, and production is reserved for concepts
+        that survive the ideation equation.
       </figcaption>
     </figure>
   );

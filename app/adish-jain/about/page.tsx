@@ -18,20 +18,17 @@ const BOOKS: { title: string; author: string }[] = [
   { title: "DotCom Secrets", author: "Russell Brunson" },
 ];
 
-const PRACTITIONERS: { name: string; focus?: string }[] = [
+const PRACTITIONERS: { name: string; focus: string }[] = [
   { name: "Stefan Georgi", focus: "RMBC method, neurochemistry-based copy sequencing" },
   { name: "Fraser Cottrell", focus: "DTC creative strategy and paid social systems" },
   { name: "Dara Denney", focus: "performance creative and creative strategy frameworks" },
   { name: "Luke Iha", focus: "creative strategy and UGC production" },
   { name: "Matthew Volkwyn", focus: "DTC ad creative and direct response application" },
   { name: "Dan Koe", focus: "articulation, idea clarity, and systematic thinking" },
-  { name: "Sarah Levinger" },
-  { name: "Antonio Ventre" },
-  { name: "Adam Taylor" },
-  { name: "Spencer Pawliv" },
-  { name: "Sam Piliero" },
-  { name: "Blue Sense Digital" },
 ];
+
+const ALSO_IN_ROTATION =
+  "Also in the rotation: Sarah Levinger, Antonio Ventre, Adam Taylor, Spencer Pawliv, Sam Piliero, and Blue Sense Digital.";
 
 const WATCH_LIST: { category: string; brands: string[] }[] = [
   {
@@ -105,6 +102,10 @@ export default function AboutPage() {
             </h2>
             <ul className="mt-2 ml-5 list-disc space-y-1 text-[16px] leading-relaxed text-[var(--color-text-primary)]">
               <li>
+                Writing Meta ad scripts for a DTC health client, ongoing
+                per-script engagements
+              </li>
+              <li>
                 Building speculative portfolio case studies (PetHonesty, NeuroGum,
                 MitoQ, Ancient Nutrition)
               </li>
@@ -156,14 +157,15 @@ export default function AboutPage() {
                     <span className="font-semibold text-[var(--color-text-primary)]">
                       {p.name}
                     </span>
-                    {p.focus && (
-                      <span className="text-[var(--color-text-secondary)]">
-                        {" "}· {p.focus}
-                      </span>
-                    )}
+                    <span className="text-[var(--color-text-secondary)]">
+                      {" "}· {p.focus}
+                    </span>
                   </li>
                 ))}
               </ul>
+              <p className="mt-3 text-[13px] leading-snug text-[var(--color-text-secondary)]">
+                {ALSO_IN_ROTATION}
+              </p>
             </div>
           </div>
 
@@ -247,15 +249,14 @@ export default function AboutPage() {
             I&apos;m drawn to creativity and fascinated by persuasion,
             specifically the mechanics of how ideas move people from indifference
             to action. Creative strategy sits at the intersection of psychology,
-            storytelling, and systematic thinking. It&apos;s not art for
-            art&apos;s sake. It&apos;s engineered communication that changes
-            behavior.
+            storytelling, and systematic thinking. It is engineered
+            communication that changes behavior.
           </p>
           <p className="mt-4 text-[16px] leading-relaxed text-[var(--color-text-primary)]">
-            Most DTC brands die from creative exhaustion, not product failure.
-            They launch with 5-10 ads. A few work. They scale those until
-            performance decays. Then they scramble to produce more, but without
-            systematic frameworks, they&apos;re just guessing louder.
+            Most DTC brands die from creative exhaustion long before product
+            failure. They launch with 5-10 ads. A few work. They scale those
+            until performance decays. Then they scramble to produce more, but
+            without systematic frameworks, they&apos;re just guessing louder.
           </p>
           <p className="mt-4 text-[16px] leading-relaxed text-[var(--color-text-primary)]">
             I solve the creative production problem through:
@@ -293,9 +294,9 @@ export default function AboutPage() {
             </li>
           </ul>
           <p className="mt-4 text-[16px] leading-relaxed text-[var(--color-text-primary)]">
-            The brands winning on paid social aren&apos;t the ones with the best
-            product. They&apos;re the ones who never run out of fresh, strategic
-            creative.
+            The brands winning on paid social are the ones that never run out
+            of fresh, strategic creative. The best product loses to the deeper
+            library.
           </p>
         </section>
       </main>

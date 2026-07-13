@@ -1,6 +1,7 @@
-// Notion section: Approach, restructured for depth. Six stages, each with
-// nested collapsible items. Sourced from the four case studies, the research
-// orchestration framework, and Adish's process notes. Rule: no em dashes.
+// Notion section: Approach, restructured for depth. Five stages, one loop,
+// each stage with nested collapsible items. Sourced from the four case
+// studies, the research orchestration framework, and Adish's process notes.
+// Rules: no em dashes, no contrast-negation patterns in narration.
 
 export type ApproachItem = { heading: string; markdown: string };
 
@@ -34,8 +35,17 @@ export const APPROACH_PARTS: ApproachPart[] = [
 
 - Audit 200 to 500+ competitor ads across Meta and TikTok, covering every competitor on the same spectrum and scale level, not just the two obvious rivals
 - Treat long-running ads as proof of performance. Recency tells you what they are testing; longevity tells you what is working
-- Build a profile per competitor: positioning, product use cases, price point, the personas and ICPs their creative is visibly targeting, and the acquisition funnel behind the click
-- Tear down each competitor's creative in depth: angles, variations, formats, hooks, scripts, copy patterns, offers, landing pages
+- Build a profile per competitor
+  - Positioning claim and price point
+  - Product use cases
+  - The personas and ICPs their creative is visibly targeting
+  - The acquisition funnel behind the click
+- Tear down each competitor's creative in depth
+  - Angles and awareness coverage
+  - Hooks and the first three seconds
+  - Script structure and copy patterns
+  - Format mix and variation families
+  - Offers, CTAs, and landing destinations
 - Quantify their format mix (UGC vs static vs educational split) and read testing velocity from active ad volume
 - Map the category conversation: what everyone says, what nobody says, which claims are saturated and which are unclaimed
 
@@ -43,10 +53,17 @@ export const APPROACH_PARTS: ApproachPart[] = [
       },
       {
         heading: "Customer Voice and Psychographics",
-        markdown: `The goal is not knowing about the customer. It is being able to speak as them.
+        markdown: `The goal is being able to speak as the customer, from inside their head.
 
-- Analyze 100 to 200+ reviews per product for pain language, desire language, and objection patterns, mined from where the audience actually talks: Reddit threads, Amazon reviews, Quora, YouTube and TikTok comments, community forums
-- Extract exact phrases, never marketer paraphrases. For every ICP, document the cliches, buzzwords, running jokes, and tone they use, so the creative speaks in their register instead of at it
+- Analyze 100 to 200+ reviews per product for pain language, desire language, and objection patterns
+  - Product and Amazon reviews for purchase-moment language
+  - Reddit and Quora for unguarded peer talk
+  - YouTube and TikTok comments for reaction language
+  - Community forums for long-tenure vocabulary
+- Extract exact phrases, never marketer paraphrases
+  - Cliches and buzzwords, documented per ICP
+  - Running jokes and shared references
+  - Register and tone: how they talk when no brand is listening
 - Harvest the metaphors they reach for unprompted. "The pharmacy on the counter." "Wired but scattered." These become creative raw material
 - Build the failed-solution autopsy: the frustration, what they already tried, why it failed them. The gap between what they bought and what they wanted is where the next ad lives
 - Weight behavioral signals over stated preferences. What they screenshot, save, and send matters more than what they claim to want
@@ -56,18 +73,27 @@ export const APPROACH_PARTS: ApproachPart[] = [
       {
         heading: "Market Sizing, Sophistication and Segmentation",
         markdown: `- Calculate TAM by awareness level, per ICP and persona, as a distribution: what share of the market is unaware, problem aware, solution aware, product aware, most aware, and what each stage needs from creative
-- Turn the distribution into a targeting decision, not a demographics deck. For PetHonesty, Product Aware plus Solution Aware held 55 to 65% of the market, so the rotation leads there
+- Turn the distribution into a targeting decision instead of a demographics deck. For PetHonesty, Product Aware plus Solution Aware held 55 to 65% of the market, so the rotation leads there
 - Assess market sophistication separately from awareness, using Schwartz's five stages. A stage-two market still buys claims. A stage-four market needs a new mechanism. A stage-five market buys identity. Pitching a mechanism to a market that needs identity is how good products run dead creative
 - Build two to three named ICP profiles per brand (the Anxious Caregiver, the Skeptical Optimizer, the Partial Results Prisoner), each with specific pains, desires, objections, and buying triggers
 - Identify the underserved segments competitors are ignoring, then check whether the product can credibly serve them before a single concept is written`,
       },
       {
         heading: "Product Mechanism Deep-Dive",
-        markdown: `- Develop two unique mechanisms, not one. The **problem mechanism** explains why the pain exists and persists despite everything the customer has tried. The **solution mechanism** explains why this product resolves what the alternatives structurally cannot. Ancient Nutrition's Collagen Type Deficiency is the problem mechanism; the full-spectrum activation stack is the solution mechanism. One creates the itch, the other is the only scratch
+        markdown: `- Develop two unique mechanisms. The **problem mechanism** explains why the pain exists and persists despite everything the customer has tried. The **solution mechanism** explains why this product resolves what the alternatives structurally cannot. Ancient Nutrition's Collagen Type Deficiency is the problem mechanism; the full-spectrum activation stack is the solution mechanism. One creates the itch, the other is the only scratch
 - Understand the mechanism at a technical level first, then translate it into customer-facing language without flattening it
-- Calibrate the mechanism to the persona. How you talk about the importance of sleep to a 60-year-old is not how you talk about it to a 30-year-old. Same science, different stakes, different vocabulary, different proof
+- Calibrate the mechanism to the persona. The importance of sleep reads differently to a 60-year-old than to a 30-year-old. Same science, different stakes, different vocabulary, different proof
 - Map every proof point: the evidence, its source, and what precisely it proves. Claims that cannot be traced to receipts get cut
-- Position the mechanism as differentiation, not a feature list. The mechanism is the reason to believe, and the reason the cheaper alternative stays in the cart`,
+- Position the mechanism as differentiation rather than a feature list. The mechanism is the reason to believe, and the reason the cheaper alternative stays in the cart`,
+      },
+      {
+        heading: "Offer and Funnel Context",
+        markdown: `The creative closes what the offer opens, so both get researched together.
+
+- Price framing is mapped before scripts are written: per-day math, stack-replacement math, cost-of-inaction math. $85 a month meets resistance; $0.85 a day next to a five-product stack reads as relief
+- Risk reversal is inventoried as creative material: guarantees, trials, and subscription terms decide how hard a CTA can close
+- Subscription mechanics shape the asset list. The 30-day churn window is why timeline creatives exist in three of the four case studies
+- The click destination is chosen per awareness stage: advertorial pre-sell for cold education, product page for warm intent, and the ad is written to its lander so both make one argument`,
       },
       {
         heading: "Deep Desire and Identity Research",
@@ -136,12 +162,12 @@ export const APPROACH_PARTS: ApproachPart[] = [
     id: "ideation",
     title: "Creative Ideation",
     intro:
-      "Ideation is not brainstorming. It is a constraint system with an inspiration layer on top and an incubation process underneath, and the winning concepts live where everything intersects.",
+      "Ideation is a constraint system with an inspiration layer on top and an incubation process underneath. The winning concepts live where everything intersects.",
     diagram: "ideation",
     items: [
       {
         heading: "The Constraint Set",
-        markdown: `Constraints are where creativity is conceived, not where it is killed. The variables:
+        markdown: `Creativity is conceived inside constraints. The variables:
 
 - Product and brand truths: what is verifiably true about this specific offer
 - Competitive research: what is working, what is saturated, what is being ignored
@@ -181,10 +207,10 @@ The diagram above is the actual test: a concept that clears only two or three ci
   // ── 04 ──────────────────────────────────────────────────────────────────
   {
     n: "04",
-    id: "ai-systems",
-    title: "AI Systems Architecture",
+    id: "production",
+    title: "Production System",
     intro:
-      "AI for speed and scale. Human judgment for strategy, taste, and the kill decision. The division of labor is explicit, and the stack is built, not borrowed.",
+      "AI for speed and scale, human judgment for strategy, taste, and the kill decision. One system, built not borrowed, and every format chosen by awareness stage and emotional register, never by default.",
     diagram: "workflow",
     items: [
       {
@@ -202,7 +228,7 @@ The diagram above is the actual test: a concept that clears only two or three ci
       },
       {
         heading: "The Skill Library",
-        markdown: `The engine is not a chat window. It is a library of purpose-built skills inside Claude and Claude Code, each owning one stage of the pipeline:
+        markdown: `The engine is a library of purpose-built skills inside Claude and Claude Code, each owning one stage of the pipeline:
 
 - **Research:** a method-actor research system that gets inside the customer's head before any copy exists: psychology maps, content ecosystem maps (what they watch, read, follow, and which rabbit holes they fall down), customer avatars, verbatim language banks, market awareness analysis. Swipe intelligence pulls from the Meta Ad Library, Taboola, Outbrain, and ClickBank, so every concept is grounded in ads already spending money
 - **Brand context:** a brand-brief creator converts raw research into a reusable brand brain: brand context, avatars, and an angle library, packaged so every downstream skill loads it on demand. One pass, and every later script is on-voice by construction
@@ -211,37 +237,13 @@ The diagram above is the actual test: a concept that clears only two or three ci
       },
       {
         heading: "The Video and Voice Pipeline",
-        markdown: `- Script to shot plan: every VSL is broken into a per-clip prompting document, and script beats are mapped to planned B-roll before anything is generated. The edit plan drives generation, not the reverse
+        markdown: `- Script to shot plan: every VSL is broken into a per-clip prompting document, and script beats are mapped to planned B-roll before anything is generated, so the edit plan drives what gets generated
 - Generation through Kling and Seedance, driven by dedicated frame-to-video prompt skills. Frame consistency is engineered: the reference frame's subject is translated into exhaustive written description (face structure, skin texture, wardrobe, camera characteristics) so the same person holds across separately generated clips, with anti-artifact rules riding in every prompt
 - One clip per prompt, reviewed before the next is issued. Volume never outruns judgment
 - Voice through ElevenLabs, with a consistency system that keeps delivery uniform across separately generated segments, so a multi-clip VSL reads as one continuous performance
 - Assembly, timing, and finishing in Premiere Pro. Output: the five produced videos in this Library
 - On the wider bench, cast per job: dedicated prompt skills for VEO 3 and Sora, plus Gemini and Higgsfield`,
       },
-      {
-        heading: "The QA Gates",
-        markdown: `- Every writing skill runs pre-delivery checks tuned to kill AI-generic output: hard bans on known machine-writing tells, contrast negation constructions, thesis restatement, the patterns a trained eye spots in one line
-- A standing banned-constructions list travels with every project through a global context layer, so the rules are enforced everywhere instead of living in one prompt
-- Claims and statistics clear the verified-stats file before publication
-- The last gate is not automated: nothing ships that I have not read the way the customer would`,
-      },
-      {
-        heading: "The Workflow Loop",
-        markdown: `AI generates volume → I refine for strategy → AI iterates on feedback → I approve final assets.
-
-Ten times the output velocity of traditional copywriting, with strategic coherence intact, because every loop runs inside the constraint set defined upstream. The loop is also where compounding starts: every edit teaches the next generation pass.`,
-      },
-    ],
-  },
-
-  // ── 05 ──────────────────────────────────────────────────────────────────
-  {
-    n: "05",
-    id: "production",
-    title: "Asset Production Pipeline",
-    intro:
-      "Formats are chosen by awareness stage and emotional register, never by default. One research brief feeds every surface.",
-    items: [
       {
         heading: "VSL Scripts",
         markdown: `- Awareness-level specific: stories for unaware, mechanism education for solution aware, comparison for product aware
@@ -267,18 +269,33 @@ Ten times the output velocity of traditional copywriting, with strategic coheren
       },
       {
         heading: "Statics: Reverse-Engineered Systems",
-        markdown: `- The generation system is reverse-engineered from proven ads: winning statics are deconstructed into layout, hierarchy, and copy structure, then encoded as reusable generation systems in Claude Code. Proven ad in, repeatable system out, never the other way around
+        markdown: `- The generation system is reverse-engineered from proven ads: winning statics are deconstructed into layout, hierarchy, and copy structure, then encoded as reusable generation systems in Claude Code. Proven ad in, repeatable system out
 - An earlier JSON-spec method proved the approach and was retired. The current system keeps the rigor and drops the ceremony
 - System-level consistency keeps a brand's statics coherent across a 20-asset rotation
 - Format diversity on demand: comparison charts, native formats, diagrams, product shots, lifestyle scenes
 - Output: the 18 finished statics in this Library`,
       },
+      {
+        heading: "The QA Gates",
+        markdown: `Four gates, run in order. Nothing ships on machine judgment alone.
+
+- **Gate 1, machine tells:** hard bans on known AI-writing constructions, contrast negation first among them, thesis restatement, the patterns a trained eye spots in one line
+- **Gate 2, the banned list:** a standing banned-constructions file travels with every project through a global context layer, so the rules are enforced everywhere instead of living in one prompt
+- **Gate 3, receipts:** every claim and statistic clears the verified-stats file before publication
+- **Gate 4, the human read:** nothing ships that I have not read the way the customer would`,
+      },
+      {
+        heading: "The Workflow Loop",
+        markdown: `AI generates volume → I refine for strategy → AI iterates on feedback → I approve final assets.
+
+Ten times the output velocity of traditional copywriting, with strategic coherence intact, because every loop runs inside the constraint set defined upstream. The loop is also where compounding starts: every edit teaches the next generation pass.`,
+      },
     ],
   },
 
-  // ── 06 ──────────────────────────────────────────────────────────────────
+  // ── 05 ──────────────────────────────────────────────────────────────────
   {
-    n: "06",
+    n: "05",
     id: "iteration",
     title: "Testing, Iteration and Compound Learning",
     intro:
@@ -287,6 +304,10 @@ Ten times the output velocity of traditional copywriting, with strategic coheren
       {
         heading: "The Testing Logic",
         markdown: `- Hooks are the first variable: same body, different opening, because the first three seconds decide most of the outcome
+- Judgment waits for sample: 72 hours, 2,000 impressions, or 150 clicks, whichever lands first, before any verdict on a creative
+- The metric hierarchy is diagnostic: 3-second view rate reads hook health, CTR reads attention, landing CVR reads offer and message match. Each failure points at a different fix
+- Kill and scale are thresholds set before launch, and budget rebalances weekly toward marginal winners until returns diminish
+- Fatigue has signals: frequency creep and CTR decay trigger a refresh from the angle map, and the map is already written
 - Creative diversity is portfolio logic: angles spread across stages and ICPs so fatigue in one lane never stalls the account
 - Winners get scaled and multiplied into adjacent formats. Learnings feed back into the constraint set, so the next generation pass starts smarter`,
       },

@@ -37,8 +37,8 @@ export default function ApproachPage() {
             {APPROACH_INTRO}
           </h1>
           <p className="mt-2 max-w-[720px] text-[15px] leading-relaxed text-[var(--color-text-secondary)]">
-            Six stages, run in order. The same pipeline produced every concept
-            in the Library. Open any stage for the full working depth.
+            Five stages, one loop. The same pipeline produced every concept in
+            the Library. Open any stage for the full working depth.
           </p>
         </header>
 

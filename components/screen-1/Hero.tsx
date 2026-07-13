@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { SCREEN_1, SITE } from "@/content/copy";
+import { BRAND_META, type Brand } from "@/content/types";
 
 const SEARCH_TARGET = SITE.advertiserName; // "Adish Jain"
 
@@ -64,18 +65,8 @@ export function Hero() {
           <p className="mt-3 text-[15px] leading-[1.5] text-[var(--color-text-primary)]">
             {SCREEN_1.valueBeat}
           </p>
-
-          <p className="mt-4 text-[15px] leading-[1.46] text-[var(--color-text-primary)]">
-            What you can see, openly, before any of his work runs:
-          </p>
-          <ul className="mt-2 list-disc space-y-1 pl-5 text-[15px] text-[var(--color-text-primary)]">
-            {SCREEN_1.bullets.map((b) => (
-              <li key={b}>{b}</li>
-            ))}
-          </ul>
-
-          <p className="mt-4 text-[15px] text-[var(--color-text-primary)]">
-            To find his work, search for the strategist.
+          <p className="mt-4 text-[15px] leading-[1.5] text-[var(--color-text-primary)]">
+            {SCREEN_1.libraryLine}
           </p>
 
           <div className="mt-6 flex items-start gap-2 rounded-md border border-[var(--color-border-light)] bg-[var(--color-surface-alt)] p-3 text-[13px] text-[var(--color-text-primary)]">
@@ -84,7 +75,7 @@ export function Hero() {
           </div>
         </div>
 
-        <HeroCollage />
+        <FeedAudition />
       </section>
 
       <section className="hero-item rounded-md border border-[var(--color-border-light)] bg-[var(--color-surface)] p-5 shadow-[var(--shadow-card)]">
@@ -135,85 +126,181 @@ export function Hero() {
   );
 }
 
-// The warmth slot, recast. Instead of repeating the advertiser photo (it
-// already lives in the header, cards, and modal), the hero shows the work:
-// six produced creatives from the library in a staggered collage. For the
-// DTC hirer, the ads themselves are the most persuasive image on the page.
-const COLLAGE: { src: string; alt: string; top?: boolean }[][] = [
-  [
-    {
-      src: "/assets/posters/Coffee-and-Meth-Hit-the-Same-Brain-Pathway.jpg",
-      alt: "NeuroGum VSL: Coffee and Meth Hit the Same Brain Pathway",
-    },
-    {
-      src: "/assets/energy-curve-comparison.png",
-      alt: "NeuroGum static: energy curve comparison",
-      top: true,
-    },
-  ],
-  [
-    {
-      src: "/assets/The-Autocorrect.png",
-      alt: "Ancient Nutrition static: The Autocorrect",
-      top: true,
-    },
-    {
-      src: "/assets/posters/The-Walk-That-Keeps-Getting-Shorter.jpg",
-      alt: "PetHonesty VSL: The Walk That Keeps Getting Shorter",
-    },
-  ],
-  [
-    {
-      src: "/assets/dear-coffee-break-up-letter-angle.png",
-      alt: "NeuroGum static: Dear Coffee, a breakup letter",
-      top: true,
-    },
-    {
-      src: "/assets/Belief-Disruption.png",
-      alt: "MitoQ static: Aging is not slowing down",
-      top: true,
-    },
-  ],
+// ── The Feed Audition ──────────────────────────────────────────────────────
+// The 200ms claim, dramatized. A recreated generic feed skeleton (no Meta
+// chrome) loads, a 200ms tick fills, and one sponsored creative is cast into
+// the slot. Rotates through three produced assets. Reduced motion renders the
+// first creative statically with no shimmer or rotation.
+
+const FEED_ADS: { src: string; brand: Brand; video?: boolean }[] = [
+  { src: "/assets/energy-curve-comparison.png", brand: "neurogum" },
+  { src: "/assets/The-Autocorrect.png", brand: "ancient-nutrition" },
+  {
+    src: "/assets/posters/The-Walk-That-Keeps-Getting-Shorter.jpg",
+    brand: "pethonesty",
+    video: true,
+  },
 ];
 
-function HeroCollage() {
+const BRAND_AVATAR_COLORS: Record<Brand, string> = {
+  neurogum: "#0e7490",
+  "ancient-nutrition": "#4d7c0f",
+  pethonesty: "#b45309",
+  mitoq: "#7c2d12",
+};
+
+const LOAD_MS = 900;
+const CYCLE_MS = 3500; // 900 loading + ~2600 hold
+
+function FeedAudition() {
+  const reducedMotion = useReducedMotion();
+  const [index, setIndex] = useState(0);
+  const [cast, setCast] = useState(false);
+  const [cycle, setCycle] = useState(0);
+  const swapTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  useEffect(() => {
+    if (reducedMotion) {
+      setCast(true);
+      return;
+    }
+    const first = setTimeout(() => setCast(true), LOAD_MS);
+    const loop = setInterval(() => {
+      setCast(false);
+      setCycle((c) => c + 1);
+      swapTimer.current = setTimeout(() => {
+        setIndex((i) => (i + 1) % FEED_ADS.length);
+        setCast(true);
+      }, LOAD_MS);
+    }, CYCLE_MS);
+    return () => {
+      clearTimeout(first);
+      clearInterval(loop);
+      if (swapTimer.current) clearTimeout(swapTimer.current);
+    };
+  }, [reducedMotion]);
+
+  const ad = FEED_ADS[index];
+  const brand = BRAND_META[ad.brand];
+
   return (
     <div
-      className="hero-item relative h-[300px] overflow-hidden rounded-md md:h-[360px]"
+      className="hero-item flex h-[300px] flex-col items-center justify-center md:h-[360px]"
       role="img"
-      aria-label="Six produced creatives from the library"
+      aria-label="A recreated feed loading: the skeleton resolves and one sponsored creative is cast into the slot."
     >
-      <div className="grid h-full grid-cols-3 gap-2">
-        {COLLAGE.map((column, i) => (
-          <div
-            key={i}
-            className={
-              "flex flex-col gap-2 " +
-              (i === 1
-                ? "-mt-6 h-[calc(100%+1.5rem)]"
-                : i === 2
-                  ? "h-[calc(100%+1.5rem)]"
-                  : "h-full")
-            }
-          >
-            {column.map((item) => (
-              <div
-                key={item.src}
-                className="relative flex-1 overflow-hidden rounded-md bg-[var(--color-surface-alt)] ring-1 ring-[var(--color-border-light)]"
-              >
-                <Image
-                  src={item.src}
-                  alt={item.alt}
-                  fill
-                  sizes="(max-width: 768px) 33vw, 160px"
-                  className={"object-cover " + (item.top ? "object-top" : "object-center")}
-                  priority={i === 0}
-                />
-              </div>
-            ))}
+      <div
+        aria-hidden
+        className="flex h-[calc(100%-26px)] w-[210px] flex-col overflow-hidden rounded-[36px] bg-[var(--color-surface)] px-3 pb-3 pt-4 shadow-[var(--shadow-card)] ring-1 ring-[var(--color-border)]"
+      >
+        {/* Feed chrome: identity row */}
+        <div className="flex items-center gap-2">
+          <div className="feed-shimmer h-6 w-6 shrink-0 rounded-full bg-[var(--color-surface-alt)]" />
+          <div className="flex-1 space-y-1">
+            <div className="feed-shimmer h-1.5 w-2/3 rounded bg-[var(--color-surface-alt)]" />
+            <div className="feed-shimmer h-1.5 w-1/3 rounded bg-[var(--color-surface-alt)]" />
           </div>
-        ))}
+        </div>
+
+        {/* Feed chrome: stories row */}
+        <div className="mt-2.5 flex gap-2">
+          {[0, 1, 2, 3].map((i) => (
+            <div
+              key={i}
+              className="feed-shimmer h-8 w-8 rounded-full bg-[var(--color-surface-alt)] ring-1 ring-[var(--color-border-light)]"
+            />
+          ))}
+        </div>
+
+        {/* The sponsored slot */}
+        <div className="mt-2.5 flex min-h-0 flex-1 flex-col overflow-hidden rounded-lg border border-[var(--color-border-light)]">
+          <div className="flex items-center gap-1.5 px-2 py-1.5">
+            <span
+              className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full text-[9px] font-bold text-white"
+              style={{ background: BRAND_AVATAR_COLORS[ad.brand] }}
+            >
+              {brand.displayName.charAt(0)}
+            </span>
+            <span className="flex min-w-0 flex-col leading-tight">
+              <span className="truncate text-[9px] font-semibold text-[var(--color-text-primary)]">
+                {brand.displayName}
+              </span>
+              <span className="text-[8px] text-[var(--color-text-secondary)]">
+                Sponsored
+              </span>
+            </span>
+          </div>
+
+          {/* Media area: skeleton beneath, creative cast on top */}
+          <div className="relative min-h-0 flex-1 overflow-hidden bg-[var(--color-surface-alt)]">
+            <div className="feed-shimmer absolute inset-0 bg-[var(--color-surface-alt)]" />
+            {FEED_ADS.map((item, i) => (
+              <Image
+                key={item.src}
+                src={item.src}
+                alt=""
+                fill
+                sizes="200px"
+                priority={i === 0}
+                className={
+                  "object-cover object-top transition-[opacity,transform] duration-200 ease-out " +
+                  (i === index && cast
+                    ? "scale-100 opacity-100"
+                    : "scale-[0.98] opacity-0")
+                }
+              />
+            ))}
+            <span
+              className={
+                "absolute inset-0 flex items-center justify-center transition-opacity duration-200 " +
+                (ad.video && cast ? "opacity-100" : "opacity-0")
+              }
+            >
+              <span className="flex h-8 w-8 items-center justify-center rounded-full bg-black/55">
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="#ffffff">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
+              </span>
+            </span>
+          </div>
+
+          {/* The 200ms tick */}
+          <div className="flex items-center gap-1.5 px-2 py-1">
+            <span className="relative h-[3px] flex-1 overflow-hidden rounded-full bg-[var(--color-surface-alt)]">
+              <span
+                key={cycle}
+                className="feed-tick absolute inset-y-0 left-0 rounded-full bg-[var(--color-meta-blue)]"
+              />
+            </span>
+            <span className="font-mono text-[8px] leading-none text-[var(--color-text-secondary)]">
+              200ms
+            </span>
+          </div>
+
+          {/* Thin CTA bar */}
+          <div className="flex items-center justify-between bg-[var(--color-surface-alt)] px-2 py-1.5">
+            <span className="text-[8.5px] font-semibold text-[var(--color-text-primary)]">
+              Learn more
+            </span>
+            <svg
+              width="9"
+              height="9"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              className="text-[var(--color-text-secondary)]"
+            >
+              <polyline points="9 6 15 12 9 18" />
+            </svg>
+          </div>
+        </div>
       </div>
+
+      <p className="mt-2 text-[12px] text-[var(--color-text-secondary)]">
+        The feed loads. One ad gets cast.
+      </p>
     </div>
   );
 }

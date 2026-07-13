@@ -1,5 +1,6 @@
 // All shared copy lives here. From PLAN.md §5 (the distributed argument).
-// Rule: no em dashes anywhere. Commas, periods, ellipses only.
+// Rules: no em dashes anywhere. No contrast-negation patterns in site
+// narration (quoted campaign copy is exempt). Refinement spec v2, Change 1/4.
 
 export const SITE = {
   advertiserName: "Adish Jain",
@@ -10,25 +11,22 @@ export const SITE = {
 
 export const SCREEN_1 = {
   h1: "200 milliseconds.",
-  lead: "That's how long the feed takes to load every time someone opens Instagram or Facebook. Inside that window, Meta's AI auditions every ad it could show and casts one, on the strength of the creative alone. You don't lose the auction. You lose the audition before it.",
+  lead: "That's how long the feed takes to load every time someone opens Instagram or Facebook. In that window, Meta's AI auditions every ad it could show and casts one, on the strength of the creative alone. The auction is decided at the audition.",
   valueBeat:
-    "Targeting can't rescue a creative that never gets cast. Creative is the new targeting, and creative diversity is the scale lever: the brands that keep growing are the ones feeding the auction more angles, more awareness stages, more formats than their category can match. That volume, with the strategy attached, is what I build for DTC brands, performance agencies, and the teams that hire creative strategists.",
-  bullets: [
-    "every angle I considered, in order",
-    "every mechanism the creative is built on",
-    "every awareness-stage decision behind the hook",
-  ],
+    "Creative is the new targeting, and diversity is the scale lever. The brands that keep growing feed the auction more angles, more awareness stages, more formats than their category can match. I build that volume, with the strategy attached, for DTC brands and performance agencies.",
+  libraryLine:
+    "Every angle, every mechanism, every awareness call, written down before the work runs. Run the search to open the library.",
   specDisclosure:
     "Everything here is spec work, built to show the full strategy behind the creative, the part a real ad account never lets you see.",
   attentionThesis:
-    "Your competition is not the other brand in your category. It is a stranger's vacation photo, a breakup text, and the urge to put the phone down.",
+    "Your competition is a stranger's vacation photo, a breakup text, and the urge to put the phone down.",
 };
 
 export const SCREEN_2 = {
   positioningOne:
-    "Nielsen Catalina Solutions measured what actually moves sales lift in advertising: creative drives 49% of it. Targeting drives 11%. Their finding, my job description. Most brands tune the 11. I am the 49.",
+    "Every card below carries its full strategic rationale: the angle, the ICP, the awareness stage, and the campaign role.",
   positioningTwo:
-    "Your prospect didn't open the app to be sold. I build the creative that earns the sale anyway.",
+    "90+ more angles, scripts, and advertorial concepts live inside the four case studies.",
   schwartzLabel:
     "Five prospects, five distances from yes. Schwartz named them in 1966. Pick the one you're selling to.",
 };

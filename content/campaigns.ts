@@ -34,12 +34,12 @@ export const CAMPAIGNS: Record<Brand, CampaignSpec> = {
     tagline: "Companion wellness, reframed as a nutrition gap that food cannot close.",
     tldr: [
       "The 10-in-1 already wins on formula. The Library's job is to stop the scroll for owners who explain decline as 'just aging.'",
-      "Anxious Caregivers (the largest segment by far) need a diagnostic, not another supplement claim. The Walk-Shorter VSL is the diagnostic.",
-      "Format diversity carries the same insight across video, static, and advertorial so a single research foundation generates 21 VSLs and 5 statics, not five.",
+      "Anxious Caregivers (the largest segment by far) need a diagnostic, and the category keeps handing them claims. The Walk-Shorter VSL is the diagnostic.",
+      "Format diversity carries the same insight across video, static, and advertorial, so a single research foundation generates 21 VSLs and 5 statics instead of the usual handful.",
     ],
     overview: [
       "PetHonesty sells a single multi-system chew for dogs against a category that sells single-system supplements in five separate bottles. The asset rotation has to make that consolidation feel obvious in the first three seconds.",
-      "The audience does not need to be convinced that nutrition matters. They need to be convinced that the decline they have already observed is a nutrition story, not an aging story. Every Problem Aware asset hands them that reframe.",
+      "The audience already believes nutrition matters. The convincing job is sharper: the decline they have already observed is a nutrition story that has been mislabeled as aging. Every Problem Aware asset hands them that reframe.",
     ],
     whyThisBrand:
       "Companion wellness is the rare category where the buyer is also the witness. The owner sees the dog stop running before any data exists. That puts an unusual amount of weight on emotional accuracy. PetHonesty's product is built for that buyer, but the existing creative reads as generic supplement claims. The opportunity is to write the ads in the language the owner already uses with themselves.",
@@ -62,7 +62,7 @@ export const CAMPAIGNS: Record<Brand, CampaignSpec> = {
       },
       {
         heading: "The pharmacy on the counter",
-        body: "Owners who already supplement describe their shelf as exhausting to manage. The 10-in-1 wins that segment by consolidation, not by being marginally better at any single system.",
+        body: "Owners who already supplement describe their shelf as exhausting to manage. The 10-in-1 wins that segment on consolidation, the one dimension a five-bottle stack can never match.",
       },
       {
         heading: "Vet validation, without endorsement risk",
@@ -87,7 +87,7 @@ export const CAMPAIGNS: Record<Brand, CampaignSpec> = {
       },
     ],
     closingBet:
-      "The shortest path to PetHonesty's next 100k subscribers is not a better claim, it is a better diagnosis. The Library is engineered to make that diagnosis the first sentence the owner reads.",
+      "The shortest path to PetHonesty's next 100k subscribers is a better diagnosis. The Library is engineered to make that diagnosis the first sentence the owner reads.",
   },
 
   neurogum: {
@@ -98,14 +98,14 @@ export const CAMPAIGNS: Record<Brand, CampaignSpec> = {
     tldr: [
       "NeuroGum has $50M+ lifetime sales and a TikTok-to-Amazon engine, but the rotation treats first-time discoverers and active comparison shoppers as one audience. The Library segments them.",
       "Caffeine and Meth is the showpiece. It reframes the entire category from 'better caffeine' to 'fix the delivery + add the missing half.'",
-      "DR VSLs teach the mechanism. Creator content carries social proof. Statics retarget. Each format serves a different beat, not a redundant one.",
+      "DR VSLs teach the mechanism. Creator content carries social proof. Statics retarget. Each format serves its own beat in the sequence.",
     ],
     overview: [
       "The product has product-market fit, distribution, and cultural momentum. The question is whether the creative strategy matches the engine underneath it.",
       "Most caffeine ads sell focus. NeuroGum should sell smooth focus, and 'smooth' is a mechanism word the audience has not been taught yet. The asset rotation teaches that word and then owns it.",
     ],
     whyThisBrand:
-      "Caffeine is a category where the buyer is also the user, and the user has already formed an opinion. The opportunity is not to convert the coffee skeptic but to give the coffee-loyal a reason to switch, in their own language. NeuroGum's L-theanine + buccal-delivery story is uniquely defensible, but it lives on the website, not in the ads.",
+      "Caffeine is a category where the buyer is also the user, and the user has already formed an opinion. The opportunity is to give the coffee-loyal a reason to switch, in their own language; the coffee skeptic was never the target. NeuroGum's L-theanine + buccal-delivery story is uniquely defensible, but it lives on the website and never reaches the ads.",
     whatIsWorking: [
       "Heavy influencer reach (Schulz, Ohno, Hooper, Rogan tailwinds) drives top-of-funnel.",
       "TikTok-to-Amazon pipeline gives a clean conversion path for warm audiences.",
@@ -121,7 +121,7 @@ export const CAMPAIGNS: Record<Brand, CampaignSpec> = {
     research: [
       {
         heading: "Digestive bottleneck",
-        body: "Drinks route through digestion in 30 to 45 minutes. Buccal delivery bypasses that and lands in 5 to 10. The asset rotation makes the timing diagram the hero, not a footnote.",
+        body: "Drinks route through digestion in 30 to 45 minutes. Buccal delivery bypasses that and lands in 5 to 10. The asset rotation promotes the timing diagram from footnote to hero.",
       },
       {
         heading: "Scattered arousal",
@@ -176,7 +176,7 @@ export const CAMPAIGNS: Record<Brand, CampaignSpec> = {
     ],
     whatIsMissing: [
       "Most ads sell 'energy,' which makes MitoQ indistinguishable from twenty other brands.",
-      "The cellular-biology story is buried on the website, not in the rotation.",
+      "The cellular-biology story is buried on the website and missing from the rotation.",
       "No clear Solution-Aware path that converts the buyer who already takes CoQ10 and noticed nothing.",
     ],
     corePositioning:
@@ -198,7 +198,7 @@ export const CAMPAIGNS: Record<Brand, CampaignSpec> = {
     architecture: [
       {
         stage: "Unaware",
-        description: "Build category literacy. Mitochondria as a word, not a buzzword.",
+        description: "Build category literacy. Make mitochondria a working word instead of a buzzword.",
         concepts: ["mq-historical-timeline"],
       },
       {
@@ -227,7 +227,7 @@ export const CAMPAIGNS: Record<Brand, CampaignSpec> = {
       "Price objection is the conversion ceiling. The Expensive Because static is engineered for that exact moment.",
     ],
     overview: [
-      "The buyer is already shopping collagen. The job is not to teach them the category, it is to teach them that cheap collagen is its own category. Five types, doing different jobs, in different tissues. One source cannot rebuild five things.",
+      "The buyer is already shopping collagen. The job is to teach her that cheap collagen is its own category. Five types, doing different jobs, in different tissues. One source cannot rebuild five things.",
       "Perimenopause is the secondary emotional thread. The same product solves a different problem for the same buyer at a different moment. The Library accommodates both doors.",
     ],
     whyThisBrand:
@@ -276,6 +276,6 @@ export const CAMPAIGNS: Record<Brand, CampaignSpec> = {
       },
     ],
     closingBet:
-      "The 40+ buyer does not need to be sold on collagen. She needs to be sold on which collagen, in her own words. The Library writes those words for her.",
+      "The 40+ buyer arrives already sold on collagen. What she needs is to be sold on which collagen, in her own words. The Library writes those words for her.",
   },
 };

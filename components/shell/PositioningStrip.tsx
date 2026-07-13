@@ -1,5 +1,7 @@
-// Distributed-argument copy that sits between the advertiser header and result count.
-// From PLAN.md §Screen 2 (the positioning strip).
+// Orientation strip between the advertiser header and the result count:
+// tells a first-time visitor what the cards contain and where the rest of
+// the library lives. Refinement spec v2, Change 4.
+import Link from "next/link";
 import { SCREEN_2 } from "@/content/copy";
 
 export function PositioningStrip() {
@@ -10,7 +12,12 @@ export function PositioningStrip() {
           {SCREEN_2.positioningOne}
         </p>
         <p className="mt-1 text-[14px] leading-snug text-[var(--color-text-secondary)]">
-          {SCREEN_2.positioningTwo}
+          <Link
+            href="/case-studies"
+            className="hover:underline focus-visible:underline"
+          >
+            {SCREEN_2.positioningTwo}
+          </Link>
         </p>
       </div>
     </div>

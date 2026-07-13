@@ -103,6 +103,47 @@ section.hero-item {
   }
 }
 
+/* Feed Audition (hero): skeleton shimmer + the 200ms progress tick.
+   Both die under prefers-reduced-motion; the component also stops rotating. */
+@keyframes feedShimmer {
+  from {
+    background-position: -200% 0;
+  }
+  to {
+    background-position: 200% 0;
+  }
+}
+.feed-shimmer {
+  background-image: linear-gradient(
+    90deg,
+    rgba(228, 230, 235, 0) 0%,
+    rgba(255, 255, 255, 0.9) 50%,
+    rgba(228, 230, 235, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: feedShimmer 1.6s linear infinite;
+}
+@keyframes feedTick {
+  from {
+    width: 0;
+  }
+  to {
+    width: 100%;
+  }
+}
+.feed-tick {
+  animation: feedTick 0.9s linear forwards;
+}
+@media (prefers-reduced-motion: reduce) {
+  .feed-shimmer {
+    animation: none;
+  }
+  .feed-tick {
+    animation: none;
+    width: 100%;
+  }
+}
+
 /* Smooth content reveal when any <details> toggle opens. Animates the element
    immediately after <summary>. Robust across browsers (no height interpolation). */
 @keyframes detailsReveal {

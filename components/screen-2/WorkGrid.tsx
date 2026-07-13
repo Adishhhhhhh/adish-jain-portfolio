@@ -71,7 +71,7 @@ function DeepLibraryCta() {
   return (
     <div className="mx-auto mt-10 max-w-[640px] rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-8 text-center shadow-[var(--shadow-card)]">
       <p className="text-[17px] font-bold text-[var(--color-text-primary)]">
-        This is the produced work. It is not the whole library.
+        The produced work ends here. The library keeps going.
       </p>
       <p className="mx-auto mt-2 max-w-[480px] text-[14px] leading-relaxed text-[var(--color-text-secondary)]">
         90+ more creative angles, VSL scripts, and advertorial concepts sit
