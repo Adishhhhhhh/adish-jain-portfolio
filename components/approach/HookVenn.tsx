@@ -26,6 +26,7 @@ const TESTS = [
   { name: "Novel", q: "Have they already scrolled past this?" },
   { name: "Specific", q: "Could a competitor run it unchanged?" },
   { name: "Credible", q: "Does the claim survive the next line?" },
+  { name: "Desire-led", q: "Is it pulling on something they already want?" },
 ];
 
 const rad = (d: number) => (d * Math.PI) / 180;
@@ -57,7 +58,7 @@ export function HookVenn() {
           </span>
         </span>
         <span className="text-[12px] text-[var(--color-text-secondary)]">
-          three carriers, five tests
+          three carriers, six tests
         </span>
       </summary>
 
@@ -66,8 +67,7 @@ export function HookVenn() {
           A hook has more requirements than any other component, which makes the
           list feel unmanageable. It collapses once the carriers are separated
           from the tests. There are only three ways a hook can reach anyone, and
-          whichever ones an asset uses get graded against the same five
-          questions.
+          six things it has to be no matter which of the three carry it.
         </p>
 
         <figure className="rounded-md bg-[var(--color-surface-alt)] p-3">
@@ -126,7 +126,7 @@ export function HookVenn() {
         {/* the gate every carrier is graded against */}
         <div className="mt-4">
           <p className="text-[11px] font-bold uppercase tracking-[0.07em] text-[var(--color-text-tertiary)]">
-            Then each one clears the same five
+            Then the hook clears all six
           </p>
           <ul className="mt-2 grid grid-cols-1 gap-px overflow-hidden rounded-md border border-[var(--color-border-light)] bg-[var(--color-divider)] sm:grid-cols-2 lg:grid-cols-3">
             {TESTS.map((t) => (
@@ -139,19 +139,20 @@ export function HookVenn() {
                 </p>
               </li>
             ))}
-            <li className="bg-[var(--color-surface-alt)] px-3.5 py-2.5">
-              <p className="text-[12px] leading-snug text-[var(--color-text-secondary)]">
-                A hook failing any one of these is rewritten, never re-shot.
-              </p>
-            </li>
           </ul>
         </div>
 
-        <p className="mt-3 max-w-[70ch] text-[12.5px] leading-relaxed text-[var(--color-text-secondary)]">
-          Underneath all five sits the same requirement: the hook has to name a
-          problem the viewer already has or a desire they already hold. Curiosity
-          with nothing behind it stops the scroll and loses the click.
-        </p>
+        <div className="mt-3 rounded-md border-l-2 border-[var(--color-meta-blue)] bg-[#f5f9ff] px-4 py-3">
+          <p className="max-w-[70ch] text-[13px] leading-relaxed text-[var(--color-text-primary)]">
+            <span className="font-bold">
+              All six have to land, whichever carriers deliver them.
+            </span>{" "}
+            How they split across visual, copy, and audio is free. A static owes
+            you all six across two carriers. A video can spread them over three,
+            or stack five into the first frame. Distribution is a choice.
+            Absence is a dead hook.
+          </p>
+        </div>
       </div>
     </details>
   );

@@ -27,6 +27,7 @@ export function NavMenu() {
         type="button"
         aria-label="Open menu"
         aria-expanded={open}
+        data-tour="menu"
         onClick={() => setOpen(true)}
         className="ml-2 flex h-9 w-9 items-center justify-center rounded-full text-[var(--color-text-primary)] hover:bg-[var(--color-surface-hover)]"
       >
@@ -105,6 +106,17 @@ export function NavMenu() {
                   {item.label}
                 </Link>
               ))}
+
+              <button
+                type="button"
+                onClick={() => {
+                  setOpen(false);
+                  window.dispatchEvent(new Event("aj:tour:start"));
+                }}
+                className="mt-2 block w-full rounded-md px-3 py-2.5 text-left text-[15px] font-medium text-[var(--color-text-secondary)] hover:bg-[var(--color-surface-alt)]"
+              >
+                Replay the walkthrough
+              </button>
             </nav>
           </div>
         </div>

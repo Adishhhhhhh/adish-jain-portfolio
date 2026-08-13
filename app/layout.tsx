@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { Tour } from "@/components/tour/Tour";
 
 // The real Ad Library uses Meta's proprietary "Optimistic" font. Inter is the
 // closest legal match, and loading it makes the UI render identically on every
@@ -57,6 +58,7 @@ export default function RootLayout({
       <body className="min-h-[100dvh] bg-[var(--color-surface)] text-[var(--color-text-primary)]">
         {children}
         {modal}
+        <Tour />
       </body>
     </html>
   );

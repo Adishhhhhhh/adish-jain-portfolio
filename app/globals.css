@@ -72,6 +72,29 @@
   }
 }
 
+/* The tour's spotlight ring. Only the step that needs the visitor to act gets
+   the pulse, so it reads as an instruction rather than decoration. */
+@keyframes ajTourPulse {
+  0%,
+  100% {
+    outline-color: #1877f2;
+    outline-width: 2px;
+  }
+  50% {
+    outline-color: #8bbcf8;
+    outline-width: 5px;
+  }
+}
+.aj-tour-pulse {
+  animation: ajTourPulse 1.6s ease-in-out infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .aj-tour-pulse {
+    animation: none;
+    outline-width: 3px;
+  }
+}
+
 /* Staggered entrance for the hero. CSS-driven so the first paint is never blank,
    degrades to fully visible if animations are off. */
 @keyframes heroEnter {

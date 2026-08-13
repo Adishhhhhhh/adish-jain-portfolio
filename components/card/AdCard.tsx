@@ -70,6 +70,7 @@ export function AdCard({ concept }: { concept: Concept }) {
         <Link
           href={`/ad/${concept.id}`}
           scroll={false}
+          data-tour="details"
           className="mt-1 flex h-9 items-center justify-center rounded-md bg-[var(--color-surface-alt)] text-[14px] font-semibold text-[var(--color-text-primary)] transition-colors hover:bg-[var(--color-surface-hover)] active:scale-[0.99]"
         >
           See ad details
@@ -116,14 +117,16 @@ export function AdCard({ concept }: { concept: Concept }) {
 
         {/* Creative slot. Advertorial drivers get the click-through link bar
             attached flush below the creative, matching a real feed ad unit. */}
-        {concept.landingUrl ? (
-          <div className="overflow-hidden rounded-md border border-[var(--color-border-light)]">
-            <CreativeSlot concept={concept} flush />
-            <LandingLink concept={concept} />
-          </div>
-        ) : (
-          <CreativeSlot concept={concept} />
-        )}
+        <div data-tour="creative">
+          {concept.landingUrl ? (
+            <div className="overflow-hidden rounded-md border border-[var(--color-border-light)]">
+              <CreativeSlot concept={concept} flush />
+              <LandingLink concept={concept} />
+            </div>
+          ) : (
+            <CreativeSlot concept={concept} />
+          )}
+        </div>
       </div>
     </article>
   );

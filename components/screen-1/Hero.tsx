@@ -112,6 +112,7 @@ export function Hero() {
 
           <button
             type="submit"
+            data-tour="search"
             className="flex h-10 items-center justify-center rounded-md bg-[var(--color-meta-blue)] px-5 text-[14px] font-semibold text-white transition-colors hover:bg-[var(--color-meta-blue-hover)]"
           >
             Search

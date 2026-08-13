@@ -30,7 +30,7 @@ export function TopBar({ active = "overview" as NavKey }: { active?: NavKey }) {
         <Link href="/" aria-label="Portfolio home" className="flex items-center">
           <MetaLogo />
         </Link>
-        <nav className="flex items-center gap-7">
+        <nav className="flex items-center gap-7" data-tour="nav">
           {NAV.map((item) => {
             const isActive = item.key === active;
             return (

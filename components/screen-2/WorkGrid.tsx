@@ -24,7 +24,10 @@ export function WorkGrid() {
 
       {/* Second panel lock: filters + status freeze below the search bar on scroll,
           with a soft shadow, matching the real Ad Library. */}
-      <div className="sticky top-[124px] z-30 bg-[var(--color-surface)] pb-3 pt-7 shadow-[0_2px_4px_rgba(0,0,0,0.06)]">
+      <div
+        data-tour="filters"
+        className="sticky top-[124px] z-30 bg-[var(--color-surface)] pb-3 pt-7 shadow-[0_2px_4px_rgba(0,0,0,0.06)]"
+      >
         <FilterPanel
           value={filter}
           onChange={setFilter}
@@ -41,12 +44,14 @@ export function WorkGrid() {
           ) : (
             <motion.div
               layout
+              data-tour="grid"
               className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
             >
-              {visible.map((c) => (
+              {visible.map((c, gi) => (
                 <motion.div
                   key={c.id}
                   layout
+                  data-tour-card={gi === 0 ? "first" : undefined}
                   initial={{ opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.24, ease: [0.23, 1, 0.32, 1] }}
