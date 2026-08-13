@@ -7,21 +7,20 @@ import { NavMenu } from "./NavMenu";
 type NavKey =
   | "overview"
   | "creative-approach"
-  | "strategy-approach"
-  | "case-studies"
-  | "principles";
+  | "strategic-approach"
+  | "case-studies";
 
 const NAV: { key: NavKey; label: string; href: string }[] = [
   // Portfolio Overview points to the results grid (the consistent destination).
   // The entry/hero (/) is only reachable via the logo, so it never re-shows
   // itself when navigating between sections.
   { key: "overview", label: "Portfolio Overview", href: "/adish-jain" },
-  // Creative Approach is the pipeline up to a finished asset; Strategy
-  // Approach is every decision after it starts spending.
+  // Creative Approach is the pipeline up to a finished asset, closing on the
+  // principles underneath it. Strategic Approach is every decision after the
+  // asset starts spending.
   { key: "creative-approach", label: "Creative Approach", href: "/creative-approach" },
-  { key: "strategy-approach", label: "Strategy Approach", href: "/strategy-approach" },
+  { key: "strategic-approach", label: "Strategic Approach", href: "/strategic-approach" },
   { key: "case-studies", label: "Case Studies", href: "/case-studies" },
-  { key: "principles", label: "Principles", href: "/principles" },
 ];
 
 export function TopBar({ active = "overview" as NavKey }: { active?: NavKey }) {

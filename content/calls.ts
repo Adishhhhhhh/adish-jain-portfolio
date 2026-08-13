@@ -1,4 +1,4 @@
-// The Strategy Approach section, rebuilt around decisions instead of concepts.
+// The Strategic Approach section, rebuilt around decisions instead of concepts.
 //
 // Selection filter, applied ruthlessly: a call earns a slot only when the
 // obvious move is wrong. If a competent reader's gut already lands correctly,

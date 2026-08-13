@@ -15,7 +15,7 @@ import {
   CALLS_LEAD,
 } from "@/content/calls";
 
-export const metadata = { title: "Strategy Approach" };
+export const metadata = { title: "Strategic Approach" };
 
 // The analytical half. /approach ends where an asset is ready to deploy; this
 // starts there. The unit is a decision, and a call only earns a panel when the
@@ -33,13 +33,13 @@ export default function StrategyApproachPage() {
 
   return (
     <>
-      <TopBar active="strategy-approach" />
+      <TopBar active="strategic-approach" />
       <SearchBarRow query="Adish Jain" />
 
       <main className="mx-auto max-w-[1200px] px-6 pb-20 pt-8">
         <header className="mb-7">
           <p className="text-[12px] font-semibold uppercase tracking-wide text-[var(--color-text-secondary)]">
-            Strategy Approach
+            Strategic Approach
           </p>
           <h1 className="mt-1 max-w-[20ch] text-[32px] font-bold leading-tight text-[var(--color-text-primary)]">
             {CALLS_INTRO}

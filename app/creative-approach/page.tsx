@@ -8,6 +8,11 @@ import { IdeationVenn } from "@/components/approach/IdeationVenn";
 import { HookVenn } from "@/components/approach/HookVenn";
 import { ConceptArchitecture } from "@/components/approach/ConceptArchitecture";
 import { WorkflowLoop } from "@/components/approach/WorkflowLoop";
+import {
+  PRINCIPLES,
+  PRINCIPLES_INTRO,
+  type Principle,
+} from "@/content/principles";
 
 export const metadata = { title: "Creative Approach" };
 
@@ -28,7 +33,10 @@ const DIAGRAMS = {
 } as const;
 
 export default function ApproachPage() {
-  const sections = APPROACH_PARTS.map((p) => ({ id: p.id, label: p.title }));
+  const sections = [
+    ...APPROACH_PARTS.map((p) => ({ id: p.id, label: p.title })),
+    { id: "principles", label: "What It All Rests On" },
+  ];
 
   return (
     <>
@@ -47,8 +55,8 @@ export default function ApproachPage() {
             Five stages, from first principles to finished asset. The same
             pipeline produced every concept in the Library. Open any stage for
             the full working depth, and see{" "}
-            <Link href="/strategy-approach" className="meta-link font-semibold">
-              Strategy Approach
+            <Link href="/strategic-approach" className="meta-link font-semibold">
+              Strategic Approach
             </Link>{" "}
             for what happens once the assets run.
           </p>
@@ -104,6 +112,31 @@ export default function ApproachPage() {
               </section>
             ))}
 
+            {/* The closing movement. Everything above is method; this is what
+                the method rests on, which is why it arrives last. */}
+            <section
+              id="principles"
+              className="scroll-mt-[150px] border-t border-[var(--color-divider)] py-8"
+            >
+              <div className="flex items-baseline gap-3">
+                <span className="font-mono text-[14px] font-bold text-[var(--color-meta-blue)] tabular-nums">
+                  06
+                </span>
+                <h2 className="text-[22px] font-bold text-[var(--color-text-primary)]">
+                  What It All Rests On
+                </h2>
+              </div>
+              <p className="mt-2 max-w-[70ch] pl-8 text-[15px] leading-relaxed text-[var(--color-text-secondary)]">
+                {PRINCIPLES_INTRO}
+              </p>
+
+              <div className="mt-6 flex flex-col gap-6 md:pl-8">
+                {PRINCIPLES.map((p) => (
+                  <PrincipleBlock key={p.id} principle={p} />
+                ))}
+              </div>
+            </section>
+
             <p className="mt-8 text-[13px] text-[var(--color-text-secondary)]">
               See the pipeline&apos;s output in the{" "}
               <Link href="/case-studies" className="meta-link font-semibold">
@@ -115,6 +148,32 @@ export default function ApproachPage() {
         </div>
       </main>
     </>
+  );
+}
+
+// A principle leads with its claim in plain language, then argues it, then
+// names the consequence it imposes. Distinct from the Toggle grammar above,
+// because these are positions rather than process steps.
+function PrincipleBlock({ principle }: { principle: Principle }) {
+  return (
+    <article id={principle.id} className="scroll-mt-[150px]">
+      <div className="flex items-baseline gap-2.5">
+        <span className="font-mono text-[12.5px] font-bold tabular-nums text-[var(--color-meta-blue)]">
+          {principle.n}
+        </span>
+        <h3 className="text-[19px] font-bold leading-snug tracking-tight text-[var(--color-text-primary)]">
+          {principle.title}
+        </h3>
+      </div>
+
+      <p className="mt-2 border-l-2 border-[var(--color-meta-blue)] py-0.5 pl-4 text-[15.5px] font-medium leading-relaxed text-[var(--color-text-primary)]">
+        {principle.claim}
+      </p>
+
+      <div className="mt-3">
+        <MarkdownView>{principle.markdown}</MarkdownView>
+      </div>
+    </article>
   );
 }
 

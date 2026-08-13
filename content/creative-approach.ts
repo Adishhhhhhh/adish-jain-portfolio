@@ -312,7 +312,7 @@ Ten times the output velocity of traditional copywriting, with strategic coheren
     id: "compounding",
     title: "What Compounds",
     intro:
-      "Output: 20 to 30 assets per project, mapped to awareness levels and ICPs, ready for deployment. What happens to them after launch is the Strategy Approach. What happens to me is this.",
+      "Output: 20 to 30 assets per project, mapped to awareness levels and ICPs, ready for deployment. What happens to them after launch is the Strategic Approach. What happens to me is this.",
     items: [
       {
         heading: "Compound Learning",

@@ -1,5 +1,5 @@
 // The closing section. Six positions that sit under every method in the
-// Creative Approach and the Strategy Approach.
+// Creative Approach and the Strategic Approach.
 //
 // This replaces the old nine-belief Creative Strategy page. Six of those
 // beliefs (awareness, sophistication, mechanisms, ICP, offer, format diversity)
@@ -18,17 +18,14 @@ export type Principle = {
   markdown: string;
 };
 
-export const PRINCIPLES_INTRO = "Six positions the rest of the work stands on.";
-
-export const PRINCIPLES_LEAD =
-  "Methods change with the platform. These have survived every version of it I have worked through, and each one has a consequence I can point at in the work.";
+export const PRINCIPLES_INTRO = "Seven things I keep coming back to.";
 
 export const PRINCIPLES: Principle[] = [
   {
     id: "research",
     n: "01",
     title: "Research is the whole game.",
-    claim: "The ceiling on any output is set by the worst input feeding it.",
+    claim: "You can only write as well as you understand.",
     markdown: `Good input plus strategic thinking produces good output. Everything else I believe is a consequence of taking that sentence literally.
 
 Most creative failure is research failure wearing a creative costume. The ad that does not work usually failed weeks earlier, at the moment someone decided what it should say.
@@ -52,7 +49,7 @@ The pattern underneath all of it is the same: every one of those is an input, an
     id: "ego",
     n: "02",
     title: "Ego is the most expensive line item.",
-    claim: "The market settles every argument for free, and it settles them faster than I can.",
+    claim: "I would rather be corrected than be right.",
     markdown: `Every strong opinion in this discipline has a losing test somewhere behind it. Mine included.
 
 Feedback arrives from two directions, and both are cheaper than being right. A person who has done this longer can hand me a correction in thirty seconds that a test would take three weeks and real money to deliver. The account itself is the second source, and it has no interest in my reasoning at all.
@@ -74,7 +71,7 @@ So I try to hold positions strongly and drop them cheaply. Strong, because a str
     id: "learning",
     n: "03",
     title: "The account is always learning. So am I.",
-    claim: "Neither of us gets a version where the learning finishes.",
+    claim: "Neither of us ever finishes learning.",
     markdown: `Meta labels a phase "learning" and then removes the label, which implies the system arrived somewhere. It did not. It keeps updating the whole time, and it only stops narrating the process.
 
 The account re-enters that state constantly. New creative, a budget change, an audience shift, a competitor entering the auction, a season turning. Every one of those makes the model's existing picture slightly wrong, and it starts correcting again.
@@ -91,7 +88,7 @@ There is a nice symmetry in it. The thing I operate and the person operating it 
     id: "hook",
     n: "04",
     title: "The hook is the gate everything else waits behind.",
-    claim: "No offer survives an opening nobody watched.",
+    claim: "If nobody stops, nothing else you wrote matters.",
     markdown: `This one needs no defence. It is arithmetic.
 
 At a 20% hook rate, four out of every five dollars bought an impression that never became attention. The mechanism, the proof stack, the storytelling, the risk reversal, the offer you spent a week structuring: all of it sat behind a door that 80% of the audience walked past. None of it got graded.
@@ -108,7 +105,7 @@ Which reframes what a good hook is doing. It is filtering as much as it is attra
     id: "feed",
     n: "05",
     title: "The competition is the entire feed.",
-    claim: "Every ad is auditioning against a friend's engagement photo and a video of a dog.",
+    claim: "Your ad has to be worth more than a photo of someone's dog.",
     markdown: `Competitor ads are a small slice of what an ad actually competes with. The real field is everything else in the scroll: someone's holiday, an argument about geopolitics, a meme that landed, a stranger's genuinely surprising life update.
 
 That content has two advantages, and both are structural.
@@ -129,7 +126,7 @@ Two things follow, and they shape most of what I make.
     id: "personalization",
     n: "06",
     title: "Write to one person, then do it again.",
-    claim: "The creative is the targeting now, so personalization became the delivery mechanism.",
+    claim: "The ad picks who sees it. So write to one person.",
     markdown: `Broad targeting produces average creative, and average creative is what the auction prices worst.
 
 This used to be a copywriting preference. It is now a distribution fact. Andromeda reads the creative itself and decides who to show it to, which means the angle, the hook, and the language perform the audience selection that interest settings used to. The ad is the targeting.
@@ -141,5 +138,30 @@ The working unit is smaller than a persona. It is who someone is right now, in t
 Which is what makes volume and specificity compatible rather than opposed. A hundred generic assets are one asset repeated. Thirty specific ones are thirty different doors.
 
 **The consequence I hold myself to.** The test on any finished ad is whether one specific person could read it and think somebody has been watching me. Anything that lands short of that reaction is still a draft.`,
+  },
+  {
+    id: "direct-response",
+    n: "07",
+    title: "Persuasion is a kitchen, and I like cooking in it.",
+    claim: "The best ad I write makes someone's life a little better.",
+    markdown: `Here is the thing that actually hooked me on direct response.
+
+A stranger scrolls past. Forty seconds later they believe something they did not believe before, and they do something about it. No conversation happened. No one argued with them. A sequence of words and pictures, assembled in the right order, moved a person.
+
+That still amazes me.
+
+And it is a real force, which means it points wherever you aim it. The same sequence that gets someone to buy a supplement they will feel in six weeks can get them to buy something that does nothing. Same craft. Same buttons. The only difference is the person holding it.
+
+So I aim it at the thing I would tell my own family to buy. That sounds simple and it does most of the work, because you cannot write a believable mechanism for a product that has none, and agitation about a pain the product will not fix is just cruelty with a CTA at the bottom.
+
+**What I love is the recipe.** Every ingredient is sitting on the counter, and almost anyone can name them: a story, a mechanism, an agitation, a piece of education, proof, a picture of the after, an ask. Handing someone that list changes nothing. The craft is knowing which four of the seven this person needs, in what order, and how long to hold each one before moving.
+
+A cold reader needs the problem named before they will accept an explanation. Explain first and you are teaching someone who has not agreed there is anything to learn. A reader who already knows the problem is bored by agitation and wants the mechanism immediately. Same ingredients, opposite order, and the wrong order kills it.
+
+Agitation is where that responsibility gets sharpest. Done badly it manufactures a wound so you can sell the bandage. Done properly it names something the person has already been carrying without words for it, and being handed the words is a relief. "You are not failing the supplement, the supplement is failing you." Nothing was invented there. Somebody just got told the truth about their own experience in a sentence they could not build themselves.
+
+That is the version of this job I want. Take somebody who has quietly accepted a thing about their life, hand them a better explanation of it, and point at a door.
+
+**The consequence I hold myself to.** Before writing a line I ask whether I would send this ad to someone I love. If the honest answer is no, the problem is the product or the claim, and no amount of craft is going to fix it.`,
   },
 ];

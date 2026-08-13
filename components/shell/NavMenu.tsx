@@ -90,9 +90,9 @@ export function NavMenu() {
               {[
                 { href: "/adish-jain", label: "Portfolio Overview" },
                 { href: "/creative-approach", label: "Creative Approach" },
-                { href: "/strategy-approach", label: "Strategy Approach" },
+                { href: "/strategic-approach", label: "Strategic Approach" },
                 { href: "/case-studies", label: "All case studies" },
-                { href: "/principles", label: "Operating Principles" },
+                { href: "/creative-approach#principles", label: "What It All Rests On" },
                 { href: "/adish-jain/about", label: "About" },
                 { href: "/contact", label: "Contact" },
               ].map((item) => (
