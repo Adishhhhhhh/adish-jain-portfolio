@@ -33,7 +33,7 @@ export const APPROACH_PARTS: ApproachPart[] = [
         heading: "Competitive Intelligence",
         markdown: `The Meta Ad Library is an open book. Most teams skim it. I catalog it.
 
-- Audit 200 to 500+ competitor ads across Meta and TikTok, covering every competitor on the same spectrum and scale level, not just the two obvious rivals
+- Audit 200 to 500+ competitor ads across Meta and TikTok, covering every competitor on the same spectrum and scale level, well past the two obvious rivals
 - Treat long-running ads as proof of performance. Recency tells you what they are testing; longevity tells you what is working
 - Build a profile per competitor
   - Positioning claim and price point
@@ -53,7 +53,9 @@ export const APPROACH_PARTS: ApproachPart[] = [
       },
       {
         heading: "Customer Voice and Psychographics",
-        markdown: `The goal is being able to speak as the customer, from inside their head.
+        markdown: `Before a single verbatim gets collected, the first question is where these people actually congregate. Every audience has rooms they talk in, and the rooms differ by category: a subreddit with 40k members, one Facebook group run by a moderator with strong opinions, the comment section under a specific creator, a forum that has been running since 2009. Find the rooms first, because language harvested from the wrong room produces an ad aimed at nobody.
+
+The goal after that is being able to speak as the customer, from inside their head.
 
 - Analyze 100 to 200+ reviews per product for pain language, desire language, and objection patterns
   - Product and Amazon reviews for purchase-moment language
@@ -104,6 +106,22 @@ export const APPROACH_PARTS: ApproachPart[] = [
 - Locate the identity gap: the tension between how the customer currently sees themselves and who they are trying to become. Every strong close sells the second self`,
       },
       {
+        heading: "Whitespace",
+        markdown: `Whitespace is the position nobody in the category is standing on. It is the output of all the research above, and it is the only part of the research that converts directly into leverage.
+
+Everything up to here maps what exists. This pass maps what is missing, and the gaps show up in five places:
+
+- **Creative.** Which formats is the category refusing to make? If eleven competitors run polished studio UGC, a hand-held phone recording with no lighting reads as the only honest thing in the feed
+- **Mechanism.** Which explanation has nobody claimed? Most categories sell outcomes and leave the reason unowned, which is why "upstream vs downstream" was available to MitoQ despite the science being public for years
+- **Messaging.** Which true sentence is nobody saying out loud? Usually it is the one that sounds slightly against interest, which is exactly why it is credible
+- **Format.** Which surface is uncontested? Long-form native static, advertorial pre-sell, two-person conversation, and podcast-shaped video are all cheap to enter when the category has standardised on 30-second UGC
+- **Offer.** Which structure, guarantee, or price frame is the category too timid to run?
+
+Two rules keep this honest. Whitespace is only valuable where the product can credibly stand, so the gap gets checked against what is verifiably true before anything is written. And absence is ambiguous: sometimes nobody is running an angle because it does not work. The check is whether the gap is unclaimed or already tested and abandoned, and the customer research usually answers it.
+
+**This is where the edge is.** Matching the category on their terms means competing on production budget. Standing where nobody else is means competing on the one thing a bigger budget cannot buy.`,
+      },
+      {
         heading: "Master Brief Synthesis",
         markdown: `- All research converges into one master brief: positioning messages, ICP profiles, awareness and sophistication calls, both mechanisms, the verbatim bank, the proof map
 - The positioning messages act as the anchor for every creative decision that follows. If an asset cannot be traced back to the brief, it does not get made
@@ -125,7 +143,7 @@ export const APPROACH_PARTS: ApproachPart[] = [
         heading: "The Positioning Anchor",
         markdown: `- One reframe, held everywhere. Upstream vs downstream for MitoQ. Energy you can steer for NeuroGum. Expensive because, not expensive despite, for Ancient Nutrition
 - The anchor claims the white space the competitive map exposed, phrased in language the customer research proved the audience already thinks in
-- Own the language, not just the position. "Patching holes vs preventing them" is engineered to be repeated by the buyer to themselves after the ad is gone`,
+- Own the language as well as the position. "Patching holes vs preventing them" is engineered to be repeated by the buyer to themselves after the ad is gone`,
       },
       {
         heading: "Awareness-Stage Mapping",
@@ -143,13 +161,13 @@ export const APPROACH_PARTS: ApproachPart[] = [
       },
       {
         heading: "Direct Response Principles, the Full Stack",
-        markdown: `These are structural, not tactics bolted on at the end. Grouped by the job each does:
+        markdown: `These are structural, load-bearing before the first line exists. Grouped by the job each does:
 
 **Attention.** Pattern-interrupt hooks that stop the scroll in the first one to three seconds. Curiosity gaps that only the next line can close. Open loops that hold the viewer through the mechanism.
 
 **Emotion.** Storytelling before selling. Agitation that names the pain sharper than the customer can. Relatability: talking in their own language, their cliches, their register. Dimensionalization that turns a feature into a lived scene.
 
-**Belief.** Mechanism-first positioning: why it works, not just that it works. Proof stacking: clinical, authority, social, in that order of scrutiny. Intensification: one claim escalated with evidence beats five claims stated once. Neurochemical sequencing: curiosity and rapport before education, because logical delivery alone does not close.
+**Belief.** Mechanism-first positioning: the why underneath the what. Proof stacking: clinical, authority, social, in that order of scrutiny. Intensification: one claim escalated with evidence beats five claims stated once. Neurochemical sequencing: curiosity and rapport before education, because logical delivery alone does not close.
 
 **Action.** Desire manufacturing before the offer, so the CTA harvests instead of pitches. Future pacing that lets the prospect live the after-state. Urgency and scarcity only where they are true. Irresistible offer framing plus risk reversal. One CTA, one action, no decision paralysis.`,
       },
@@ -175,6 +193,7 @@ export const APPROACH_PARTS: ApproachPart[] = [
 - ICP definition: who specifically, never "anyone who needs more energy"
 - Awareness and sophistication stage: unaware needs stories, solution aware needs comparisons, jaded markets need identity
 - The target market's beliefs, norms, cliches, and buying triggers
+- The hook, which is a constraint rather than a finishing touch. A concept that cannot be opened in three seconds is not a concept yet, so the opening gets stress-tested at the idea stage instead of being written last
 - Input from live campaigns, when it exists, refining the model over time
 
 You cannot write a winning VSL for an unaware audience using solution-aware messaging. The constraints are the scaffolding that makes volume possible without drift.`,
@@ -214,6 +233,16 @@ The diagram above is the actual test: a concept that clears only two or three ci
     diagram: "workflow",
     items: [
       {
+        heading: "The Rule Everything Below Runs Under",
+        markdown: `AI produces quantity. The quality of that quantity is inherited from whoever briefed it.
+
+A model handed a thin brief returns the category average at speed, because the average is what it was trained on. The same model handed a real positioning anchor, a verbatim bank, a defined ICP, and a mechanism returns work that is on-voice by construction. Same tool, same hour, completely different ceiling, and the only variable that moved was the person operating it.
+
+So the leverage is never in the generation step. It sits in the judgment loaded before the generation step and the taste applied after it. Which means AI raises a strategist's output and cannot raise their level: it multiplies whatever is already there, including the gaps.
+
+The practical consequence runs through everything below. I do not evaluate a tool by what it can produce. I evaluate it by how much of my own judgment it lets me encode, which is why the pipeline is a library of purpose-built skills instead of a folder of prompts.`,
+      },
+      {
         heading: "What AI Does",
         markdown: `- Research synthesis: processes hundreds of competitor ads into pattern maps, extracts customer language from review databases at volume, builds positioning matrices and awareness-distribution reads
 - Asset generation: VSL script variants, hook alternatives, static ad concepts, advertorial long-form, angle ideation at 50+ concepts per project. Across the four-brand portfolio that meant roughly 85 script blocks, including 23 VSL scripts for Ancient Nutrition alone
@@ -247,7 +276,8 @@ The diagram above is the actual test: a concept that clears only two or three ci
       {
         heading: "VSL Scripts",
         markdown: `- Awareness-level specific: stories for unaware, mechanism education for solution aware, comparison for product aware
-- 45 to 90 seconds optimal, never past 120. Attention is a hard constraint: no filler, no preamble, no recap, every line earns the next
+- **Length follows the belief gap.** The right runtime is however long it takes to move this specific audience from what they currently believe to the belief that makes them buy. A product-aware viewer who already accepts the mechanism needs 30 seconds. A cold viewer who has to be walked through a new explanation, shown proof, and handed an offer can hold for eight minutes, and long-form VSLs run that long profitably every day. Awareness stage, offer complexity, and price all move the number
+- What stays fixed is that every second earns the next one. No filler, no preamble, no recap. A script gets cut for slack, never for hitting an arbitrary ceiling
 - Two to three hook variants per script for testing, each with its own rationale
 - Customer language integrated straight from the verbatim bank
 - Format follows emotional register: heavy emotional scripts run UGC confessional, mechanism scripts run educational DR, humor runs skit. No format by default`,
@@ -263,26 +293,9 @@ The diagram above is the actual test: a concept that clears only two or three ci
       {
         heading: "Advertorials",
         markdown: `- Long-form education-to-conversion arc, story-driven: personal transformation or investigation narrative
-- Scientific proof layered through the piece, not dumped at the end
-- Objection handling woven in as the story unfolds, not isolated in an FAQ
+- Scientific proof layered through the piece, arriving where the reader starts to doubt
+- Objection handling woven in as the story unfolds, answered at the moment the doubt lands
 - Two registers built and tested: journalist investigation and first-person confession, because authority and vulnerability convert different readers`,
-      },
-      {
-        heading: "Statics: Reverse-Engineered Systems",
-        markdown: `- The generation system is reverse-engineered from proven ads: winning statics are deconstructed into layout, hierarchy, and copy structure, then encoded as reusable generation systems in Claude Code. Proven ad in, repeatable system out
-- An earlier JSON-spec method proved the approach and was retired. The current system keeps the rigor and drops the ceremony
-- System-level consistency keeps a brand's statics coherent across a 20-asset rotation
-- Format diversity on demand: comparison charts, native formats, diagrams, product shots, lifestyle scenes
-- Output: the 18 finished statics in this Library`,
-      },
-      {
-        heading: "The QA Gates",
-        markdown: `Four gates, run in order. Nothing ships on machine judgment alone.
-
-- **Gate 1, machine tells:** hard bans on known AI-writing constructions, contrast negation first among them, thesis restatement, the patterns a trained eye spots in one line
-- **Gate 2, the banned list:** a standing banned-constructions file travels with every project through a global context layer, so the rules are enforced everywhere instead of living in one prompt
-- **Gate 3, receipts:** every claim and statistic clears the verified-stats file before publication
-- **Gate 4, the human read:** nothing ships that I have not read the way the customer would`,
       },
       {
         heading: "The Workflow Loop",
@@ -296,36 +309,45 @@ Ten times the output velocity of traditional copywriting, with strategic coheren
   // ── 05 ──────────────────────────────────────────────────────────────────
   {
     n: "05",
-    id: "iteration",
-    title: "Testing, Iteration and Compound Learning",
+    id: "compounding",
+    title: "What Compounds",
     intro:
-      "Output: 20 to 30 assets per project, mapped to awareness levels and ICPs, ready for deployment. Then the system starts learning.",
+      "Output: 20 to 30 assets per project, mapped to awareness levels and ICPs, ready for deployment. What happens to them after launch is the Strategy Approach. What happens to me is this.",
     items: [
       {
-        heading: "The Testing Logic",
-        markdown: `- Hooks are the first variable: same body, different opening, because the first three seconds decide most of the outcome
-- Judgment waits for sample: 72 hours, 2,000 impressions, or 150 clicks, whichever lands first, before any verdict on a creative
-- The metric hierarchy is diagnostic: 3-second view rate reads hook health, CTR reads attention, landing CVR reads offer and message match. Each failure points at a different fix
-- Kill and scale are thresholds set before launch, and budget rebalances weekly toward marginal winners until returns diminish
-- Fatigue has signals: frequency creep and CTR decay trigger a refresh from the angle map, and the map is already written
-- Creative diversity is portfolio logic: angles spread across stages and ICPs so fatigue in one lane never stalls the account
-- Winners get scaled and multiplied into adjacent formats. Learnings feed back into the constraint set, so the next generation pass starts smarter`,
-      },
-      {
         heading: "Compound Learning",
-        markdown: `Creative ideation compounds when focused on one offer consistently, and the same compounding applies to any offer I generate concepts for. This portfolio work was built over focused days to months collectively. With real campaign data, in-house mentorship, daily iteration cycles, and team collaboration, the output quality and velocity would amplify exponentially.
+        markdown: `Creative ideation compounds when it stays pointed at one offer. Every pass through the same market sharpens the constraint set, and the second campaign for a brand is meaningfully better than the first for reasons that have nothing to do with effort.
 
-- The constraint-based ideation framework gets sharper with each project
-- The AI prompts and skills get more refined, the customer language database grows, the competitive intelligence deepens`,
+Four things accumulate:
+
+- The constraint-based ideation framework gets sharper with each project, because every kill teaches the filter something
+- The customer language database grows, so the verbatim bank starts each new brief further along
+- The competitive intelligence deepens, and a category audited twice reveals patterns a single pass misses
+- The skills themselves get refined. Every edit I make to an AI output is a rule I can encode, which means the next generation pass starts from where the last one ended
+
+This portfolio was built over focused days to months collectively. The compounding visible in it is compounding against my own judgment, with no market feedback in the loop.`,
       },
       {
-        heading: "What Accelerates It",
-        markdown: `- Real campaign data: what converts versus what does not
-- A team environment with cross-functional feedback loops
-- A senior strategist reviewing output
-- Daily iteration that compounds over time
+        heading: "Where I Actually Am",
+        markdown: `Everything in this Library is spec. It was built without a client, without a budget, and without a single impression served, which means the strategy has been pressure-tested against my own reasoning and against nothing else.
 
-I am an asset that compounds with investment. Not of money, but of time, context, and collaboration. The systems are built. The workflow is proven. The output is here. What is missing is the environment that turns systematic creative into systematic wins.`,
+I am stating that plainly because the alternative is letting a portfolio imply experience it does not have, and that gets discovered in the first serious conversation anyway.
+
+What I have is the part that transfers: a research process that goes deeper than the brief asks for, a production system that turns one research foundation into 20 to 30 coherent assets, an analytical framework I can defend decision by decision, and roughly 90 more angles and scripts behind what is shown here.
+
+What I am missing is the only thing that cannot be self-taught. Real spend, real data, and someone senior enough to tell me which of my instincts are wrong.`,
+      },
+      {
+        heading: "What I Want From the Room",
+        markdown: `I want to work under someone better than me at this, in an environment where the market gets to be the judge instead of my own conviction.
+
+That means a few specific things:
+
+- **Feedback with the varnish off.** The fastest way to improve is being told which call was wrong and why, and I would rather hear it in a review than learn it from a dead test. I hold opinions strongly and drop them cheaply, because defending a position in this discipline is billed to someone else
+- **Reps.** Intuition here is a function of at-bats. Most of my ads will not work, and the only way through that is volume of attempts with someone watching
+- **Real data in the loop.** Every framework in this portfolio is currently theory I trust. Contact with spend is what converts trust into knowledge, and I expect a meaningful share of what I believe today to be revised inside six months
+
+I am early, and I am not confused about that. What I am is unusually stocked for it, and moving quickly. Give me the context and the correction and I compound fast, because the systems are already built and the only missing input is the environment.`,
       },
     ],
   },

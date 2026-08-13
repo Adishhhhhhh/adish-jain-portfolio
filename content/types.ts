@@ -3,7 +3,7 @@
 
 export type Brand = "pethonesty" | "neurogum" | "mitoq" | "ancient-nutrition";
 
-export type Format = "video" | "static" | "vsl-script" | "advertorial";
+export type Format = "video" | "static" | "advertorial";
 
 export type Awareness =
   | "unaware"
@@ -120,6 +120,18 @@ export const AWARENESS_LABELS: Record<Awareness, string> = {
 export const FORMAT_LABELS: Record<Format, string> = {
   video: "Video",
   static: "Static",
-  "vsl-script": "VSL Script",
   advertorial: "Advertorial",
 };
+
+/**
+ * A driver static that clicks through to a live advertorial is both things:
+ * the creative is a static, the deliverable it opens is an advertorial.
+ * Cards show both icons, and the Advertorial filter matches on it.
+ */
+export function conceptFormats(
+  c: Pick<Concept, "format" | "landingUrl">,
+): Format[] {
+  return c.landingUrl && c.format !== "advertorial"
+    ? [c.format, "advertorial"]
+    : [c.format];
+}

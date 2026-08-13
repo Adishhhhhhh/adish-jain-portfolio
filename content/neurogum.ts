@@ -2,11 +2,10 @@ import type { Concept } from "./types";
 
 // NeuroGum — Caffeine + L-theanine gum. Cognitive performance.
 // Source: portfolio-content/ §1981–3905. Six produced statics (S1–S6) and
-// two produced VSLs already shot. The "Caffeine and Meth" VSL is the
-// designated Annotated Teardown showpiece (PLAN.md §7).
+// two produced VSLs already shot.
 
 export const NEUROGUM_CONCEPTS: Concept[] = [
-  // ─── Produced video #1 (the Annotated Teardown showpiece) ───────────────
+  // ─── Produced video #1 ──────────────────────────────────────────────────
   {
     id: "ng-coffee-meth",
     brand: "neurogum",
@@ -41,7 +40,7 @@ export const NEUROGUM_CONCEPTS: Concept[] = [
       diversePotential:
         "The receptor comparison works as a static headline, a 15-second short-form, and an advertorial open. The hook line carries on its own.",
       campaignRole:
-        "Campaign 1 (Coffee Is the Enemy), Ad Set 1A. This is the Annotated Teardown showpiece, see the per-second hotspot analysis on the modal.",
+        "Campaign 1 (Coffee Is the Enemy), Ad Set 1A. The mechanism teach at the Problem Aware entry point, handing off to the Energy Curve comparison for the Solution Aware beat.",
     },
   },
 

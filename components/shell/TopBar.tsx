@@ -4,16 +4,24 @@ import { NavMenu } from "./NavMenu";
 
 // Nav keys map to the Notion portfolio's own section names, re-housed in the
 // Ad Library chrome. The shell proves the concept; the labels are Adish's.
-type NavKey = "overview" | "approach" | "creative-strategy" | "case-studies";
+type NavKey =
+  | "overview"
+  | "creative-approach"
+  | "strategy-approach"
+  | "case-studies"
+  | "principles";
 
 const NAV: { key: NavKey; label: string; href: string }[] = [
   // Portfolio Overview points to the results grid (the consistent destination).
   // The entry/hero (/) is only reachable via the logo, so it never re-shows
   // itself when navigating between sections.
   { key: "overview", label: "Portfolio Overview", href: "/adish-jain" },
-  { key: "approach", label: "Approach", href: "/approach" },
-  { key: "creative-strategy", label: "Creative Strategy", href: "/creative-strategy" },
+  // Creative Approach is the pipeline up to a finished asset; Strategy
+  // Approach is every decision after it starts spending.
+  { key: "creative-approach", label: "Creative Approach", href: "/creative-approach" },
+  { key: "strategy-approach", label: "Strategy Approach", href: "/strategy-approach" },
   { key: "case-studies", label: "Case Studies", href: "/case-studies" },
+  { key: "principles", label: "Principles", href: "/principles" },
 ];
 
 export function TopBar({ active = "overview" as NavKey }: { active?: NavKey }) {

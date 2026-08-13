@@ -89,9 +89,10 @@ export function NavMenu() {
               </p>
               {[
                 { href: "/adish-jain", label: "Portfolio Overview" },
-                { href: "/approach", label: "Approach" },
-                { href: "/creative-strategy", label: "Creative Strategy" },
+                { href: "/creative-approach", label: "Creative Approach" },
+                { href: "/strategy-approach", label: "Strategy Approach" },
                 { href: "/case-studies", label: "All case studies" },
+                { href: "/principles", label: "Operating Principles" },
                 { href: "/adish-jain/about", label: "About" },
                 { href: "/contact", label: "Contact" },
               ].map((item) => (

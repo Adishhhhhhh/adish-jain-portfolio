@@ -6,14 +6,12 @@ import { useRouter } from "next/navigation";
 import { useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import type { Concept } from "@/content/types";
-import { AWARENESS_LABELS, BRAND_META, FORMAT_LABELS } from "@/content/types";
+import { AWARENESS_LABELS, BRAND_META, FORMAT_LABELS, conceptFormats } from "@/content/types";
 import { SITE, SCREEN_3 } from "@/content/copy";
 import { SpecPill } from "@/components/card/SpecPill";
 import { FormatIcons } from "@/components/card/FormatIcons";
 import { LandingLink } from "@/components/card/LandingLink";
 import { RationalePanel } from "./RationalePanel";
-import { AnnotatedTeardown } from "@/components/teardown/AnnotatedTeardown";
-import { NEUROGUM_TEARDOWN } from "@/content/teardowns";
 
 /**
  * Ad Details modal. Two columns:
@@ -99,34 +97,10 @@ export function AdDetailsModal({
       >
         <ModalHeader onClose={dismiss} />
 
-        {concept.id === NEUROGUM_TEARDOWN.conceptId && concept.asset ? (
-          <div className="flex flex-col">
-            <div className="border-b border-[var(--color-divider)] bg-[var(--color-surface-alt)] px-5 py-3">
-              <p className="text-[12px] font-semibold uppercase tracking-wide text-[var(--color-meta-blue)]">
-                Annotated Teardown · the analyst voice
-              </p>
-              <p className="mt-1 text-[14px] text-[var(--color-text-primary)]">
-                A real ad account would show spend and reach here. This concept
-                never ran, so it shows the per-second strategic reasoning instead.
-              </p>
-            </div>
-            <div className="p-5">
-              <AnnotatedTeardown
-                videoSrc={concept.asset}
-                poster={concept.poster}
-                hotspots={NEUROGUM_TEARDOWN.hotspots}
-              />
-            </div>
-            <div className="border-t border-[var(--color-divider)]">
-              <RightRationale concept={concept} />
-            </div>
-          </div>
-        ) : (
-          <div className="grid grid-cols-1 gap-0 md:grid-cols-[1fr_1.05fr]">
-            <LeftCreative concept={concept} />
-            <RightRationale concept={concept} />
-          </div>
-        )}
+        <div className="grid grid-cols-1 gap-0 md:grid-cols-[1fr_1.05fr]">
+          <LeftCreative concept={concept} />
+          <RightRationale concept={concept} />
+        </div>
       </motion.div>
     </div>
   );
@@ -170,9 +144,10 @@ function LeftCreative({ concept }: { concept: Concept }) {
         </p>
         <div className="flex items-center gap-2 text-[13px] text-[var(--color-text-primary)]">
           <span className="font-semibold">Format</span>
-          <FormatIcons formats={[concept.format]} />
+          <FormatIcons formats={conceptFormats(concept)} />
           <span className="text-[var(--color-text-secondary)]">
-            ({FORMAT_LABELS[concept.format]}, {AWARENESS_LABELS[concept.awareness]})
+            ({conceptFormats(concept).map((f) => FORMAT_LABELS[f]).join(" → ")},{" "}
+            {AWARENESS_LABELS[concept.awareness]})
           </span>
         </div>
       </div>

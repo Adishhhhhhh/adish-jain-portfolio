@@ -2,9 +2,9 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Concept } from "@/content/types";
-import { BRAND_META } from "@/content/types";
+import { BRAND_META, conceptFormats } from "@/content/types";
 import { SITE } from "@/content/copy";
 import { SpecPill } from "./SpecPill";
 import { FormatIcons } from "./FormatIcons";
@@ -57,7 +57,7 @@ export function AdCard({ concept }: { concept: Concept }) {
 
         <div className="flex items-center gap-2 text-[13px] text-[var(--color-text-primary)]">
           <span>Format</span>
-          <FormatIcons formats={[concept.format]} />
+          <FormatIcons formats={conceptFormats(concept)} />
         </div>
 
         {hookCount > 1 && (
@@ -147,32 +147,126 @@ function CreativeSlot({
     );
   }
   if (concept.format === "video") {
-    // Natural aspect ratio, full creative visible, never cropped.
-    return (
+    return <CardVideo concept={concept} rounding={rounding} />;
+  }
+  return <CardStatic concept={concept} rounding={rounding} />;
+}
+
+/**
+ * Plays in place on click, the way a real Ad Library card does. Starts muted so
+ * the first tap is never a surprise, then hands over native controls so sound
+ * and scrubbing are one click away.
+ */
+function CardVideo({ concept, rounding }: { concept: Concept; rounding: string }) {
+  const ref = useRef<HTMLVideoElement>(null);
+  const [started, setStarted] = useState(false);
+
+  function start() {
+    const v = ref.current;
+    if (!v) return;
+    setStarted(true);
+    v.play().catch(() => {
+      // Autoplay policy refused it. Controls are visible, so the user can start it.
+    });
+  }
+
+  return (
+    <div className={`relative w-full overflow-hidden ${rounding}bg-black`}>
       <video
+        ref={ref}
         src={concept.asset}
         poster={concept.poster}
         muted
         playsInline
-        preload="none"
-        className={`h-auto max-h-[440px] w-full ${rounding}bg-black object-contain`}
+        preload="metadata"
+        controls={started}
+        onClick={() => started || start()}
+        className="h-auto max-h-[440px] w-full bg-black object-contain"
       />
-    );
-  }
-  // Statics render at their true dimensions, centered, never top-cropped.
-  // width/height 0 + w-full h-auto is the Next.js pattern for intrinsic-ratio images.
-  return (
-    <div className={`flex w-full items-center justify-center overflow-hidden ${rounding}bg-[var(--color-surface-alt)]`}>
-      <Image
-        src={concept.asset}
-        alt={concept.conceptName}
-        width={0}
-        height={0}
-        sizes="(max-width: 768px) 100vw, 320px"
-        loading="lazy"
-        className="h-auto max-h-[440px] w-full object-contain"
-      />
+      {!started && (
+        <button
+          type="button"
+          onClick={start}
+          aria-label={`Play ${concept.conceptName}`}
+          className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors hover:bg-black/20"
+        >
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-black/60 shadow-lg backdrop-blur-sm transition-transform group-hover:scale-105">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden>
+              <path d="M8 5.14v13.72a1 1 0 0 0 1.54.84l10.5-6.86a1 1 0 0 0 0-1.68L9.54 4.3A1 1 0 0 0 8 5.14z" />
+            </svg>
+          </span>
+        </button>
+      )}
     </div>
+  );
+}
+
+/**
+ * Statics render at their true dimensions, centered, never top-cropped, and
+ * open full size on click so the copy inside them is actually readable.
+ */
+function CardStatic({ concept, rounding }: { concept: Concept; rounding: string }) {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!open) return;
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setOpen(false);
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [open]);
+
+  return (
+    <>
+      <button
+        type="button"
+        onClick={() => setOpen(true)}
+        aria-label={`Enlarge ${concept.conceptName}`}
+        className={`flex w-full cursor-zoom-in items-center justify-center overflow-hidden ${rounding}bg-[var(--color-surface-alt)]`}
+      >
+        <Image
+          src={concept.asset!}
+          alt={concept.conceptName}
+          width={0}
+          height={0}
+          sizes="(max-width: 768px) 100vw, 320px"
+          loading="lazy"
+          className="h-auto max-h-[440px] w-full object-contain"
+        />
+      </button>
+
+      {open && (
+        <div
+          className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 p-4"
+          role="dialog"
+          aria-modal="true"
+          aria-label={concept.conceptName}
+          onClick={() => setOpen(false)}
+        >
+          <button
+            type="button"
+            aria-label="Close"
+            onClick={() => setOpen(false)}
+            className="absolute right-4 top-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/15 text-white transition-colors hover:bg-white/25"
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" aria-hidden>
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
+          <Image
+            src={concept.asset!}
+            alt={concept.conceptName}
+            width={0}
+            height={0}
+            sizes="90vw"
+            onClick={(e) => e.stopPropagation()}
+            className="max-h-[92vh] w-auto max-w-[92vw] cursor-default object-contain"
+          />
+        </div>
+      )}
+    </>
   );
 }
 

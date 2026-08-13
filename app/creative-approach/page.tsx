@@ -3,19 +3,26 @@ import { TopBar } from "@/components/shell/TopBar";
 import { SearchBarRow } from "@/components/shell/SearchBarRow";
 import { MarkdownView } from "@/components/case-study/MarkdownView";
 import { SectionRail } from "@/components/case-study/SectionRail";
-import { APPROACH_INTRO, APPROACH_PARTS, type ApproachItem } from "@/content/approach";
+import { APPROACH_INTRO, APPROACH_PARTS, type ApproachItem } from "@/content/creative-approach";
 import { IdeationVenn } from "@/components/approach/IdeationVenn";
+import { HookVenn } from "@/components/approach/HookVenn";
 import { ConceptArchitecture } from "@/components/approach/ConceptArchitecture";
 import { WorkflowLoop } from "@/components/approach/WorkflowLoop";
 
-export const metadata = { title: "Approach" };
+export const metadata = { title: "Creative Approach" };
 
-// The pipeline, restructured for depth: six stages, each with nested
-// collapsible items (same toggle grammar as the case-study rooms) and, where
-// a diagram says it better than prose, a diagram.
+// The creative half, merged. Five stages from research to what compounds, each
+// with nested collapsible items (same toggle grammar as the case-study rooms)
+// and, where a diagram says it better than prose, a diagram.
 
 const DIAGRAMS = {
-  ideation: <IdeationVenn />,
+  // the hook petal opens into its own constraint diagram, latched under the main one
+  ideation: (
+    <>
+      <IdeationVenn />
+      <HookVenn />
+    </>
+  ),
   architecture: <ConceptArchitecture />,
   workflow: <WorkflowLoop />,
 } as const;
@@ -25,20 +32,25 @@ export default function ApproachPage() {
 
   return (
     <>
-      <TopBar active="approach" />
+      <TopBar active="creative-approach" />
       <SearchBarRow query="Adish Jain" />
 
       <main className="mx-auto max-w-[1200px] px-6 pb-20 pt-8">
         <header className="mb-6">
           <p className="text-[12px] font-semibold uppercase tracking-wide text-[var(--color-text-secondary)]">
-            Approach
+            Creative Approach
           </p>
           <h1 className="mt-1 text-[32px] font-bold leading-tight text-[var(--color-text-primary)]">
             {APPROACH_INTRO}
           </h1>
           <p className="mt-2 max-w-[720px] text-[15px] leading-relaxed text-[var(--color-text-secondary)]">
-            Five stages, one loop. The same pipeline produced every concept in
-            the Library. Open any stage for the full working depth.
+            Five stages, from first principles to finished asset. The same
+            pipeline produced every concept in the Library. Open any stage for
+            the full working depth, and see{" "}
+            <Link href="/strategy-approach" className="meta-link font-semibold">
+              Strategy Approach
+            </Link>{" "}
+            for what happens once the assets run.
           </p>
         </header>
 
