@@ -9,7 +9,8 @@ import { PositioningStrip } from "@/components/shell/PositioningStrip";
 import { FilterPanel } from "@/components/shell/FilterPanel";
 import { ActiveFilterChips } from "@/components/shell/ActiveFilterChips";
 import { AdCard } from "@/components/card/AdCard";
-import { BRAND_META, type Brand, type Concept } from "@/content/types";
+import { ConceptLibrary } from "./ConceptLibrary";
+import { type Brand, type Concept } from "@/content/types";
 import { applyFilters, INITIAL_FILTER } from "@/lib/filter";
 
 const BRAND_ORDER: Brand[] = ["pethonesty", "neurogum", "ancient-nutrition", "mitoq"];
@@ -75,34 +76,7 @@ export function WorkGrid() {
               )}
 
               {conceptsByBrand.length > 0 && (
-                <div data-tour="concepts" className="mt-14">
-                  <ConceptDivider count={conceptCount} />
-
-                  {conceptsByBrand.map((g) => (
-                    <section key={g.brand} className="mt-8 first:mt-6">
-                      <h3 className="mb-3 flex items-baseline gap-2 text-[17px] font-bold text-[var(--color-text-primary)]">
-                        {BRAND_META[g.brand].displayName}
-                        <span className="text-[13px] font-normal text-[var(--color-text-secondary)]">
-                          {g.items.length} concepts
-                        </span>
-                      </h3>
-                      <motion.div
-                        layout
-                        className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-                      >
-                        {g.items.map((c) => (
-                          <Cell
-                            key={c.id}
-                            concept={c}
-                            tourId={
-                              c.id.includes("-exp-") ? "expansion" : "scripts"
-                            }
-                          />
-                        ))}
-                      </motion.div>
-                    </section>
-                  ))}
-                </div>
+                <ConceptLibrary groups={conceptsByBrand} total={conceptCount} />
               )}
             </>
           )}
@@ -134,29 +108,6 @@ function Cell({
     >
       <AdCard concept={concept} />
     </motion.div>
-  );
-}
-
-// The seam between what shipped and what was written. Stated plainly, because
-// the honest line is also the more impressive one.
-function ConceptDivider({ count }: { count: number }) {
-  return (
-    <div className="flex flex-col gap-3 border-t-2 border-[var(--color-border)] pt-6">
-      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-        <h2 className="text-[22px] font-bold text-[var(--color-text-primary)]">
-          The concept library
-        </h2>
-        <span className="rounded-full bg-[var(--color-pill-bg)] px-2.5 py-0.5 text-[12px] font-semibold text-[var(--color-pill-text)]">
-          {count} written, not produced
-        </span>
-      </div>
-      <p className="max-w-[68ch] text-[14px] leading-relaxed text-[var(--color-text-secondary)]">
-        Everything above was produced. Everything below was written and mapped:
-        full VSL scripts with their angle, ICP, and hook rationale, plus the
-        Creative Expansion Map angles held for the next wave. Open any card for
-        the reasoning behind it.
-      </p>
-    </div>
   );
 }
 

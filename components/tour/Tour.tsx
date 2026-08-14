@@ -39,14 +39,14 @@ const STEPS: Step[] = [
   {
     route: "/",
     center: true,
-    title: "Read this first: none of this work is client work",
-    body: "Every asset here is concept work I made on my own initiative for four real DTC brands: PetHonesty, NeuroGum, Ancient Nutrition, and MitoQ. I have never worked with any of them, and none of it has run on a live ad account. I picked products I rated and built the strategy I would have pitched.",
+    title: "None of this is client work",
+    body: "Self-initiated spec work on four real DTC brands: PetHonesty, NeuroGum, Ancient Nutrition, and MitoQ. I have never worked with any of them, and none of it has run on a live account.",
   },
   {
     route: "/",
     center: true,
-    title: "And why it looks like the Meta Ad Library",
-    body: "The Ad Library exists so no advertiser can hide its creative. Borrowing a proven format is ordinary practice in this industry, so I borrowed that one: it lets you judge the work the way a buyer actually would, one ad at a time, with the strategy attached to each. Sixty seconds and you will know where everything is.",
+    title: "Why it looks like the Ad Library",
+    body: "Swiping what works is standard practice in DTC, so I swiped the Ad Library interface to show my own work. Have a look through the creative, the approach, and the strategic thinking behind it.",
   },
   {
     route: "/",
