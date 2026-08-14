@@ -130,6 +130,25 @@ function hookSections(block) {
     .filter(Boolean);
 }
 
+/**
+ * The FULL SCRIPT section, kept verbatim. His copy is data: no cleaning, no
+ * smart-quote normalising, no rewrapping. Only the markdown indentation is
+ * stripped, since the source nests the script under a bullet.
+ */
+function fullScript(block) {
+  const lines = block.split("\n");
+  const start = lines.findIndex((l) => /^\s*[-*]?\s*\*\*FULL SCRIPT\*\*/i.test(l));
+  if (start < 0) return "";
+  const body = lines.slice(start + 1);
+  const indents = body.filter((l) => l.trim()).map((l) => l.match(/^\s*/)[0].length);
+  const min = indents.length ? Math.min(...indents) : 0;
+  return body
+    .map((l) => l.slice(min))
+    .join("\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .trim();
+}
+
 const out = [];
 
 for (const b of BRANDS) {
@@ -161,7 +180,15 @@ for (const b of BRANDS) {
 
   heads.forEach((h, k) => {
     if (PRODUCED_VSL[b.slug].includes(h.n)) return;
-    const end = k + 1 < heads.length ? heads[k + 1].idx : lines.length;
+    // Stop at the next VSL, or at any heading of the same level or higher, so
+    // the last script in a section does not swallow the rest of the document.
+    let end = k + 1 < heads.length ? heads[k + 1].idx : lines.length;
+    for (let j = h.idx + 1; j < end; j++) {
+      if (/^#{1,3}\s/.test(lines[j])) {
+        end = j;
+        break;
+      }
+    }
     const block = lines.slice(h.idx, end).join("\n");
 
     const angle = field(block, "Angle");
@@ -183,6 +210,7 @@ for (const b of BRANDS) {
         : `VSL #${h.n}: ${h.title.replace(/^"|"$/g, "")}`,
       builtDate: b.built,
       caption: hookLines.length ? hookLines.join("\n\n") : angle,
+      script: fullScript(block),
       hooks: hookLines.length
         ? hookLines.map((line, hi) => ({
             line,
@@ -277,6 +305,7 @@ for (const c of out) {
   for (const k of Object.keys(c.rationale)) {
     if (!c.rationale[k]) delete c.rationale[k];
   }
+  if (!c.script) delete c.script;
 }
 
 const byBrand = {};

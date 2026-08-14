@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import { AWARENESS_LABELS, BRAND_META, type Brand, type Concept } from "@/content/types";
 
 /**
@@ -32,9 +31,9 @@ export function ConceptLibrary({
         </div>
         <p className="max-w-[70ch] text-[14px] leading-relaxed text-[var(--color-text-secondary)]">
           Everything above was produced. Everything below was written and mapped:
-          full VSL scripts with their angle, ICP, and hook rationale, plus the
-          Creative Expansion Map angles held for the next wave. Open any one to
-          read the thinking behind it.
+          76 full VSL scripts with their angle, ICP, and hook rationale, plus the
+          Creative Expansion Map angles held for the next wave. Open any one for
+          the strategy, and the script itself where one was written.
         </p>
       </div>
 
@@ -130,13 +129,66 @@ function ConceptRow({ concept, tourId }: { concept: Concept; tourId?: string }) 
         <Field label="Strategic intent">{r.strategicIntent}</Field>
         <Field label="Where it sits">{r.campaignRole}</Field>
 
-        <Link
-          href={`/ad/${concept.id}`}
-          scroll={false}
-          className="meta-link mt-0.5 text-[13px] font-semibold"
+        {concept.script && <ScriptToggle script={concept.script} />}
+      </div>
+    </details>
+  );
+}
+
+/**
+ * The script itself, nested one level down so the row stays scannable and the
+ * copy is one click away. Rendered with a small formatter rather than the
+ * markdown pipeline, because the format is only section labels and lines, and
+ * 76 scripts is not worth shipping a parser to the browser for.
+ */
+function ScriptToggle({ script }: { script: string }) {
+  const blocks = script.split("\n").map((l) => l.trim());
+
+  return (
+    <details className="group/script mt-1 rounded-md border border-[var(--color-border-light)] bg-[var(--color-surface-alt)]">
+      <summary className="flex cursor-pointer list-none items-center gap-2 px-3.5 py-2.5">
+        <svg
+          className="shrink-0 text-[var(--color-meta-blue)] transition-transform group-open/script:rotate-90"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2.6"
+          strokeLinecap="round"
+          aria-hidden
         >
-          Open full details
-        </Link>
+          <polyline points="9 6 15 12 9 18" />
+        </svg>
+        <span className="text-[13px] font-bold text-[var(--color-meta-blue)]">
+          Read the full script
+        </span>
+      </summary>
+
+      <div className="border-t border-[var(--color-border-light)] bg-[var(--color-surface)] px-4 pb-4 pt-3">
+        {blocks.map((line, i) => {
+          if (!line) return null;
+          // **HOOK** / ### **HOOK & STORY OPENING** / **BODY** / **CTA**
+          const label = line.match(/^#{0,4}\s*\*\*(.+?)\*\*\s*$/);
+          if (label) {
+            return (
+              <p
+                key={i}
+                className="mb-1.5 mt-4 text-[10.5px] font-bold uppercase tracking-[0.08em] text-[var(--color-text-tertiary)] first:mt-0"
+              >
+                {label[1].replace(/\*\*/g, "")}
+              </p>
+            );
+          }
+          return (
+            <p
+              key={i}
+              className="mb-2 text-[14px] leading-relaxed text-[var(--color-text-primary)]"
+            >
+              {line.replace(/\*\*/g, "")}
+            </p>
+          );
+        })}
       </div>
     </details>
   );

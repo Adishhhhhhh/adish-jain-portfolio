@@ -62,6 +62,11 @@ export type Concept = {
   builtDate: string;
   /** the ad as it would actually run — brand voice, 30–40% distilled, no em dashes */
   caption: string;
+  /**
+   * The full written script, verbatim, where one exists. Kept exactly as
+   * written: his copy is data, so no cleanup is applied to it.
+   */
+  script?: string;
   hooks: Hook[];
   /** path under /public to the produced asset, if any */
   asset?: string;
