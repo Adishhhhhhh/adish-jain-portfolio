@@ -35,15 +35,10 @@ export function applyFilters(
   all: Concept[],
   f: FilterState,
 ): Concept[] {
-  let pool: Concept[];
-
-  if (isFiltering(f)) {
-    // When filtering, the full library is in scope (produced + concepts).
-    pool = all;
-  } else {
-    // Default: curated to produced work only.
-    pool = all.filter((c) => c.state === "produced");
-  }
+  // The full library is always in scope. The grid separates produced work from
+  // the concept library visually, so hiding concepts behind a filter only made
+  // the deepest part of the portfolio the hardest part to find.
+  let pool: Concept[] = all;
 
   const q = f.query.trim().toLowerCase();
   pool = pool.filter((c) => {

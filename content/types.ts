@@ -33,20 +33,20 @@ export type Hook = {
  * Plus Campaign Role for where the asset sits in the architecture.
  */
 export type Rationale = {
-  /** The angle the asset attacks the prospect from */
+  /** The angle the asset attacks the prospect from. The one field always present */
   angle: string;
   /** Ideal Customer Profile this asset is engineered for */
-  icp: string;
+  icp?: string;
   /** Why the hook stops the scroll and reframes the category */
-  hookStrategy: string;
+  hookStrategy?: string;
   /** The mechanism behind why this asset works on this prospect */
-  whyItWorks: string;
+  whyItWorks?: string;
   /** What the asset is supposed to do inside the funnel */
-  strategicIntent: string;
+  strategicIntent?: string;
   /** Optional, how the same idea redeploys into other formats or angles */
   diversePotential?: string;
   /** Where this concept sits in the campaign architecture */
-  campaignRole: string;
+  campaignRole?: string;
 };
 
 export type Concept = {

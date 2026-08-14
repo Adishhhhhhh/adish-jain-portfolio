@@ -9,18 +9,32 @@ import { PositioningStrip } from "@/components/shell/PositioningStrip";
 import { FilterPanel } from "@/components/shell/FilterPanel";
 import { ActiveFilterChips } from "@/components/shell/ActiveFilterChips";
 import { AdCard } from "@/components/card/AdCard";
-import { applyFilters, INITIAL_FILTER, isFiltering } from "@/lib/filter";
+import { BRAND_META, type Brand, type Concept } from "@/content/types";
+import { applyFilters, INITIAL_FILTER } from "@/lib/filter";
+
+const BRAND_ORDER: Brand[] = ["pethonesty", "neurogum", "ancient-nutrition", "mitoq"];
 
 export function WorkGrid() {
   const [filter, setFilter] = useState(INITIAL_FILTER);
 
   const visible = useMemo(() => applyFilters(ALL_CONCEPTS, filter), [filter]);
-  const producedCount = ALL_CONCEPTS.filter((c) => c.state === "produced").length;
+
+  // Two movements: everything actually produced, then the written concept
+  // library grouped by brand.
+  const { produced, conceptsByBrand, conceptCount } = useMemo(() => {
+    const produced = visible.filter((c) => c.state === "produced");
+    const rest = visible.filter((c) => c.state === "concept");
+    const conceptsByBrand = BRAND_ORDER.map((b) => ({
+      brand: b,
+      items: rest.filter((c) => c.brand === b),
+    })).filter((g) => g.items.length > 0);
+    return { produced, conceptsByBrand, conceptCount: rest.length };
+  }, [visible]);
 
   return (
     <>
       <PositioningStrip />
-      <ResultCount count={isFiltering(filter) ? visible.length : producedCount} />
+      <ResultCount count={visible.length} />
 
       {/* Second panel lock: filters + status freeze below the search bar on scroll,
           with a soft shadow, matching the real Ad Library. */}
@@ -42,24 +56,55 @@ export function WorkGrid() {
           {visible.length === 0 ? (
             <EmptyState onClear={() => setFilter(INITIAL_FILTER)} />
           ) : (
-            <motion.div
-              layout
-              data-tour="grid"
-              className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
-            >
-              {visible.map((c, gi) => (
+            <>
+              {produced.length > 0 && (
                 <motion.div
-                  key={c.id}
                   layout
-                  data-tour-card={gi === 0 ? "first" : undefined}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.24, ease: [0.23, 1, 0.32, 1] }}
+                  data-tour="grid"
+                  className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
                 >
-                  <AdCard concept={c} />
+                  {produced.map((c, gi) => (
+                    <Cell
+                      key={c.id}
+                      concept={c}
+                      first={gi === 0}
+                      tourId={c.id === "ng-coffee-meth" ? "hero-creative" : undefined}
+                    />
+                  ))}
                 </motion.div>
-              ))}
-            </motion.div>
+              )}
+
+              {conceptsByBrand.length > 0 && (
+                <div data-tour="concepts" className="mt-14">
+                  <ConceptDivider count={conceptCount} />
+
+                  {conceptsByBrand.map((g) => (
+                    <section key={g.brand} className="mt-8 first:mt-6">
+                      <h3 className="mb-3 flex items-baseline gap-2 text-[17px] font-bold text-[var(--color-text-primary)]">
+                        {BRAND_META[g.brand].displayName}
+                        <span className="text-[13px] font-normal text-[var(--color-text-secondary)]">
+                          {g.items.length} concepts
+                        </span>
+                      </h3>
+                      <motion.div
+                        layout
+                        className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4"
+                      >
+                        {g.items.map((c) => (
+                          <Cell
+                            key={c.id}
+                            concept={c}
+                            tourId={
+                              c.id.includes("-exp-") ? "expansion" : "scripts"
+                            }
+                          />
+                        ))}
+                      </motion.div>
+                    </section>
+                  ))}
+                </div>
+              )}
+            </>
           )}
 
           {visible.length > 0 && <DeepLibraryCta />}
@@ -69,25 +114,70 @@ export function WorkGrid() {
   );
 }
 
-// End-of-grid door into the concept libraries. The grid shows the produced
-// work; the 90+ unproduced angles, scripts, and advertorial concepts live
-// inside the four case studies.
+function Cell({
+  concept,
+  first,
+  tourId,
+}: {
+  concept: Concept;
+  first?: boolean;
+  tourId?: string;
+}) {
+  return (
+    <motion.div
+      layout
+      data-tour-card={first ? "first" : undefined}
+      data-tour={tourId}
+      initial={{ opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.24, ease: [0.23, 1, 0.32, 1] }}
+    >
+      <AdCard concept={concept} />
+    </motion.div>
+  );
+}
+
+// The seam between what shipped and what was written. Stated plainly, because
+// the honest line is also the more impressive one.
+function ConceptDivider({ count }: { count: number }) {
+  return (
+    <div className="flex flex-col gap-3 border-t-2 border-[var(--color-border)] pt-6">
+      <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <h2 className="text-[22px] font-bold text-[var(--color-text-primary)]">
+          The concept library
+        </h2>
+        <span className="rounded-full bg-[var(--color-pill-bg)] px-2.5 py-0.5 text-[12px] font-semibold text-[var(--color-pill-text)]">
+          {count} written, not produced
+        </span>
+      </div>
+      <p className="max-w-[68ch] text-[14px] leading-relaxed text-[var(--color-text-secondary)]">
+        Everything above was produced. Everything below was written and mapped:
+        full VSL scripts with their angle, ICP, and hook rationale, plus the
+        Creative Expansion Map angles held for the next wave. Open any card for
+        the reasoning behind it.
+      </p>
+    </div>
+  );
+}
+
+// End-of-grid door into the full campaign rooms, where these concepts sit
+// inside their awareness architecture and campaign structure.
 function DeepLibraryCta() {
   return (
     <div className="mx-auto mt-10 max-w-[640px] rounded-lg border border-[var(--color-border)] bg-[var(--color-surface)] px-6 py-8 text-center shadow-[var(--shadow-card)]">
       <p className="text-[17px] font-bold text-[var(--color-text-primary)]">
-        The produced work ends here. The library keeps going.
+        Every concept above sits inside a campaign.
       </p>
       <p className="mx-auto mt-2 max-w-[480px] text-[14px] leading-relaxed text-[var(--color-text-secondary)]">
-        90+ more creative angles, VSL scripts, and advertorial concepts sit
-        inside the four case studies, each mapped to its ICP, awareness stage,
-        and campaign role.
+        The four case studies hold the full architecture: research foundation,
+        positioning, awareness distribution, and the campaign and ad set each
+        of these assets was mapped to.
       </p>
       <Link
         href="/case-studies"
         className="mt-5 inline-flex h-10 items-center justify-center rounded-md bg-[var(--color-meta-blue)] px-5 text-[14px] font-semibold text-white transition-colors hover:bg-[var(--color-meta-blue-hover)] active:scale-[0.99]"
       >
-        See all 90+ angles and scripts
+        See the four campaign rooms
       </Link>
     </div>
   );

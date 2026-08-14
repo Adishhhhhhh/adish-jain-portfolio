@@ -247,29 +247,42 @@ function RightRationale({ concept }: { concept: Concept }) {
   return (
     <div className="flex flex-col bg-[var(--color-surface)] p-5">
       <div className="overflow-hidden rounded-md border border-[var(--color-border-light)]">
+        {/* Concept-stage entries carry only the fields their source brief
+            actually documented, so every panel is conditional. Empty panels
+            would read as missing work rather than honest scope. */}
         <RationalePanel title="The Angle" defaultOpen>
           <p>{concept.rationale.angle}</p>
         </RationalePanel>
-        <RationalePanel title="The ICP">
-          <p>{concept.rationale.icp}</p>
-        </RationalePanel>
-        <RationalePanel title="The Hook Strategy">
-          <p>{concept.rationale.hookStrategy}</p>
-        </RationalePanel>
-        <RationalePanel title="Why It Works">
-          <p>{concept.rationale.whyItWorks}</p>
-        </RationalePanel>
-        <RationalePanel title="Strategic Intent">
-          <p>{concept.rationale.strategicIntent}</p>
-        </RationalePanel>
+        {concept.rationale.icp && (
+          <RationalePanel title="The ICP">
+            <p>{concept.rationale.icp}</p>
+          </RationalePanel>
+        )}
+        {concept.rationale.hookStrategy && (
+          <RationalePanel title="The Hook Strategy">
+            <p>{concept.rationale.hookStrategy}</p>
+          </RationalePanel>
+        )}
+        {concept.rationale.whyItWorks && (
+          <RationalePanel title="Why It Works">
+            <p>{concept.rationale.whyItWorks}</p>
+          </RationalePanel>
+        )}
+        {concept.rationale.strategicIntent && (
+          <RationalePanel title="Strategic Intent">
+            <p>{concept.rationale.strategicIntent}</p>
+          </RationalePanel>
+        )}
         {concept.rationale.diversePotential && (
           <RationalePanel title="Diverse Potential">
             <p>{concept.rationale.diversePotential}</p>
           </RationalePanel>
         )}
-        <RationalePanel title="Campaign Role">
-          <p>{concept.rationale.campaignRole}</p>
-        </RationalePanel>
+        {concept.rationale.campaignRole && (
+          <RationalePanel title="Campaign Role">
+            <p>{concept.rationale.campaignRole}</p>
+          </RationalePanel>
+        )}
       </div>
 
       <div className="mt-5 overflow-hidden rounded-md border border-[var(--color-border-light)]">

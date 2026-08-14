@@ -143,16 +143,38 @@ function CreativeSlot({
 }) {
   const rounding = flush ? "" : "rounded-md ";
   if (!concept.asset) {
-    return (
-      <div className={`flex aspect-square w-full items-center justify-center ${rounding}bg-[var(--color-surface-alt)] text-[13px] text-[var(--color-text-secondary)]`}>
-        TODO: asset
-      </div>
-    );
+    return <ConceptSlot concept={concept} rounding={rounding} />;
   }
   if (concept.format === "video") {
     return <CardVideo concept={concept} rounding={rounding} />;
   }
   return <CardStatic concept={concept} rounding={rounding} />;
+}
+
+/**
+ * Written but never shot. Instead of an empty frame, the slot renders the
+ * script's opening line as the artwork, because on a concept the hook is the
+ * asset. Reads as a deliberate stage rather than a missing image.
+ */
+function ConceptSlot({ concept, rounding }: { concept: Concept; rounding: string }) {
+  const line = concept.hooks[0]?.line ?? concept.caption.split("\n")[0] ?? "";
+  const isExpansion = concept.id.includes("-exp-");
+
+  return (
+    <div
+      className={`flex min-h-[168px] w-full flex-col justify-between gap-3 border border-dashed border-[var(--color-border)] ${rounding}bg-[var(--color-surface-alt)] p-4`}
+    >
+      <span className="text-[10.5px] font-bold uppercase tracking-[0.07em] text-[var(--color-text-tertiary)]">
+        {isExpansion ? "Expansion angle" : "Script, not yet produced"}
+      </span>
+      <p className="line-clamp-5 text-[15px] font-semibold leading-snug text-[var(--color-text-primary)]">
+        {line ? `“${line}”` : concept.conceptName}
+      </p>
+      <span className="text-[11.5px] text-[var(--color-text-secondary)]">
+        {isExpansion ? "Angle mapped, held for Phase 2" : "Full script written"}
+      </span>
+    </div>
+  );
 }
 
 /**
