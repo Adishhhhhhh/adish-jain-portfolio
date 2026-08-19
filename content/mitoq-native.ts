@@ -2,14 +2,14 @@ import type { Concept } from "./types";
 
 // MitoQ long-form native statics.
 //
-// Three of the Unaware ad set's story VSLs, rebuilt as written posts. The
-// format works because the story does the selling and the image only has to
-// buy the first two seconds: an archival photograph reads as a history post
-// rather than an ad, which is the permission a native format borrows.
+// Three of the Unaware ad set's story scripts, run as written ads. The format
+// works because the story does the selling and the image only has to buy the
+// first two seconds: an archival photograph reads as a history post rather
+// than an ad, which is the permission a native format borrows.
 //
-// Spoken tics from the VSL ("here's how", "by the end you'll know") are cut,
-// because they betray a script being read aloud. Everything else is the same
-// argument in the same order.
+// The copy is verbatim. Not a word is changed from the script as written, and
+// the section markers are kept, so the card renders them as labels instead of
+// stripping them out.
 //
 // Art direction for each sits in rationale.diversePotential.
 
@@ -24,48 +24,135 @@ export const MITOQ_NATIVE_CONCEPTS: Concept[] = [
     nativeLongForm: true,
     conceptName: "Native Long-Form #1: The Stasi File",
     builtDate: "Built Aug 2026",
-    asset: "/assets/native/mq-stasi-file.png",
-    caption: `In 1983, a Stasi interrogator named Klaus Hoffmann had a perfect record.
+    asset: "/assets/native/mq-stasi-file.jpg",
+    caption: `### **HOOK & STORY OPENING**
 
-Over three years he had broken 127 prisoners. No sleep. Bright lights held on for days. Noise at random intervals. Every method the East German secret police had designed to take a mind apart.
+This woman named Maria survived the most brutal psychological torture from the East German police, and here’s what it means for your psychological health
 
-All 127 confessed inside 48 hours.
+In 1983, a man named Klaus Hoffmann had a perfect record.
 
-Then came Maria.
+He was an interrogator for the East German secret police, the Stasi
 
-A week of the same treatment, and she gave him nothing. Hoffmann wrote a single line in his classified report. When the Wall came down and those files were reopened, a research team in Berlin went looking for what it meant.
+Over three years, he broke 127 prisoners using psychological manipulations
 
-The line read: "Subject demonstrates impossible cognitive endurance."
+Their methods were ruthless…
 
-Here is what they found.
+No sleep… constant bright lights… loud noises at random intervals… and every kind of scientifically designed psychological tortures to destroy the mind.
 
-Under that kind of stress the brain burns enormous energy. And every time your body produces energy, it leaks free radicals as a byproduct. Those radicals attack the mitochondria, the part of the cell producing the energy in the first place.
+Eventually, all of them confessed within 24 - 48 hours
 
-That is the loop. The harder your brain works, the more it damages the thing powering it.
+Until prisoner 128.
 
-What those prisoners went through in days is what happens to you across years. Brain fog. Names you cannot retrieve. The 3pm wall. The feeling that thinking is simply heavier than it used to be.
+Named Maria. An ordinary 34-year-old worker arrested for political reasons.
 
-Maria's cells cleared those radicals faster than the stress could create them. The neurologists called it elevated mitochondrial antioxidant activity.
+who even after a week of relentless interrogation, never broke.
 
-Researchers spent decades trying to bottle it. CoQ10. NAD+. Omega 3. B vitamins. Every one failed for the same reason. Your mitochondria are wrapped in a barrier that is extremely selective about what it lets through, and none of those molecules could get in. They circulated, did very little, and left.
+He wrote in his classified report: *"Subject demonstrates impossible cognitive endurance."*
 
-In 1999, after 25 years of work, two scientists in New Zealand built one that could. They gave the molecule a positive charge, and the mitochondria's negative barrier pulls it straight through.
+When the Berlin Wall fell and those Stasi files were reopened…
 
-It reaches your cells at concentrations 100 to 1,000 times higher than standard CoQ10, and once inside it keeps cycling, neutralising radicals around the clock.
+A research team in Berlin found the answer.
 
-900+ peer-reviewed studies. Over 60 global patents. It is called Mitoquinol Mesylate, and MitoQ Pure is the only place it is made to that formulation.
+To tackle the torture and the amount of psychological stress created by it…
 
-Give it 90 days. You are not masking a symptom. You are repairing years of accumulated damage.`,
+The brain produces massive energy…
+
+And every time it produces energy it naturally leak toxins in the form of free radicals as a by product
+
+These toxins then damage the mitochondria, which is responsible for every function your body does from thinking to talking, the very source of energy itself…
+
+This explains why as you age you struggle with brain fog, poor memory, constant anxiety, and afternoon crashes…
+
+The accumulated damage those prisoners have to face in just a few days is happening to you in years…
+
+So when these get constantly damaged eventually your brain shuts down and gives in…
+
+But Maria had naturally built stronger cellular defense systems that neutralized those free radicals faster than the stress could create them.
+
+The neurologists called it *"elevated mitochondrial antioxidant activity."*
+
+### **THE CHALLENGE**
+
+Researchers tried to develop antioxidants that could replicate the same level of cellular protection…
+
+Because it meant sharp cognitive abilities, strong memory, and quick decision making
+
+But developing such an antioxidant was no easy task for two reasons.
+
+One. It had to target the mitochondrial level because that's where the radicals are created.
+
+Two. The mitochondria has a protective layer that is extremely selective about what it lets inside.
+
+Many developed antioxidants like CoQ10, NAD+, Omega 3, and B-vitamins.
+
+But none could enter the mitochondria
+
+They were either too large, untargeted, or simply lacked the structure required to enter the mitochondria
+
+They masked the problem temporarily, but beneath the surface, radicals continued damaging the mitochondria.
+
+### **THE SOLUTION**
+
+This remained the case until 1999.
+
+Two Scientists in New Zealand, after 25 years of research, created a molecule that not only entered but stayed there, cycling continuously to protect it 24/7.
+
+It went through 900+ peer-reviewed studies and earned over 60 global patents.
+
+The molecule is called **Mitoquinol Mesylate.**
+
+It reaches your brain cells at concentrations 100 to 1,000 times higher than standard antioxidants, delivering protection exactly where the damage happens.
+
+It stops brain cell damage before it accumulates
+
+It restores the mental sharpness that free radicals have been stealing from you for years.
+
+This became the world’s first mitochondria-targeted antioxidant tested in human clinical trials
+
+The results exceeded expectations:
+
+**ATP production increased by 69%** - meaning steady mental energy throughout the day, no more afternoon crashes, and sharper thinking that lasts from morning to night.
+
+**Oxidative stress damage dropped by 48%** - meaning less brain cell damage from radicals over time, healthier cells that last longer, and protection against daily stress.
+
+**Natural antioxidant capacity increased by 36%** - meaning your brain's own defense system gets stronger, you build resilience against mental demands, and your cells can protect themselves.
+
+Most brands don't have it. They can't manufacture it. They don't understand the mechanism.
+
+And there's only one brand that I trust which delivers the exact formulation required for this to work.
+
+### **PRODUCT INTRODUCTION**
+
+Their name is **MitoQ Pure.**
+
+The only company manufacturing capsules with the precise amount of Mitoquinol Mesylate needed to protect your brain cells
+
+It's backed by institutions like Cambridge, UCLA, and Harvard. Have over 900 peer-reviewed studies, and 60+ global patents protecting the technology.
+
+This is cellular repair. You're reversing years of accumulated damage while building long-term protection.
+
+The recommended protocol is 90 days minimum.
+
+Three months to give your mitochondria the sustained defense they need to fully recover and maintain their capacity.
+
+### **THE STAKES & URGENCY**
+
+And every second you wait
+
+Free radicals accumulate and the damage keeps compounding
+
+The difference between sharp thinking and cognitive fog isn't willpower. **It's whether your mitochondria are protected or being destroyed.**
+
+Right now, MitoQ has stock. But they've already sold out twice this year because the manufacturing process is complex and can't be rushed.
+
+Click below to get MitoQ Pure.
+
+If you can still click through, they have inventory. But based on demand, that won't last long.`,
     hooks: [
       {
-        line: "In 1983, a Stasi interrogator named Klaus Hoffmann had a perfect record.",
+        line: `This woman named Maria survived the most brutal psychological torture from the East German police, and here’s what it means for your psychological health`,
         rationale:
-          "Opens on a person with a record to protect, so the reader is waiting for the exception before they know one is coming. The number, 127, does the credentialing an adjective cannot.",
-      },
-      {
-        line: "“Subject demonstrates impossible cognitive endurance.”",
-        rationale:
-          "The declassified line as a cold open. A quoted document is a curiosity object: it implies a file, an investigator, and a thing that could not be explained.",
+          "Names a real person and an extreme event in one line, then withholds the connection to the reader's own health until the story earns it. A survivor of documented torture is authority the category cannot manufacture.",
       },
     ],
     rationale: {
@@ -96,54 +183,167 @@ Give it 90 days. You are not masking a symptom. You are repairing years of accum
     nativeLongForm: true,
     conceptName: "Native Long-Form #2: The Endurance Split",
     builtDate: "Built Aug 2026",
-    asset: "/assets/native/mq-shackleton-haul.png",
-    caption: `In 1914 Ernest Shackleton set out to cross Antarctica. His ship was crushed by pack ice and sank. His 28 men were stranded for 497 days in conditions that should have killed them in weeks.
+    asset: "/assets/native/mq-shackleton-haul.jpg",
+    caption: `**HOOK/MICRO-LEAD**
 
-They hauled 2,000 pound lifeboats across open ice. They hunted seals. They rationed every calorie. At one point they ate their own sled dogs.
+Here's how 8 men in their 40s hauled 2,000-pound lifeboats across Antarctic ice on just 6 hours of sleep...
 
-All 28 came home alive.
+While you're wiped by 3 PM... even after a full night's sleep.
 
-When doctors examined them in 1916, they found something that made no sense.
+What they did will shock you.
 
-The crew had eaten the same food for a year and a half. Pemmican, seal meat, blubber. Identical rations, identical conditions, identical cold.
+By the end, you'll know exactly how to erase every trace of tiredness from your body.
 
-Yet 8 of those men had been running on 6 hours of sleep and hauling boats like machines. The other 20 needed 12 to 14 hours and could barely stand.
+**BODY - THE EXPEDITION**
 
-Same calories. Same ice. Completely different bodies.
+In 1914, Ernest Shackleton set out to cross Antarctica.
 
-The blood work found the difference. Those 8 men had been eating the seal liver.
+But his ship, the Endurance, got trapped and crushed by pack ice.
 
-Seal liver carries the highest natural concentration of CoQ10 of any food on earth. 100 to 200mg per 100 grams, wrapped in an omega-3 fat matrix that carries it directly into the mitochondrial membrane.
+The ship sank after 25 days.
 
-Here is why that mattered.
+His 28-man crew was trapped 497 days in conditions that should've killed them in weeks.
 
-Your mitochondria produce every unit of energy you have. Thinking, moving, healing, all of it. And every time they generate that energy they leak free radicals, which then attack the mitochondria themselves.
+To survive, they hauled lifeboats across endless ice shelves, hunted seals, and rationed every calorie while fighting frostbite and exhaustion.
 
-It is a tax on every watt you produce. The more energy you demand, the more of it gets taken back. Which is why you can sleep eight hours, eat clean, train, take your supplements, and still be finished by 3pm.
+Eventually, the situations were so extreme, they once had no choice but to eat their own sled dogs.
 
-Those 8 men were not paying the tax.
+Through sheer endurance and leadership, Shackleton led all 28 men to safety. Not one died.
 
-Your body makes its own CoQ10, but the mitochondria sit behind a negatively charged barrier that blocks almost everything, including the CoQ10 you swallow. Most of what you take floats outside it and leaves in your urine.
+When they were finally rescued in 1916, doctors ran blood tests.
 
-In 1999, after 25 years and $60 million, two scientists solved the delivery problem. They took the CoQ10 molecule and gave it a positive charge, and that charge pulls it through the barrier like a magnet.
+They found something that made no sense.
 
-The clinical numbers: free radical damage down 48%. Energy production up as much as 69%. Natural antioxidant defence up 36%. Concentrations 100 to 1,000 times higher than standard CoQ10.
+The entire crew ate the same food. Pemmican. Seal meat. Blubber.
 
-Backed by Cambridge, UCLA and Harvard. Over 900 peer-reviewed studies, more than 60 patents.
+Yet 8 men functioned on just 6 hours of sleep and hauled lifeboats like machines.
 
-It is called Mitoquinol Mesylate. MitoQ Pure is the only formulation of it.
+The rest needed 12 to 14 hours and could barely perform basic tasks.
 
-You cannot eat 400 grams of seal liver a day. This is the version that fits in a glass of water.`,
+Constantly dragging. Collapsing.
+
+Same calories. Same conditions. Completely different energy.
+
+The blood analysis revealed why.
+
+**BODY - THE DISCOVERY**
+
+The exhausted and energized groups ate the same amount of food.
+
+But there was one slight difference in what they ate that created massive gap in energy
+
+Those 8 consumed seal liver. The rest ate pemmican, meat, and blubber.
+
+At first, scientists thought it was just a difference in nutrients.
+
+But deeper analysis showed something else.
+
+Seal liver contains the highest natural concentration of CoQ10 of any food on earth.
+
+100 to 200 milligrams per 100 grams.
+
+This allowed massive energy production without free radical attacks.
+
+Your mitochondria are the power plants inside every cell.
+
+They produce all your energy. Thinking. Moving. Everything.
+
+While producing energy, they leak free radicals as a byproduct.
+
+These radicals attack your mitochondria... your energy source.
+
+This is why you feel exhausted even when doing everything right.
+
+Sleeping 8 hours. Eating clean. Exercising. Taking supplements.
+
+Every time your mitochondria generate energy, they leak radicals that steal that energy back.
+
+It's a constant energy tax.
+
+You never get 100% of the energy. The more you need, the more tax you pay. It's a vicious cycle.
+
+Your body naturally produces CoQ10.
+
+But your mitochondria are surrounded by a negatively charged barrier that blocks most molecules... including CoQ10.
+
+Seal liver isn't just concentrated with CoQ10... it's wrapped in an omega-3 fat matrix that helped deliver it directly into mitochondrial membranes.
+
+Providing protection from free radical attacks.
+
+They produced massive energy without paying the tax.
+
+But eating 400 grams of seal liver daily isn't realistic.
+
+After this discovery, companies tried replicating it. Antioxidants and supplements flooded the market.
+
+CoQ10, NAD+, fish oil, B-vitamins... but none could reach where radicals form.
+
+Because cellular protection unlocked near-supernatural abilities...
+
+Sustained energy. Faster recovery. Better mobility. Every organ is at full potential. Just Like not paying tax gives you more buying power.
+
+But most of the supplements float outside the barrier until you pee them out.
+
+Too large or lacking the delivery mechanism.
+
+**BODY - THE SOLUTION**
+
+But there's one molecule that turned out to solve this.
+
+It was engineered In 1999
+
+After 25 years of research and $60 million investment, two scientists created the world's first mitochondrial-targeted antioxidant.
+
+Backed by Cambridge, UCLA, and Harvard.
+
+Over 900 peer-reviewed studies.
+
+Over 60 global patents.
+
+It's called Mitoquinol Mesylate. Same CoQ10 molecule with a unique delivery mechanism.
+
+They attached a positive charge.
+
+That positive charge gets pulled through your mitochondria's negative barrier like a magnet.
+
+The clinical results weren't subtle. They were beyond expectations.
+
+It concentrates 100 to 1,000 times higher than regular CoQ10.
+
+Radical damage dropped 48%. Cellular damage making you feel decades older is significantly reduced.
+
+Energy production improved up to 69%. Sustained energy that lasts. The tax was reduced... more energy available.
+
+Natural antioxidant defenses increased 36%. You recover faster from poor sleep and stress instead of needing days to bounce back.
+
+Chronic fatigue eliminated.
+
+Chronic inflammation destroying your joints and mood?
+
+It reduces measurably. You move easier. Think clearer. Feel like yourself again.
+
+You're no longer trapped in an exhausted body.
+
+**CTA**
+
+As of now there’s only one brand that manufactures the precise formulation: MitoQ Pure.
+
+The recommended protocol is 90 days minimum.
+
+This isn't a quick fix. It's cellular healing. You're reversing years of accumulated damage while building long-term protection.
+
+Few people know about this as they're a small company.
+
+Still they sell out quickly. The manufacturing process is complex and can't be rushed.
+
+If you can checkout, you're lucky.
+
+Click below to secure your supply before they sell out again.`,
     hooks: [
       {
-        line: "Same food. Same ice. 8 of the 28 men could still haul a 2,000 pound boat.",
+        line: `Here's how 8 men in their 40s hauled 2,000-pound lifeboats across Antarctic ice on just 6 hours of sleep...`,
         rationale:
-          "Leads with the anomaly rather than the expedition. The reader is handed a controlled experiment and a result that should not be possible, so the only way out is the explanation.",
-      },
-      {
-        line: "497 days stranded in Antarctica. All 28 came home. The blood tests made no sense.",
-        rationale:
-          "Survival first, mystery second. The rescue is the reward that buys attention for the anomaly underneath it.",
+          "Two numbers doing the work: 2,000 pounds hauled on 6 hours of sleep, set directly against the reader being finished by 3pm on a full night. The gap between those two states is the whole ad.",
       },
     ],
     rationale: {
@@ -174,48 +374,225 @@ You cannot eat 400 grams of seal liver a day. This is the version that fits in a
     nativeLongForm: true,
     conceptName: "Native Long-Form #3: The Olive Mill Paradox",
     builtDate: "Built Aug 2026",
-    asset: "/assets/native/mq-olive-mill.png",
-    caption: `Between 1930 and 1960 there was a region in Greece full of olive oil mills.
+    asset: "/assets/native/mq-olive-mill.jpg",
+    caption: `**HOOK**
 
-The men who worked them crushed olives by hand, 8 to 10 hours a day, for forty years. The work was brutal. The air inside was thick with olive mist. Most of them smoked heavily the entire shift, and their diet was exactly what a cardiologist would tell you to avoid. Heavy on fat. Heavy on meat and cheese.
+Here's how Greek olive mill workers in the 1940s and 50s worked for 40+ years... chain-smoked every day... ate a high-fat diet...
 
-When regional health officials pulled the medical records covering 1930 to 1965, they found zero heart attacks among mill workers with 40+ years on the job.
+And had zero heart attacks on record.
 
-Not a low rate. Zero.
+Not one.
 
-Farmers in the same towns, eating the same food, had entirely normal heart disease rates.
+While today, heart disease is the #1 killer even among people who eat clean, exercise, and never touch a cigarette.
 
-The only variable separating them was the air.
+What did those workers know that modern cardiology doesn't?
 
-When doctors investigated in the early 1970s, they found a compound sitting inside the workers' heart cells that had no business being there. Hydroxytyrosol, from the olive mist they had breathed every working day for decades.
+By the end, you'll know exactly what protected their hearts... and how to get that same protection without moving to Greece.
 
-Here is what it was doing.
+**BODY - THE MILL STORY**
 
-Heart disease gets explained as blockage and cholesterol. Underneath that sits something simpler. Your heart never stops, which means its cells are producing energy every second of your life, and every unit of energy produced leaks free radicals that damage the mitochondria generating it.
+Between 1930 and 1960, a small region in Greece had dozens of olive oil mills.
 
-A heart cell that cannot produce energy cleanly is a heart cell in decline, years before anything shows on a scan.
+Workers crushed fresh olives by hand. 8 to 10 hours a day. For decades.
 
-The hydroxytyrosol those men inhaled was neutralising those radicals at the mitochondrial level, continuously, for forty years. Their arteries were absorbing everything the cigarettes and the diet threw at them. Their mitochondria were protected the whole time.
+The work was brutal. The air was thick with olive mist. And most of these men smoked heavily while they worked.
 
-You cannot breathe olive mist for a living. And swallowing hydroxytyrosol does not reproduce it, because the mitochondria are wrapped in a charged barrier that blocks nearly every antioxidant you take, CoQ10 included.
+Their diet? High in fat. Heavy on meat and cheese. Everything modern doctors tell you destroys your heart.
 
-That delivery problem is what two New Zealand scientists spent 25 years solving. They attached a positive charge to the CoQ10 molecule, so the mitochondria's negative barrier pulls it inside instead of turning it away.
+But when regional health officials reviewed medical records from 1930 to 1965, they found something impossible.
 
-It concentrates 100 to 1,000 times higher than standard CoQ10. Free radical damage down 48%. Cellular energy production up as much as 69%.
+Zero heart attacks among mill workers with 40+ years on the job.
 
-Over 900 peer-reviewed studies. More than 60 global patents. Mitoquinol Mesylate, and MitoQ Pure is the only place it is manufactured to that formulation.
+Not low rates. Zero.
 
-Those men got forty years of protection by accident. You can take it on purpose.`,
+Meanwhile, farmers in the same towns... eating the same food... had normal heart disease rates.
+
+The only difference?
+
+The mill workers breathed olive mist every single day.
+
+**BODY - THE DISCOVERY**
+
+When doctors investigated in the early 1970s, they found something in the workers' heart cells that shouldn't have been there.
+
+A compound called hydroxytyrosol.
+
+It only exists in the mist from freshly crushed olives.
+
+And it was building up inside their heart mitochondria... the tiny power plants that fuel every heartbeat.
+
+Here's why that mattered.
+
+Your heart beats 100,000 times a day. Every single beat.
+
+And every beat generates free radicals inside the mitochondria as a byproduct of energy production.
+
+Think of free radicals as toxic exhaust your heart creates just by working.
+
+Over time, these radicals damage the mitochondria. Energy production drops. The heart weakens.
+
+That's how heart disease starts. Not on the surface.
+
+Deep inside the cells powering every contraction.
+
+But hydroxytyrosol did something most modern antioxidants can't.
+
+It slipped directly into the mitochondrial membrane and neutralized those radicals at the source.
+
+Before they could accumulate. Before they could cause damage.
+
+The workers' hearts kept producing full energy for decades because something was protecting the mitochondria every single day.
+
+**BODY - THE PROBLEM**
+
+But here's the catch.
+
+Hydroxytyrosol breaks down within 3 hours of the olives being crushed.
+
+The moment oxygen hits it, it degrades.
+
+That bottle of olive oil in your kitchen?
+
+It has almost none left.
+
+Even "extra virgin" olive oil sitting on a shelf for a week has lost the protective form.
+
+**BODY - THE HUMAN MIRROR**
+
+Your heart faces the same oxidative assault those workers did.
+
+Every beat generates free radicals.
+
+Every contraction creates damage inside the mitochondria.
+
+But unlike them, you don't have daily protection penetrating the exact place where 90% of heart damage starts.
+
+You'd need to drink 4 liters of fresh-pressed oil daily to get the same protection those workers got from just breathing the air, which does not sound convenient
+
+And you can't recreate a 1950s olive mill in your kitchen.
+
+And here's what makes the heart different from every other organ.
+
+It never rests.
+
+Your liver can recover overnight. Your muscles repair during sleep.
+
+But your heart?
+
+It beats 100,000 times today. 100,000 times tomorrow. Every day for your entire life.
+
+Without mitochondrial protection, the damage compounds.
+
+Energy production drops. The heart weakens. Irregular rhythms develop.
+
+You get winded climbing stairs. Your chest feels tight during exertion. Your heart struggles to keep up with demands it used to handle easily.
+
+This is mitochondrial failure. Not blockages. Not cholesterol.
+
+Energy collapse at the cellular level.
+
+The workers avoided this because hydroxytyrosol got inside their mitochondria daily.
+
+You don't have that protection.
+
+**BODY - THE FAILED SOLUTIONS**
+
+After the discovery, researchers tried to replicate the workers' protection.
+
+CoQ10. Omega-3s. Vitamin E. Resveratrol.
+
+All proven antioxidants. All marketed for heart health.
+
+But none could do what hydroxytyrosol did.
+
+None could penetrate the mitochondrial membrane where the damage actually happens.
+
+Your heart mitochondria are surrounded by a negatively charged barrier. Highly selective. Most molecules can't get through.
+
+So those supplements float in your bloodstream... providing surface protection at best.
+
+But the free radicals destroying your heart's energy system?
+
+Still attacking. Still accumulating damage.
+
+**BODY - THE SOLUTION**
+
+However, there does exists one molecule that has proven to enter the mitochondria
+
+1999
+
+Two scientists in New Zealand engineered a molecule that solved this.
+
+It wasn't discovered. It was built.
+
+After 25 years of research and $60 million in investment, they created the world's first mitochondrial-targeted antioxidant specifically for heart cells.
+
+It's called Mitoquinol Mesylate.
+
+Same mechanism as hydroxytyrosol. Penetrates the mitochondrial membrane. Neutralizes free radicals at the source.
+
+But unlike hydroxytyrosol, it doesn't degrade in hours.
+
+It's stable.
+
+It concentrates exactly inside the mitochondria powering every heartbeat.
+
+They attached a positive charge to the molecule.
+
+That charge gets pulled through your heart mitochondria's negative barrier like a magnet.
+
+It concentrates at Complexes I and III... the exact sites where free radicals are generated during energy production.
+
+And once inside, it doesn't neutralize one radical and disappear.
+
+It cycles continuously. Stays there. Protects your heart mitochondria 24/7.
+
+**BODY - THE CLINICAL PROOF**
+
+The clinical results in heart health were significant.
+
+Oxidative stress in heart cells dropped by 48%. The damage aging your cardiovascular system... measurably reduced.
+
+Mitochondrial energy production improved by up to 69%. Your heart gets the fuel it needs to power 100,000 beats a day without failing.
+
+Arterial inflammation decreased. Blood vessel function improved. Circulation strengthened.
+
+People reported sustained energy during exercise. No more getting winded halfway through activities they used to handle easily.
+
+Heart palpitations reduced. Irregular rhythms stabilized. The chest tightness during exertion... gone.
+
+This wasn't masking symptoms. This was restoring cellular function.
+
+The molecule is backed by Cambridge, UCLA, and Harvard.
+
+Over 900 peer-reviewed studies.
+
+Over 60 global patents protecting the technology.
+
+**CTA**
+
+Only one brand manufactures the precise formulation for cardiovascular protection: MitoQ Pure.
+
+The recommended protocol is 90 days minimum.
+
+This isn't a quick fix. It's cellular repair. You're reversing years of mitochondrial damage while building long-term heart protection.
+
+Three months to give your heart mitochondria the sustained defense they need.
+
+Few people know about this. They're a small company.
+
+They've sold out twice this year because the manufacturing process is complex and can't be rushed.
+
+If you can checkout, you're lucky.
+
+Click below to secure your supply before they sell out again.
+
+Your heart beats 100,000 times today. Give it the protection it's been working without.`,
     hooks: [
       {
-        line: "They chain-smoked for 40 years on a high-fat diet. Zero heart attacks on record.",
+        line: `Here's how Greek olive mill workers in the 1940s and 50s worked for 40+ years... chain-smoked every day... ate a high-fat diet...`,
         rationale:
-          "A paradox stated flatly with no adjectives. It contradicts something the reader believes they already know, and the contradiction has a number attached, so it cannot be waved off.",
-      },
-      {
-        line: "Farmers in the same town, eating the same food, had normal heart disease rates. The mill workers had none.",
-        rationale:
-          "Frames it as a controlled comparison. Once the reader accepts there was one variable, they need to know what it was.",
+          "Stacks three risk factors the reader has been taught are fatal, then removes the expected outcome. A paradox with a documented record behind it cannot be argued away, only explained.",
       },
     ],
     rationale: {

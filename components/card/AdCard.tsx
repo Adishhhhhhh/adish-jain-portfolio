@@ -99,14 +99,9 @@ export function AdCard({ concept }: { concept: Concept }) {
           </div>
         </header>
 
-        <p
-          className={
-            "whitespace-pre-line text-[13px] text-[var(--color-text-primary)] " +
-            (expanded ? "" : "line-clamp-3")
-          }
-        >
-          {concept.caption}
-        </p>
+        <div className={expanded ? "" : "line-clamp-3"}>
+          <AdCopy text={concept.caption} />
+        </div>
         <button
           type="button"
           onClick={() => setExpanded((v) => !v)}
@@ -129,6 +124,39 @@ export function AdCard({ concept }: { concept: Concept }) {
         </div>
       </div>
     </article>
+  );
+}
+
+/**
+ * Ad primary text. Scripts are stored verbatim, section markers and all, so the
+ * markers render as quiet labels here rather than being stripped from the copy
+ * or leaking asterisks into the feed. Everything else is his words untouched.
+ */
+function AdCopy({ text }: { text: string }) {
+  const lines = text.split("\n");
+  return (
+    <div className="text-[13px] text-[var(--color-text-primary)]">
+      {lines.map((raw, i) => {
+        const line = raw.trim();
+        if (!line) return null;
+        const label = line.match(/^#{0,4}\s*\*\*(.+?)\*\*\s*$/);
+        if (label) {
+          return (
+            <p
+              key={i}
+              className="mb-1 mt-3 text-[10.5px] font-bold uppercase tracking-[0.08em] text-[var(--color-text-tertiary)] first:mt-0"
+            >
+              {label[1].replace(/\*\*/g, "")}
+            </p>
+          );
+        }
+        return (
+          <p key={i} className="mb-2 leading-relaxed">
+            {line.replace(/\*\*/g, "").replace(/(^|\s)\*(\S[^*]*?)\*(?=\s|$|[.,])/g, "$1$2")}
+          </p>
+        );
+      })}
+    </div>
   );
 }
 
