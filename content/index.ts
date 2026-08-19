@@ -3,6 +3,7 @@ import { PETHONESTY_CONCEPTS } from "./pethonesty";
 import { NEUROGUM_CONCEPTS } from "./neurogum";
 import { MITOQ_CONCEPTS } from "./mitoq";
 import { ANCIENT_NUTRITION_CONCEPTS } from "./ancient-nutrition";
+import { MITOQ_NATIVE_CONCEPTS } from "./mitoq-native";
 import { CONCEPT_ONLY } from "./concepts";
 
 // Produced work first, then the written-but-unproduced concept library pulled
@@ -12,6 +13,7 @@ export const ALL_CONCEPTS: Concept[] = [
   ...NEUROGUM_CONCEPTS,
   ...MITOQ_CONCEPTS,
   ...ANCIENT_NUTRITION_CONCEPTS,
+  ...MITOQ_NATIVE_CONCEPTS,
   ...CONCEPT_ONLY,
 ];
 

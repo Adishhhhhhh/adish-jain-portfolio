@@ -77,9 +77,9 @@ export function applyFilters(
     }
     case "newest":
     default:
-      // Video first, then advertorial, then static, so the heaviest production
-      // effort leads the grid. Within a tier the array order is preserved,
-      // which already lists newest concepts first in each brand file.
+      // Video, then long-form native statics, then advertorials, then statics,
+      // so the heaviest production effort leads the grid. Within a tier the
+      // array order is preserved, which already lists newest concepts first.
       pool = [...pool].sort((a, b) => mediaTier(a) - mediaTier(b));
       break;
   }
@@ -93,6 +93,7 @@ export function applyFilters(
  */
 function mediaTier(c: Concept): number {
   if (c.format === "video") return 0;
-  if (c.format === "advertorial" || c.landingUrl) return 1;
-  return 2;
+  if (c.nativeLongForm) return 1;
+  if (c.format === "advertorial" || c.landingUrl) return 2;
+  return 3;
 }

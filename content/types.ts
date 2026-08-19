@@ -70,6 +70,12 @@ export type Concept = {
   hooks: Hook[];
   /** path under /public to the produced asset, if any */
   asset?: string;
+  /**
+   * A static carrying long-form editorial copy, the kind that reads as a post
+   * rather than an ad. Sits in its own tier between video and advertorial,
+   * because the writing is the asset.
+   */
+  nativeLongForm?: boolean;
   /** poster frame for videos */
   poster?: string;
   /**

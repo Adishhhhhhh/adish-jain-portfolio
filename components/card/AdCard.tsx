@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, useSyncExternalStore } from "react";
 import type { Concept } from "@/content/types";
 import { BRAND_META, conceptFormats } from "@/content/types";
 import { SITE } from "@/content/copy";
@@ -159,40 +159,87 @@ function CreativeSlot({
 function ConceptSlot({ concept, rounding }: { concept: Concept; rounding: string }) {
   const line = concept.hooks[0]?.line ?? concept.caption.split("\n")[0] ?? "";
   const isExpansion = concept.id.includes("-exp-");
+  const isNative = concept.nativeLongForm === true;
 
   return (
     <div
       className={`flex min-h-[168px] w-full flex-col justify-between gap-3 border border-dashed border-[var(--color-border)] ${rounding}bg-[var(--color-surface-alt)] p-4`}
     >
       <span className="text-[10.5px] font-bold uppercase tracking-[0.07em] text-[var(--color-text-tertiary)]">
-        {isExpansion ? "Expansion angle" : "Script, not yet produced"}
+        {isNative
+          ? "Long-form native static"
+          : isExpansion
+            ? "Expansion angle"
+            : "Script, not yet produced"}
       </span>
       <p className="line-clamp-5 text-[15px] font-semibold leading-snug text-[var(--color-text-primary)]">
         {line ? `“${line}”` : concept.conceptName}
       </p>
       <span className="text-[11.5px] text-[var(--color-text-secondary)]">
-        {isExpansion ? "Angle mapped, held for Phase 2" : "Full script written"}
+        {isNative
+          ? "Copy written, art in production"
+          : isExpansion
+            ? "Angle mapped, held for Phase 2"
+            : "Full script written"}
       </span>
     </div>
   );
 }
 
+const REDUCED_MOTION = "(prefers-reduced-motion: reduce)";
+
+function subscribeReducedMotion(cb: () => void) {
+  const mq = window.matchMedia(REDUCED_MOTION);
+  mq.addEventListener("change", cb);
+  return () => mq.removeEventListener("change", cb);
+}
+function getReducedMotion() {
+  return window.matchMedia(REDUCED_MOTION).matches;
+}
+
 /**
- * Plays in place on click, the way a real Ad Library card does. Starts muted so
- * the first tap is never a surprise, then hands over native controls so sound
- * and scrubbing are one click away.
+ * Autoplays muted and looping the moment it scrolls into view, which is how the
+ * feed itself behaves. The only thing the card asks for is sound: a speaker
+ * badge sits in the corner and one click unmutes and hands over native controls.
+ *
+ * Playback is gated on an IntersectionObserver so five videos are never all
+ * decoding at once, and it respects prefers-reduced-motion by staying paused
+ * behind a play button instead.
  */
 function CardVideo({ concept, rounding }: { concept: Concept; rounding: string }) {
   const ref = useRef<HTMLVideoElement>(null);
+  const [unmuted, setUnmuted] = useState(false);
   const [started, setStarted] = useState(false);
+  const reduced = useSyncExternalStore(subscribeReducedMotion, getReducedMotion, () => false);
 
-  function start() {
+  // Play only while on screen. Off screen it pauses, so scrolling the grid does
+  // not leave five decoders running.
+  useEffect(() => {
+    const v = ref.current;
+    if (!v || reduced) return;
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          v.play().then(() => setStarted(true)).catch(() => {
+            // autoplay refused; the poster stays and the badge still works
+          });
+        } else {
+          v.pause();
+        }
+      },
+      { threshold: 0.35 },
+    );
+    io.observe(v);
+    return () => io.disconnect();
+  }, [reduced]);
+
+  function enableSound() {
     const v = ref.current;
     if (!v) return;
-    setStarted(true);
-    v.play().catch(() => {
-      // Autoplay policy refused it. Controls are visible, so the user can start it.
-    });
+    v.muted = false;
+    v.volume = 1;
+    setUnmuted(true);
+    v.play().then(() => setStarted(true)).catch(() => {});
   }
 
   return (
@@ -201,21 +248,59 @@ function CardVideo({ concept, rounding }: { concept: Concept; rounding: string }
         ref={ref}
         src={concept.asset}
         poster={concept.poster}
-        muted
+        muted={!unmuted}
+        loop
         playsInline
+        // native autoplay rather than a JS kick, so muted playback does not
+        // depend on IntersectionObserver firing. The observer below only
+        // pauses off screen and resumes on the way back.
+        autoPlay={!reduced}
         preload="metadata"
-        controls={started}
-        onClick={() => started || start()}
+        controls={unmuted}
+        onPlaying={() => setStarted(true)}
+        aria-label={concept.conceptName}
+        onClick={() => (unmuted ? undefined : enableSound())}
         className="h-auto max-h-[440px] w-full bg-black object-contain"
       />
-      {!started && (
+
+      {/* Sound affordance. The whole point of the muted autoplay is that this is
+          the one thing left to click. */}
+      {!unmuted && (
         <button
           type="button"
-          onClick={start}
+          onClick={enableSound}
+          aria-label={`Unmute ${concept.conceptName}`}
+          className="absolute bottom-3 right-3 flex items-center gap-1.5 rounded-full bg-black/65 px-3 py-1.5 text-[12px] font-semibold text-white backdrop-blur-sm transition-colors hover:bg-black/80"
+        >
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+            <path d="M4 9v6h4l5 4V5L8 9H4z" />
+            <path
+              d="M17 8.5a5 5 0 0 1 0 7"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              strokeLinecap="round"
+              opacity="0.45"
+            />
+            <line x1="16.5" y1="8" x2="21.5" y2="16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          </svg>
+          Sound off
+        </button>
+      )}
+
+      {/* Reduced motion, or autoplay blocked: give back an explicit play control */}
+      {(reduced || !started) && !unmuted && (
+        <button
+          type="button"
+          onClick={() => {
+            const v = ref.current;
+            if (!v) return;
+            v.play().then(() => setStarted(true)).catch(() => {});
+          }}
           aria-label={`Play ${concept.conceptName}`}
           className="absolute inset-0 flex items-center justify-center bg-black/10 transition-colors hover:bg-black/20"
         >
-          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-black/60 shadow-lg backdrop-blur-sm transition-transform group-hover:scale-105">
+          <span className="flex h-14 w-14 items-center justify-center rounded-full bg-black/60 shadow-lg backdrop-blur-sm">
             <svg width="26" height="26" viewBox="0 0 24 24" fill="white" aria-hidden>
               <path d="M8 5.14v13.72a1 1 0 0 0 1.54.84l10.5-6.86a1 1 0 0 0 0-1.68L9.54 4.3A1 1 0 0 0 8 5.14z" />
             </svg>
@@ -232,6 +317,7 @@ function CardVideo({ concept, rounding }: { concept: Concept; rounding: string }
  */
 function CardStatic({ concept, rounding }: { concept: Concept; rounding: string }) {
   const [open, setOpen] = useState(false);
+  const [failed, setFailed] = useState(false);
 
   useEffect(() => {
     if (!open) return;
@@ -241,6 +327,9 @@ function CardStatic({ concept, rounding }: { concept: Concept; rounding: string 
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [open]);
+
+  // Art that has not landed yet degrades to the brief rather than a broken frame
+  if (failed) return <ConceptSlot concept={concept} rounding={rounding} />;
 
   return (
     <>
@@ -257,6 +346,7 @@ function CardStatic({ concept, rounding }: { concept: Concept; rounding: string 
           height={0}
           sizes="(max-width: 768px) 100vw, 320px"
           loading="lazy"
+          onError={() => setFailed(true)}
           className="h-auto max-h-[440px] w-full object-contain"
         />
       </button>
