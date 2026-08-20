@@ -3,8 +3,6 @@ import { TopBar } from "@/components/shell/TopBar";
 import { SearchBarRow } from "@/components/shell/SearchBarRow";
 import { AdvertiserHeader } from "@/components/shell/AdvertiserHeader";
 import { SITE } from "@/content/copy";
-import { PROJECTS, PROJECTS_INTRO } from "@/content/projects";
-import { MarkdownView } from "@/components/case-study/MarkdownView";
 
 export const metadata = { title: "About" };
 
@@ -117,61 +115,6 @@ export default function AboutPage() {
                 awareness-level targeting
               </li>
             </ul>
-          </div>
-        </section>
-
-        {/* Self-assigned projects */}
-        <section data-tour="projects" className="mt-14 scroll-mt-[150px]">
-          <h2 className="text-[12px] font-semibold uppercase tracking-wide text-[var(--color-text-secondary)]">
-            Things I Build On The Side
-          </h2>
-          <p className="mt-2 max-w-[760px] text-[16px] leading-relaxed text-[var(--color-text-primary)]">
-            {PROJECTS_INTRO}
-          </p>
-
-          <div className="mt-6 flex flex-col gap-3">
-            {PROJECTS.map((pr, i) => (
-              <details
-                key={pr.id}
-                open={i === 0}
-                className="group rounded-md border border-[var(--color-border-light)] bg-[var(--color-surface)] open:bg-[var(--color-surface-alt)]"
-              >
-                <summary className="flex cursor-pointer list-none items-start justify-between gap-4 px-4 py-3.5">
-                  <span className="min-w-0">
-                    <span className="flex flex-wrap items-baseline gap-x-2.5 gap-y-1">
-                      <span className="text-[16px] font-bold text-[var(--color-text-primary)]">
-                        {pr.name}
-                      </span>
-                      <span className="text-[12px] text-[var(--color-text-secondary)]">
-                        {pr.kind}
-                      </span>
-                      <span className="rounded-full bg-[var(--color-pill-bg)] px-2 py-0.5 text-[11px] font-medium text-[var(--color-pill-text)]">
-                        {pr.status}
-                      </span>
-                    </span>
-                    <span className="mt-1 block max-w-[70ch] text-[14px] leading-relaxed text-[var(--color-text-secondary)]">
-                      {pr.summary}
-                    </span>
-                  </span>
-                  <svg
-                    className="mt-1 shrink-0 text-[var(--color-text-secondary)] transition-transform group-open:rotate-180"
-                    width="18"
-                    height="18"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    aria-hidden
-                  >
-                    <polyline points="6 9 12 15 18 9" />
-                  </svg>
-                </summary>
-                <div className="border-t border-[var(--color-border-light)] bg-[var(--color-surface)] px-4 pb-4 pt-3.5">
-                  <MarkdownView>{pr.markdown}</MarkdownView>
-                </div>
-              </details>
-            ))}
           </div>
         </section>
 
