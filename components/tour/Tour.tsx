@@ -107,7 +107,13 @@ const STEPS: Step[] = [
     minWidth: 768,
   },
   {
-    route: "/adish-jain",
+    route: "/adish-jain/about",
+    selector: '[data-tour="projects"]',
+    title: "And the things I build on the side",
+    body: "Agents, skills, and systems I write for myself: a research system that refuses unsourced claims, an agent that builds advertorials, and the skill chain that produced the work you just scrolled through.",
+  },
+  {
+    route: "/adish-jain/about",
     selector: '[data-tour="menu"]',
     title: "Jump anywhere",
     body: "This opens the deep navigator, straight into any brand's campaign room. That is everything. Have a look around.",

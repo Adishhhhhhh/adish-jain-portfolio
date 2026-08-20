@@ -128,34 +128,29 @@ export function AdCard({ concept }: { concept: Concept }) {
 }
 
 /**
- * Ad primary text. Scripts are stored verbatim, section markers and all, so the
- * markers render as quiet labels here rather than being stripped from the copy
- * or leaking asterisks into the feed. Everything else is his words untouched.
+ * Ad primary text. Scripts are stored verbatim, section markers and all, but a
+ * reader in the feed should never be told where the hook ends and the body
+ * begins. The markers are dropped at render so the story runs as one flow. The
+ * stored copy is untouched, and the script view in the concept library still
+ * shows them, because there the structure is the point.
  */
 function AdCopy({ text }: { text: string }) {
-  const lines = text.split("\n");
+  const lines = text
+    .split("\n")
+    .map((l) => l.trim())
+    .filter(Boolean)
+    // **HOOK** / **BODY - THE EXPEDITION** / ### **THE CHALLENGE**
+    .filter((l) => !/^#{0,4}\s*\*\*[^*]+\*\*\s*$/.test(l));
+
   return (
     <div className="text-[13px] text-[var(--color-text-primary)]">
-      {lines.map((raw, i) => {
-        const line = raw.trim();
-        if (!line) return null;
-        const label = line.match(/^#{0,4}\s*\*\*(.+?)\*\*\s*$/);
-        if (label) {
-          return (
-            <p
-              key={i}
-              className="mb-1 mt-3 text-[10.5px] font-bold uppercase tracking-[0.08em] text-[var(--color-text-tertiary)] first:mt-0"
-            >
-              {label[1].replace(/\*\*/g, "")}
-            </p>
-          );
-        }
-        return (
-          <p key={i} className="mb-2 leading-relaxed">
-            {line.replace(/\*\*/g, "").replace(/(^|\s)\*(\S[^*]*?)\*(?=\s|$|[.,])/g, "$1$2")}
-          </p>
-        );
-      })}
+      {lines.map((line, i) => (
+        <p key={i} className="mb-2 leading-relaxed last:mb-0">
+          {line
+            .replace(/\*\*(.+?)\*\*/g, "$1")
+            .replace(/(^|\s)\*(\S[^*]*?)\*(?=\s|$|[.,!?])/g, "$1$2")}
+        </p>
+      ))}
     </div>
   );
 }
