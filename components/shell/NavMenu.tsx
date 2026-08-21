@@ -93,9 +93,8 @@ export function NavMenu() {
                 { href: "/creative-approach", label: "Creative Approach" },
                 { href: "/strategic-approach", label: "Strategic Approach" },
                 { href: "/case-studies", label: "All case studies" },
-                { href: "/creative-approach#principles", label: "What It All Rests On" },
                 { href: "/adish-jain/about", label: "About" },
-                { href: "/contact", label: "Contact" },
+                { href: "/adish-jain/about#contact", label: "Contact" },
               ].map((item) => (
                 <Link
                   key={item.href}

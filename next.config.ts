@@ -11,8 +11,9 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: "/approach", destination: "/creative-approach", permanent: true },
-      { source: "/creative-strategy", destination: "/creative-approach#principles", permanent: true },
-      { source: "/principles", destination: "/creative-approach#principles", permanent: true },
+      { source: "/creative-strategy", destination: "/creative-approach", permanent: true },
+      { source: "/principles", destination: "/creative-approach", permanent: true },
+      { source: "/contact", destination: "/adish-jain/about#contact", permanent: true },
       { source: "/strategy-approach", destination: "/strategic-approach", permanent: true },
     ];
   },

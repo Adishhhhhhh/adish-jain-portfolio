@@ -4,7 +4,7 @@
 
 export const SITE = {
   advertiserName: "Adish Jain",
-  advertiserHandle: "Creative Strategist",
+  advertiserHandle: "Creative Strategist · DTC health and wellness · Mumbai",
   honestLine:
     "The Ad Library exists so no brand can hide its ads. Mine exists so no one has to wonder how I think.",
 };
