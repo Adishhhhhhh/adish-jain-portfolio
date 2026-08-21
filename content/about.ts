@@ -74,5 +74,9 @@ export const CONTACT_ROWS: ContactRow[] = [
     label: "Availability",
     value: "Full-time roles, contract projects, or freelance engagements.",
   },
-  { label: "Response time", value: "Email first. I respond within 24 hours." },
+  {
+    label: "LinkedIn",
+    value: "linkedin.com/in/adish-jain",
+    href: "https://www.linkedin.com/in/adish-jain-230565241/",
+  },
 ];

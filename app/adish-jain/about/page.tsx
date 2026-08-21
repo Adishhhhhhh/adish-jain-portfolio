@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { TopBar } from "@/components/shell/TopBar";
 import { SearchBarRow } from "@/components/shell/SearchBarRow";
 import { AdvertiserHeader } from "@/components/shell/AdvertiserHeader";
@@ -114,9 +113,17 @@ export default function AboutPage() {
                 </dt>
                 <dd className="mt-1 text-[15px] text-[var(--color-text-primary)]">
                   {r.href ? (
-                    <Link href={r.href} className="meta-link font-semibold">
+                    <a
+                      href={r.href}
+                      // mailto stays in place; anything on the web opens in a new
+                      // tab so the portfolio is still there when they come back
+                      {...(r.href.startsWith("http")
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                      className="meta-link font-semibold"
+                    >
                       {r.value}
-                    </Link>
+                    </a>
                   ) : (
                     r.value
                   )}
