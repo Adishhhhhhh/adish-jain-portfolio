@@ -28,7 +28,7 @@ export const SCREEN_1 = {
 // page can work out that a screenshot opens.
 export const RECEPTION = {
   heading: "Reactions so far",
-  lead: "I only started posting on LinkedIn a few months ago. Here is what has come back.",
+  lead: "I only started LinkedIn a few months ago. Here is what has come back.",
 };
 
 export const SCREEN_2 = {

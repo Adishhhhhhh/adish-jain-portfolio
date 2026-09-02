@@ -56,7 +56,7 @@ const STEPS: Step[] = [
     route: "/",
     selector: '[data-tour="reception"]',
     title: "Reactions so far",
-    body: "A few months of posting on LinkedIn, and this is what came back. Comments on the posts, and messages from people who clicked through.",
+    body: "A few months on LinkedIn, and this is what came back. Comments on the posts, and messages from people who clicked through.",
   },
   {
     route: "/",
