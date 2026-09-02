@@ -116,9 +116,12 @@
 .hero-item:nth-child(2) {
   animation-delay: 0.13s;
 }
-/* the search section is the last block */
+/* the search section, then the reception panel closing the page */
 section.hero-item {
   animation-delay: 0.22s;
+}
+section[data-tour="reception"].hero-item {
+  animation-delay: 0.3s;
 }
 @media (prefers-reduced-motion: reduce) {
   .hero-item {

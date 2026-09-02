@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useReducedMotion } from "framer-motion";
 import { SCREEN_1, SITE } from "@/content/copy";
 import { BRAND_META, type Brand } from "@/content/types";
+import { Reception } from "@/components/screen-1/Reception";
 
 const SEARCH_TARGET = SITE.advertiserName; // "Adish Jain"
 
@@ -123,6 +124,8 @@ export function Hero() {
           {SCREEN_1.attentionThesis}
         </p>
       </section>
+
+      <Reception />
     </motion.main>
   );
 }

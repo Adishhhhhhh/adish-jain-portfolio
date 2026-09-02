@@ -8,7 +8,7 @@ import { useCallback, useEffect, useRef, useState } from "react";
  *
  * The problem it solves is specific: people land on the hero and do not realise
  * the portfolio lives behind the search button, so they bounce off the front
- * door. Step one puts a pulsing ring on that button.
+ * door. The Start here step puts a pulsing ring on that button.
  *
  * Two rules it holds to:
  * - The dimmer never captures clicks. The visitor can ignore the tour entirely
@@ -33,6 +33,8 @@ type Step = {
   minWidth?: number;
   /** centre card, no spotlight. Used for the framing cards before the walk */
   center?: boolean;
+  /** shown only on a narrow screen, where the layout is worth a word */
+  mobileNote?: string;
 };
 
 const STEPS: Step[] = [
@@ -41,12 +43,20 @@ const STEPS: Step[] = [
     center: true,
     title: "None of this is client work",
     body: "Self-initiated spec work on four real DTC brands: PetHonesty, NeuroGum, Ancient Nutrition, and MitoQ. I have never worked with any of them, and none of it has run on a live account.",
+    mobileNote:
+      "A phone is fine for this. It was built for a bigger screen, so open it on a laptop when you get the chance.",
   },
   {
     route: "/",
     center: true,
     title: "Why it looks like the Ad Library",
     body: "Swiping what works is standard practice in DTC, so I swiped the Ad Library interface to show my own work. Have a look through the creative, the approach, and the strategic thinking behind it.",
+  },
+  {
+    route: "/",
+    selector: '[data-tour="reception"]',
+    title: "The reception so far",
+    body: "Live a few months, and this came back. Comments from the posts, and messages from the people who clicked through.",
   },
   {
     route: "/",
@@ -264,6 +274,9 @@ export function Tour() {
 
   const isLast = stepIndex === steps.length - 1;
   const mobile = vw < 640;
+  // the width at which the nav collapses and the grid drops to one column, so
+  // the width at which the desktop nudge is worth saying
+  const narrow = vw < 768;
 
   // Card sits under the target when there is room, above when there is not.
   // Centred steps ignore all of this and sit in the middle of the screen.
@@ -355,6 +368,15 @@ export function Tour() {
           {step.body}
         </p>
 
+        {/* Only where it applies. On a desktop this line is noise, and the
+            visitor is already on the screen it would send them to. */}
+        {step.mobileNote && narrow && (
+          <p className="mt-2.5 flex items-start gap-2 rounded-md bg-[var(--color-surface-alt)] p-2.5 text-[12.5px] leading-[1.45] text-[var(--color-text-secondary)]">
+            <MonitorSvg />
+            <span>{step.mobileNote}</span>
+          </p>
+        )}
+
         {/* progress */}
         <div className="mt-3 flex gap-1" aria-hidden>
           {steps.map((_, idx) => (
@@ -405,5 +427,26 @@ export function Tour() {
         </div>
       </div>
     </div>
+  );
+}
+
+function MonitorSvg() {
+  return (
+    <svg
+      width="15"
+      height="15"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className="mt-0.5 shrink-0"
+      aria-hidden
+    >
+      <rect x="2" y="3" width="20" height="14" rx="2" />
+      <line x1="8" y1="21" x2="16" y2="21" />
+      <line x1="12" y1="17" x2="12" y2="21" />
+    </svg>
   );
 }
