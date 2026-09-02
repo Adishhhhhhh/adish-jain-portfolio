@@ -15,7 +15,8 @@ import { RECEPTION } from "@/content/copy";
  *
  * Public comments keep their names, since those people commented in public and
  * the attribution is the proof. Private messages have the sender's name barred
- * and their avatar pixelated, which is why the lead says so out loud.
+ * and their avatar pixelated. The copy leaves that unremarked, because a barred
+ * name already reads as privacy and explaining it sounds defensive.
  *
  * The shots are legible in the grid on a large screen and small on a laptop,
  * so each one opens full size in a lightbox. Alt text carries the quote,

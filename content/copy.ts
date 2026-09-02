@@ -22,12 +22,13 @@ export const SCREEN_1 = {
     "Your competition is a stranger's vacation photo, a breakup text, and the urge to put the phone down.",
 };
 
-// The reception panel, below the search. Raw LinkedIn screenshots, public
-// comments attributed and private messages barred. The lead has to say the
-// names are covered, otherwise a grey bar reads as something being hidden.
+// The reactions panel, below the search. Raw LinkedIn screenshots, public
+// comments attributed and private messages barred. The lead stays out of the
+// way: a barred name already reads as privacy, and a reader who can find this
+// page can work out that a screenshot opens.
 export const RECEPTION = {
-  heading: "The reception so far",
-  lead: "A few months live. Comments from the LinkedIn posts, and messages from people who clicked through. Names in the private ones are covered, the words are untouched. Click any one to read it full size.",
+  heading: "Reactions so far",
+  lead: "I only started posting on LinkedIn a few months ago. Here is what has come back.",
 };
 
 export const SCREEN_2 = {
