@@ -14,7 +14,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   // metadataBase resolves the auto-generated opengraph-image to an absolute URL.
-  metadataBase: new URL("https://adish-jain-portfolio.vercel.app"),
+  // It has to be the domain being shared. While this pointed at the vercel.app
+  // host, every card scraped from adishjain.co.in pulled its image off the
+  // other domain, which is fragile and hands the preview to the wrong host.
+  metadataBase: new URL("https://adishjain.co.in"),
   title: {
     default: "Ad Library, Adish Jain, Creative Strategist",
     template: "%s · Adish Jain Ad Library",
