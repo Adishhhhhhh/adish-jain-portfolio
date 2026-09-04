@@ -45,6 +45,12 @@ const SHOTS: Shot[] = [
     alt: "LinkedIn comment from Hassan Ajanaku, senior direct response marketer: this has to be one of the most creative ways to showcase your portfolio. Well done, man.",
   },
   {
+    src: "/proof/comment-04.png",
+    w: 575,
+    h: 118,
+    alt: "LinkedIn comment from Filip Đorđević, performance creative strategist and direct response copywriter: yooo, sick execution on the portfolio.",
+  },
+  {
     src: "/proof/message-01.png",
     w: 527,
     h: 370,
@@ -73,6 +79,12 @@ const SHOTS: Shot[] = [
     w: 552,
     h: 163,
     alt: "Direct message, sender's name covered: Great portfolio bro.",
+  },
+  {
+    src: "/proof/message-06.png",
+    w: 540,
+    h: 83,
+    alt: "Direct message, sender's name covered: Also insane portfolio hahah.",
   },
 ];
 
