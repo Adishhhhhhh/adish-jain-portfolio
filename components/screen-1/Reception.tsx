@@ -63,6 +63,12 @@ const SHOTS: Shot[] = [
     alt: "Direct message, sender's name covered: I saw your portfolio, it is pretty great. Are you working with any brand or agency? I think seriously your knowledge and spec work is really good.",
   },
   {
+    src: "/proof/message-07.png",
+    w: 515,
+    h: 120,
+    alt: "Direct message, sender's name covered: I just wanted to tell you that your portfolio is incredible. Could you tell please how to create like yours.",
+  },
+  {
     src: "/proof/message-03.png",
     w: 522,
     h: 253,
